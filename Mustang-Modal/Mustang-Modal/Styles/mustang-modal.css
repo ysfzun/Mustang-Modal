@@ -1,0 +1,85 @@
+﻿.mustang-modal {
+    display: block;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 17px;
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    z-index: 1050;
+    width: 700px;
+    margin-left: -350px;
+    background: white;
+    box-shadow: 0 -2px 13px -8px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0,0,0,0.15);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 -2px 13px -8px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 -2px 13px -8px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.mustang-modal-title {
+    padding: 4px 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.mustang-modal-body {
+    position: relative;
+    max-height: 700px;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 14px;
+    min-height: 30px;
+}
+
+.mustang-modal-buttons {
+    padding: 14px 15px 15px;
+    margin-bottom: 0;
+    text-align: right;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: inset 0 1px 0 #fff;
+    -moz-box-shadow: inset 0 1px 0 #fff;
+    box-shadow: inset 0 1px 0 #fff;
+}
+
+#mustang-modal-bg {
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    z-index: 9990;
+}
+
+.mustang-modal-close {
+    float: right;
+    margin-right: 7px;
+    margin-top: 2px;
+    font-size: 15px;
+}
+
+.messageBoxButtons {
+    bottom: 0px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+
+.mustang-modal-footer {
+    padding: 14px 15px 15px;
+    margin-bottom: 0;
+    text-align: right;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: inset 0 1px 0 #fff;
+    -moz-box-shadow: inset 0 1px 0 #fff;
+    box-shadow: inset 0 1px 0 #fff;
+}

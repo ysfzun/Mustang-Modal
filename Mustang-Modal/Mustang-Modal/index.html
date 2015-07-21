@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Mustang MustangModal - Sample Page</title>
+
+    <link href="Styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="Styles/mustang-modal.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/mustang-modal.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var modal = new MustangModal();
+
+
+            modal.popup({
+                title: "Başlık",
+                body: "İçerik",
+                width: 800,
+                height: 250,
+                animate: "top",
+                buttons: [
+                    {
+                        id: 'btnCancel',
+                        text: "Kapat",
+                        type: 'danger',
+                        callback: function () {
+
+                            modal.close();
+                        }
+                    },
+                {
+                    id: 'btnEvet',
+                    text: 'Bir modal aç!',
+                    type: 'success',
+                    callback: function () {
+
+                        modal.popup({
+
+                            title: "Yeni bir modal",
+                            body: "yeni bir modal içeriği oluşturuldu",
+                            width: 300,
+                            height: 150,
+                            animate: "top",
+                            buttons: [
+                            {
+                                text: "Bir önceki sayfa yükleme yap",
+                                callback: function () {
+
+                                    modal.close();
+                                    modal.get.iframe(0, "http://aksesuarpaketi.com");
+                                }
+                            }]
+                        })
+                            .openIframe("/page2.html")
+                            .open();
+                    }
+                }]
+            })
+                .load("/page.html")
+                .open();
+        });
+
+    </script>
+
+</head>
+<body>
+
+
+    <h1> Mustang Modal </h1>
+
+</body>
+</html>
