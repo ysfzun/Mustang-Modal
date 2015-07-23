@@ -1,4 +1,14 @@
-﻿var __isAsnyc = false;
+﻿var __isAsnyc = false, _title = ''; _body = '',
+    _buttons = '',
+    _width = 0,
+    _height = 0,
+    _loadPath = '',
+    _parameters = {},
+    _callback = null,
+    _animate = '',
+    _duration = 0,
+    _escapeClose = false;
+
 
 var _MustangHub = {
 
@@ -219,23 +229,23 @@ var _MustangHub = {
             switch (_animate) {
                 case "top":
                     $(_MustangHub.definations.activeModal)
-                     .animate({ top: "-" + activeModalHeight + "px" }, _duration, function() {
+                     .animate({ top: "-" + activeModalHeight + "px" }, _duration, function () {
                          $(activeModal).remove();
                          _MustangHub.resetActiveModal();
-                    });
+                     });
                     break;
                 case "toggle":
                     $(_MustangHub.definations.activeModal)
-                    .slideUp(_duration, function() {
-                        
+                    .slideUp(_duration, function () {
+
                         $(activeModal).remove();
                         _MustangHub.resetActiveModal();
                     });
                     break;
                 case "opacity":
                     $(_MustangHub.definations.activeModal)
-                    .fadeOut(_duration, function() {
-                        
+                    .fadeOut(_duration, function () {
+
                         $(activeModal).remove();
                         _MustangHub.resetActiveModal();
                     });
@@ -308,27 +318,34 @@ var ajaxMethods = {
     }
 };
 
-var MustangModal = function () {
+var MustangModal = {
 
-    this._title = '';
-    this._body = '';
-    this._buttons = '';
-    this._width = 0;
-    this._height = 0;
-    this._loadPath = '';
-    this._parameters = {};
-    this._callback = null;
-    this._animate = '';
-    this._duration = 0;
-    this._escapeClose = false;
+    definations: {
 
-    this.popup = function (options) {
+
+
+
+    },
+
+    //this._title = '';
+    //this._body = '';
+    //this._buttons = '';
+    //this._width = 0;
+    //this._height = 0;
+    //this._loadPath = '';
+    //this._parameters = {};
+    //this._callback = null;
+    //this._animate = '';
+    //this._duration = 0;
+    //this._escapeClose = false;
+
+    prop: function (options) {
 
         _MustangHub.loadMessageBox(options);
         return this;
-    };
+    },
 
-    this.load = function (loadPath, parameters, callback) {
+    load: function (loadPath, parameters, callback) {
 
         __isAsnyc = true;
         _MustangHub.setBody('');
@@ -340,7 +357,7 @@ var MustangModal = function () {
         return this;
     },
 
-    this.openIframe = function (url) {
+    openIframe: function (url) {
 
         _MustangHub.setBody('');
 
@@ -351,27 +368,27 @@ var MustangModal = function () {
         _body = iframeHtml;
 
         return this;
-    };
+    },
 
-    this.open = function () {
+    open: function () {
 
         _MustangHub.open();
         return this;
-    };
+    },
 
-    this.close = function () {
+    close: function () {
 
         _MustangHub.close();
         return this;
-    };
+    },
 
-    this.changeBody = function (html) {
+    changeBody: function (html) {
 
         var body = _MustangHub.setBody(html);
         $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.messageBoxBody).html(body);
-    };
+    },
 
-    this.set = {
+    set: {
 
         load: function (eq, url, parameters, callback) {
 
@@ -403,7 +420,7 @@ var MustangModal = function () {
                .children(_MustangHub.definations.messageBoxBody)
                .html(html);
         }
-    };
+    },
 };
 
 MustangModal.Close = function () {
