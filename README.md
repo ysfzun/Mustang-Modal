@@ -4,19 +4,19 @@
 
 
 ```javascript
-MustangModal.popup({ body: "Hello world." }).open();
+MustangModal.prop({ body: "Hello world." }).open();
 ```
 
 ### Title
 
 ```javascript
-MustangModal.popup({ body: "Hello world.", title: "This is a title" }).open();
+MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();
 ```
 
 ### Width & Height
 
 ```javascript
-  MustangModal.popup({
+  MustangModal.prop({
 
                 body: "Hello world.",
                 title: "This is a title",
