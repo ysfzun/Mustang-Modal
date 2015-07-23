@@ -132,7 +132,7 @@ var _MustangHub = {
         if (_buttons.length == 0) {
 
             $("body")
-                .append('<div class="mustang-modal active-modal"> <div class="mustang-modal-close"><a href=# onclick="MustangModal.Close();">X</div>' + html + '</div>');
+                .append('<div class="mustang-modal active-modal"> <div class="mustang-modal-close"><a href=# onclick="MustangModal.Close(); return false;">X</div>' + html + '</div>');
         }
         else {
             $("body")
@@ -320,25 +320,6 @@ var ajaxMethods = {
 
 var MustangModal = {
 
-    definations: {
-
-
-
-
-    },
-
-    //this._title = '';
-    //this._body = '';
-    //this._buttons = '';
-    //this._width = 0;
-    //this._height = 0;
-    //this._loadPath = '';
-    //this._parameters = {};
-    //this._callback = null;
-    //this._animate = '';
-    //this._duration = 0;
-    //this._escapeClose = false;
-
     prop: function (options) {
 
         _MustangHub.loadMessageBox(options);
@@ -426,5 +407,6 @@ var MustangModal = {
 MustangModal.Close = function () {
 
     _MustangHub.close();
+
 };
 

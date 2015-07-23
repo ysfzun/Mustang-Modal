@@ -11,7 +11,84 @@
 
     <script type="text/javascript">
 
-        function basic() {
+        function mustang_body() {
+
+            MustangModal.prop({ body: "Hello world." }).open();
+        }
+
+        function mustang_title() {
+
+            MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();
+        }
+
+        function mustang_width_height() {
+
+            MustangModal.prop({
+
+                body: "Hello world.",
+                title: "This is a title",
+                width: 250,
+                height: 100
+
+            }).open();
+
+        }
+
+        function mustang_buttons() {
+
+            MustangModal.prop({
+                body: "Hello world.",
+                title: "This is a title",
+                buttons: [
+                {
+                    text: "Save",
+                    callback: function () {
+                        alert("clicked the Save button");
+                    }
+                },
+                {
+                    text: "Update",
+                    type: "success",
+                    callback: function () {
+                        alert("clicked the Update button");
+                    }
+                },
+                {
+                    id: "btnRemove",
+                    text: "Remove",
+                    type: "primary",
+                    callback: function () {
+
+                        alert("clicked the Remove button");
+                    }
+                },
+                {
+                    id: "btnClose",
+                    text: "Close",
+                    type: "danger",
+                    callback: function () {
+                        alert("clicked the close button");
+                        MustangModal.close();
+                    }
+                }, ]
+            }).open();
+        }
+
+        function mustang_animation_duration() {
+
+
+            MustangModal.prop({
+
+                body: "Hello world.",
+                title: "This is a title",
+                animate: "opacity",   //top, toggle and opacity
+                duration: 1000
+
+            }).open();
+
+        }
+
+        function mustang_escape_close() {
 
             MustangModal.prop({
 
@@ -19,11 +96,10 @@
                 title: "This is a title",
                 animate: "toggle",
                 duration: 1000,
-                escapeClose: true
+                escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
 
             }).open();
         }
-
     </script>
 </head>
 <body>
@@ -33,25 +109,116 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <h4>INSTALLATION</h4>
-            <pre>
-            <link href="Styles/bootstrap.min.css" rel="stylesheet" />
-            <link href="Styles/mustang-modal.css" rel="stylesheet" />
-
-            <script src="Scripts/jquery-1.11.3.min.js"></script>
-            <script src="Scripts/mustang-modal.js"></script>
-            </pre>
+        <div class="page-header">
+            <h1>Options</h1>
         </div>
-        <div class="row">
-            <span>
-                Basic simple modal.
-            </span>
-            <pre>
-                 MustangModal.prop({ body: "hello world." }).open();
-            </pre>
 
-            <button class="btn btn-primary" onclick="basic();">Open</button>
+        <div class="panel panel-success">
+            <div class="panel-heading">Body</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre>
+                    <code>MustangModal.prop({ body: "Hello world." }).open();</code></pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_body();">Open</button>
+            </div>
+        </div>
+
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Title</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre>
+                    <code>MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();</code></pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_title();">Open</button>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Width & Height</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre>
+                    <code>
+                MustangModal.prop({
+                body: "Hello world.",
+                title: "This is a title",
+                width: 250,
+                height: 100
+                }).open();
+                </code>
+                </pre>
+                    <button style="float: right;" class="btn" onclick="mustang_width_height();">Open</button>
+            </div>
+        </div>
+
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Buttons</div>
+            <div class="panel-body">
+                <p class="lead">
+
+                    <pre>
+                    <code>
+                MustangModal.prop({
+                body: "Hello world.",
+                title: "This is a title",
+                buttons: [
+                {
+                    id: "btnClose",                 //Optional field. If id not set, will be added random button id as automatically.
+                    text: "Close",                  //Optional field. Default name is "Button Name".
+                    type: "primary",                //Optional field. This field uses bootstrapt button types. Default type is "default".
+                    callback: function() {
+                        alert("clicked the close button");
+                        MustangModal.close();
+                    }
+                }]
+                }).open();
+            </code></pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_buttons();">Open</button>
+            </div>
+        </div>
+
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Animation & Duration</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre>
+                    <code>
+            MustangModal.prop({
+                body: "Hello world.",
+                title: "This is a title",
+                animate: "opacity",              
+                duration: 1000                  
+            }).open();
+            </code>
+            </pre>
+                    <button style="float: right;" class="btn" onclick="mustang_animation_duration();">Open</button>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Escape Close</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre>
+                    <code>
+             MustangModal.prop({
+                body: "Hello world.",
+                title: "This is a title",
+                animate: "toggle",
+                duration: 1000,
+                escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+            }).open();
+            </code>
+            </pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_escape_close();">Open</button>
+            </div>
         </div>
     </div>
 </body>
