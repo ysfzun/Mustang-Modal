@@ -10,6 +10,33 @@ var _MustangHub = {
         messageBoxBody: ".mustang-modal-body",
     },
 
+    loadMessageBox: function (options) {
+
+        __isAsnyc = false;
+        options = $.extend({
+
+            title: '',
+            body: '',
+            width: 700,
+            height: 0,
+            buttons: [],
+            animate: 'top',
+            duration: 500,
+            escapeClose: false
+
+        }, options);
+
+        _title = options.title;
+        _body = options.body;
+
+        _width = options.width;
+        _height = options.height;
+        _buttons = options.buttons;
+        _animate = options.animate;
+        _duration = options.duration;
+        _escapeClose = options.escapeClose;
+    },
+
     setTitle: function (title) {
 
         if (title == "") {
@@ -141,6 +168,8 @@ var _MustangHub = {
 
             activeModal.css({ top: '-' + activeModalHeight + 'px' });
         }
+
+        _MustangHub.escapeClose();
     },
 
     open: function () {
@@ -161,39 +190,63 @@ var _MustangHub = {
 
         _MustangHub.appendModal(title + body + buttons);
 
+        switch (_animate) {
+            case "top":
+                $(_MustangHub.definations.activeModal)
+                .animate({ top: '0px' }, _duration);
+                break;
+            case "toggle":
+                $(_MustangHub.definations.activeModal)
+               .css({ top: "0", display: "none" })
+               .slideDown(_duration);
+                break;
+            case "opacity":
+                $(_MustangHub.definations.activeModal)
+                .css({ top: "0", display: "none" })
+                .fadeIn(_duration);
+                break;
+            default:
+        }
     },
 
     close: function () {
 
-        $(_MustangHub.definations.activeModal).remove();
-        _MustangHub.resetActiveModal();
-    },
+        var activeModal = $(_MustangHub.definations.activeModal),
+            activeModalHeight = activeModal.height();
 
-    loadMessageBox: function (options) {
+        if (_MustangHub.hasAnimate()) {
 
-        __isAsnyc = false;
-        options = $.extend({
+            switch (_animate) {
+                case "top":
+                    $(_MustangHub.definations.activeModal)
+                     .animate({ top: "-" + activeModalHeight + "px" }, _duration, function() {
+                         $(activeModal).remove();
+                         _MustangHub.resetActiveModal();
+                    });
+                    break;
+                case "toggle":
+                    $(_MustangHub.definations.activeModal)
+                    .slideUp(_duration, function() {
+                        
+                        $(activeModal).remove();
+                        _MustangHub.resetActiveModal();
+                    });
+                    break;
+                case "opacity":
+                    $(_MustangHub.definations.activeModal)
+                    .fadeOut(_duration, function() {
+                        
+                        $(activeModal).remove();
+                        _MustangHub.resetActiveModal();
+                    });
+                    break;
+                default:
+            }
 
-            title: '',
-            body: '',
-            width: 700,
-            height: 0,
-            buttons: [],
-            animate: '',
-            duration: 500
-
-        }, options);
-
-        //{ id: 'btn', text: '', callback: null, type: 'btn-primary' }
-
-        _title = options.title;
-        _body = options.body;
-
-        _width = options.width;
-        _height = options.height;
-        _buttons = options.buttons;
-        _animate = options.animate;
-        _duration = options.duration;
+        } else {
+            $(activeModal).remove();
+            _MustangHub.resetActiveModal();
+        }
     },
 
     resetActiveModal: function () {
@@ -229,6 +282,20 @@ var _MustangHub = {
     hasAnimate: function () {
 
         return _animate != "" ? true : false;
+    },
+
+    escapeClose: function () {
+
+        if (_escapeClose == true) {
+
+            $(window).on("keyup", function (e) {
+
+                if (e.keyCode == 27) {
+
+                    _MustangHub.close();
+                }
+            });
+        }
     }
 
 };
@@ -253,6 +320,7 @@ var MustangModal = function () {
     this._callback = null;
     this._animate = '';
     this._duration = 0;
+    this._escapeClose = false;
 
     this.popup = function (options) {
 
@@ -288,55 +356,12 @@ var MustangModal = function () {
     this.open = function () {
 
         _MustangHub.open();
-
-        switch (_animate) {
-            case "top":
-                $(_MustangHub.definations.activeModal)
-                .animate({ top: '0px' }, _duration);
-                break;
-            case "toggle":
-                $(_MustangHub.definations.activeModal)
-               .css({ top: "0", display: "none" })
-               .slideDown(_duration);
-                break;
-            case "opacity":
-                $(_MustangHub.definations.activeModal)
-                .css({ top: "0", display: "none" })
-                .fadeIn(_duration);
-                break;
-            default:
-        }
-
         return this;
     };
 
     this.close = function () {
 
-        var activeModal = $(_MustangHub.definations.activeModal),
-            activeModalHeight = activeModal.height();
-
-        if (_MustangHub.hasAnimate()) {
-
-            switch (_animate) {
-                case "top":
-                    $(_MustangHub.definations.activeModal)
-                     .animate({ top: "-" + activeModalHeight + "px" }, _duration, function () { _MustangHub.close(); });
-                    break;
-                case "toggle":
-                    $(_MustangHub.definations.activeModal)
-                    .slideUp(_duration, function () { _MustangHub.close(); });
-                    break;
-                case "opacity":
-                    $(_MustangHub.definations.activeModal)
-                    .fadeOut(_duration, function () { _MustangHub.close(); });
-                    break;
-                default:
-            }
-
-        } else {
-            _MustangHub.close();
-        }
-
+        _MustangHub.close();
         return this;
     };
 

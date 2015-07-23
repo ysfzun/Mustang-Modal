@@ -17,34 +17,35 @@
 
             mustangModal.popup({
                 body: "İçerik",
-                //buttons: [
-                //    {
-                //        callback: function () {
+                escapeClose: true,
+                buttons: [
+                    {
+                        callback: function () {
 
-                //            mustangModal.close();
-                //        }
-                //    },
-                //{
-                   
-                //    text: 'Bir modal aç!',
-                //    type: 'success',
-                //    callback: function () {
+                            mustangModal.close();
+                        }
+                    },
+                {
 
-                //        mustangModal.popup({
+                    text: 'Bir modal aç!',
+                    type: 'success',
+                    callback: function () {
 
-                //            title: "Yeni bir modal",
-                //            body: "yeni bir modal içeriği oluşturuldu",
-                //            width: 300,
-                //            height: 150,
-                //            animate: "opacity",
-                           
-                //        })
-                //            .openIframe("/page2.html")
-                //            .open();
-                //    }
-                //}]
+                        mustangModal.popup({
+
+                            title: "Yeni bir modal",
+                            body: "yeni bir modal içeriği oluşturuldu",
+                            width: 300,
+                            height: 150,
+                            animate: "opacity",
+
+                        })
+                            .openIframe("/page2.html")
+                            .open();
+                    }
+                }]
             })
-                //.load("/page.html")
+                .load("/page.html")
                 .open();
         });
 
