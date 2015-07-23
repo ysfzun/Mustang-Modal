@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> Mustang-Modal Examples </title>
+
+    <link href="Styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="Styles/mustang-modal.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/mustang-modal.js"></script>
+
+    <script type="text/javascript">
+
+        function basic() {
+
+            MustangModal.prop({
+
+                body: "Hello world.",
+                title: "This is a title",
+                animate: "toggle",
+                duration: 1000,
+                escapeClose: true
+
+            }).open();
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Mustang-Modal Exapmles</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h4>INSTALLATION</h4>
+            <pre>
+            <link href="Styles/bootstrap.min.css" rel="stylesheet" />
+            <link href="Styles/mustang-modal.css" rel="stylesheet" />
+
+            <script src="Scripts/jquery-1.11.3.min.js"></script>
+            <script src="Scripts/mustang-modal.js"></script>
+            </pre>
+        </div>
+        <div class="row">
+            <span>
+                Basic simple modal.
+            </span>
+            <pre>
+                 MustangModal.prop({ body: "hello world." }).open();
+            </pre>
+
+            <button class="btn btn-primary" onclick="basic();">Open</button>
+        </div>
+    </div>
+</body>
+</html>
