@@ -1,6 +1,7 @@
 ﻿Mustang-Modal is distributed under the MIT License.
 Learn more at http://opensource.org/licenses/mit-license.php
---
+
+---
 
 The MIT License (MIT)
 
