@@ -77,3 +77,5 @@ MustangModal.prop({
             }).open();
 
 ```
+
+will be update...
