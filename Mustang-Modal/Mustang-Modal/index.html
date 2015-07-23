@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Mustang MustangModal - Sample Page</title>
+    <title>MustangModal MustangModal - Sample Page</title>
 
     <link href="Styles/bootstrap.min.css" rel="stylesheet" />
     <link href="Styles/mustang-modal.css" rel="stylesheet" />
@@ -13,54 +13,38 @@
 
         $(document).ready(function () {
 
-            var modal = new MustangModal();
+            var mustangModal = new MustangModal();
 
-
-            modal.popup({
-                title: "Başlık",
+            mustangModal.popup({
                 body: "İçerik",
-                width: 800,
-                height: 250,
-                animate: "top",
-                buttons: [
-                    {
-                        id: 'btnCancel',
-                        text: "Kapat",
-                        type: 'danger',
-                        callback: function () {
+                //buttons: [
+                //    {
+                //        callback: function () {
 
-                            modal.close();
-                        }
-                    },
-                {
-                    id: 'btnEvet',
-                    text: 'Bir modal aç!',
-                    type: 'success',
-                    callback: function () {
+                //            mustangModal.close();
+                //        }
+                //    },
+                //{
+                   
+                //    text: 'Bir modal aç!',
+                //    type: 'success',
+                //    callback: function () {
 
-                        modal.popup({
+                //        mustangModal.popup({
 
-                            title: "Yeni bir modal",
-                            body: "yeni bir modal içeriği oluşturuldu",
-                            width: 300,
-                            height: 150,
-                            animate: "top",
-                            buttons: [
-                            {
-                                text: "Bir önceki sayfa yükleme yap",
-                                callback: function () {
-
-                                    modal.close();
-                                    modal.get.iframe(0, "http://aksesuarpaketi.com");
-                                }
-                            }]
-                        })
-                            .openIframe("/page2.html")
-                            .open();
-                    }
-                }]
+                //            title: "Yeni bir modal",
+                //            body: "yeni bir modal içeriği oluşturuldu",
+                //            width: 300,
+                //            height: 150,
+                //            animate: "opacity",
+                           
+                //        })
+                //            .openIframe("/page2.html")
+                //            .open();
+                //    }
+                //}]
             })
-                .load("/page.html")
+                //.load("/page.html")
                 .open();
         });
 
@@ -70,7 +54,7 @@
 <body>
 
 
-    <h1> Mustang Modal </h1>
+    <h1> MustangModal Modal </h1>
 
 </body>
 </html>

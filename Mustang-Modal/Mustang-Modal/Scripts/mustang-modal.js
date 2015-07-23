@@ -1,4 +1,6 @@
-﻿var messageBox = {
+﻿var __isAsnyc = false;
+
+var _MustangHub = {
 
     definations: {
         containerId: ".mustang-modal",
@@ -6,26 +8,29 @@
         mainMessageBox: ".mustang-modal",
         messageBoxBackground: "#mustang-modal-bg",
         messageBoxBody: ".mustang-modal-body",
-        animationDuration: 350
     },
 
     setTitle: function (title) {
 
-        return '<div class="mustang-modal-title"><h3>' + title + '</h3></div>';
+        if (title == "") {
+            return "";
+        }
+
+        return "<div class='mustang-modal-title'><h3>" + title + "</h3></div>";
     },
 
     setBody: function (body) {
 
-        if (body == undefined || body == "" || body == null) {
+        if (body == undefined || body == "") {
             return '<div class="mustang-modal-body"></div>';
         }
 
-        return '<div class="mustang-modal-body">' + body + '</div>'
+        return '<div class="mustang-modal-body">' + body + '</div>';
     },
 
     setWidth: function (width) {
 
-        $(messageBox.definations.activeModal).css({
+        $(_MustangHub.definations.activeModal).css({
 
             'width': width + 'px',
             'margin-left': -(Math.floor(width / 2)) + 'px'
@@ -36,7 +41,7 @@
 
     setHeight: function (height) {
 
-        $(messageBox.definations.activeModal + " " + messageBox.definations.messageBoxBody).css({
+        $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.messageBoxBody).css({
 
             'height': (height == 0 ? '110px' : height + 'px')
 
@@ -45,7 +50,7 @@
 
     setButtons: function (buttons) {
 
-        if (buttons == [])
+        if (buttons == [] || buttons == "")
             return "";
 
         var buttonsHtml = '';
@@ -55,8 +60,16 @@
             var button = buttons[i];
 
             if (button.id == undefined) {
-                button.id = messageBox.generateGuidId();
+                button.id = _MustangHub.generateGuidId();
                 buttons[i] = button;
+            }
+
+            if (button.type == undefined) {
+                button.type = "default";
+            }
+
+            if (button.text == undefined) {
+                button.text = "Button Name";
             }
 
             buttonsHtml += '<input id="' + button.id + '" type="button" class="button btn btn-' + button.type + ' pbutton" value="' + button.text + '"/>';
@@ -71,7 +84,7 @@
 
     removeBackground: function () {
 
-        if ($(messageBox.definations.mainMessageBox).length == 0) {
+        if ($(_MustangHub.definations.mainMessageBox).length == 0) {
             $("#mustang-modal-bg").remove();
         }
     },
@@ -89,11 +102,11 @@
               .append('<div class="mustang-modal active-modal">' + html + '</div>');
         }
 
-        messageBox.resetActiveModal();
+        _MustangHub.resetActiveModal();
 
         //loading width and height properties
-        messageBox.setWidth(_width);
-        messageBox.setHeight(_height);
+        _MustangHub.setWidth(_width);
+        _MustangHub.setHeight(_height);
 
         //loading buttons callbacks
         var buttons = _buttons;
@@ -118,13 +131,13 @@
         }
 
         if (__isAsnyc) {
-            ajaxMethods.load(messageBox.definations.activeModal + " " + messageBox.definations.messageBoxBody, _loadPath, _parameters, _callback);
+            ajaxMethods.load(_MustangHub.definations.activeModal + " " + _MustangHub.definations.messageBoxBody, _loadPath, _parameters, _callback);
         }
 
-        if (messageBox.hasAnimate()) {
+        if (_MustangHub.hasAnimate()) {
 
-            var activeModal = $(messageBox.definations.activeModal),
-                activeModalHeight = $(messageBox.definations.activeModal).height();
+            var activeModal = $(_MustangHub.definations.activeModal),
+                activeModalHeight = $(_MustangHub.definations.activeModal).height();
 
             activeModal.css({ top: '-' + activeModalHeight + 'px' });
         }
@@ -132,28 +145,28 @@
 
     open: function () {
 
-        var title = messageBox.setTitle(_title);
+        var title = _MustangHub.setTitle(_title);
         var body = "";
 
         if (!__isAsnyc) {
-            messageBox.setBody('');
-            body = messageBox.setBody(_body);
+            _MustangHub.setBody('');
+            body = _MustangHub.setBody(_body);
         }
         else {
-            body = messageBox.setBody();
+            body = _MustangHub.setBody();
         }
 
-        var buttons = messageBox.setButtons(_buttons);
-        $(messageBox.definations.activeModal).fadeIn(300);
+        var buttons = _MustangHub.setButtons(_buttons);
+        $(_MustangHub.definations.activeModal).fadeIn(300);
 
-        messageBox.appendModal(title + body + buttons);
+        _MustangHub.appendModal(title + body + buttons);
 
     },
 
     close: function () {
 
-        $(messageBox.definations.activeModal).remove();
-        messageBox.resetActiveModal();
+        $(_MustangHub.definations.activeModal).remove();
+        _MustangHub.resetActiveModal();
     },
 
     loadMessageBox: function (options) {
@@ -166,7 +179,8 @@
             width: 700,
             height: 0,
             buttons: [],
-            animate: ''
+            animate: '',
+            duration: 500
 
         }, options);
 
@@ -179,24 +193,25 @@
         _height = options.height;
         _buttons = options.buttons;
         _animate = options.animate;
+        _duration = options.duration;
     },
 
     resetActiveModal: function () {
 
-        $(messageBox.definations.mainMessageBox).removeClass("active-modal");
-        $(messageBox.definations.mainMessageBox).last().addClass("active-modal");
+        $(_MustangHub.definations.mainMessageBox).removeClass("active-modal");
+        $(_MustangHub.definations.mainMessageBox).last().addClass("active-modal");
 
-        $(messageBox.definations.mainMessageBox).css("z-index", 0);
-        $(messageBox.definations.activeModal).css("z-index", 9999);
+        $(_MustangHub.definations.mainMessageBox).css("z-index", 0);
+        $(_MustangHub.definations.activeModal).css("z-index", 9999);
 
-        if ($(messageBox.definations.messageBoxBackground).length == 0) {
-            messageBox.addBackground();
+        if ($(_MustangHub.definations.messageBoxBackground).length == 0) {
+            _MustangHub.addBackground();
         }
 
-        $(messageBox.definations.messageBoxBackground).css("z-index", 9990);
+        $(_MustangHub.definations.messageBoxBackground).css("z-index", 9990);
 
-        if ($(messageBox.definations.mainMessageBox).length == 0) {
-            messageBox.removeBackground();
+        if ($(_MustangHub.definations.mainMessageBox).length == 0) {
+            _MustangHub.removeBackground();
         }
     },
 
@@ -218,7 +233,13 @@
 
 };
 
-var __isAsnyc = false;
+var ajaxMethods = {
+
+    load: function (element, url, parameters, callback) {
+
+        $(element).load(url, parameters, callback);
+    }
+};
 
 var MustangModal = function () {
 
@@ -231,17 +252,18 @@ var MustangModal = function () {
     this._parameters = {};
     this._callback = null;
     this._animate = '';
+    this._duration = 0;
 
     this.popup = function (options) {
 
-        messageBox.loadMessageBox(options);
+        _MustangHub.loadMessageBox(options);
         return this;
     };
 
     this.load = function (loadPath, parameters, callback) {
 
         __isAsnyc = true;
-        messageBox.setBody('');
+        _MustangHub.setBody('');
 
         _parameters = parameters;
         _loadPath = loadPath;
@@ -252,9 +274,9 @@ var MustangModal = function () {
 
     this.openIframe = function (url) {
 
-        messageBox.setBody('');
-        var iframeHtml = '';
+        _MustangHub.setBody('');
 
+        var iframeHtml = '';
         iframeHtml += '<iframe style="width:100%;height:100%;" src="' + url + ' ">';
         iframeHtml += '</iframe>';
 
@@ -265,30 +287,54 @@ var MustangModal = function () {
 
     this.open = function () {
 
-        messageBox.open();
-        $(messageBox.definations.activeModal).animate({ top: '0px' }, messageBox.definations.animationDuration);
+        _MustangHub.open();
+
+        switch (_animate) {
+            case "top":
+                $(_MustangHub.definations.activeModal)
+                .animate({ top: '0px' }, _duration);
+                break;
+            case "toggle":
+                $(_MustangHub.definations.activeModal)
+               .css({ top: "0", display: "none" })
+               .slideDown(_duration);
+                break;
+            case "opacity":
+                $(_MustangHub.definations.activeModal)
+                .css({ top: "0", display: "none" })
+                .fadeIn(_duration);
+                break;
+            default:
+        }
 
         return this;
     };
 
     this.close = function () {
 
-        var activeModal = $(messageBox.definations.activeModal),
+        var activeModal = $(_MustangHub.definations.activeModal),
             activeModalHeight = activeModal.height();
 
-        if (messageBox.hasAnimate()) {
+        if (_MustangHub.hasAnimate()) {
 
-            $(messageBox.definations.activeModal)
-                .animate(
-                    {
-                        top: "-" + activeModalHeight + "px"
-                    },
-                    messageBox.definations.animationDuration, function() {
+            switch (_animate) {
+                case "top":
+                    $(_MustangHub.definations.activeModal)
+                     .animate({ top: "-" + activeModalHeight + "px" }, _duration, function () { _MustangHub.close(); });
+                    break;
+                case "toggle":
+                    $(_MustangHub.definations.activeModal)
+                    .slideUp(_duration, function () { _MustangHub.close(); });
+                    break;
+                case "opacity":
+                    $(_MustangHub.definations.activeModal)
+                    .fadeOut(_duration, function () { _MustangHub.close(); });
+                    break;
+                default:
+            }
 
-                        messageBox.close();
-                    });
         } else {
-            messageBox.close();
+            _MustangHub.close();
         }
 
         return this;
@@ -296,47 +342,47 @@ var MustangModal = function () {
 
     this.changeBody = function (html) {
 
-        var body = messageBox.setBody(html);
-        $(messageBox.definations.activeModal + " " + messageBox.definations.messageBoxBody).html(body);
+        var body = _MustangHub.setBody(html);
+        $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.messageBoxBody).html(body);
     };
 
     this.get = {
 
         load: function (eq, url, parameters, callback) {
 
-            var element = $(messageBox.definations.containerId)
+            var element = $(_MustangHub.definations.containerId)
            .eq(eq)
-           .children(messageBox.definations.messageBoxBody);
+           .children(_MustangHub.definations.messageBoxBody);
 
             ajaxMethods.load(element, url, parameters, callback);
         },
 
         iframe: function (eq, url) {
 
-            messageBox.setBody('');
+            _MustangHub.setBody('');
             var iframeHtml = '';
 
             iframeHtml += '<iframe style="width:100%;height:100%;" src="' + url + ' ">';
             iframeHtml += '</iframe>';
 
-            $(messageBox.definations.containerId)
+            $(_MustangHub.definations.containerId)
                 .eq(eq)
-                .children(messageBox.definations.messageBoxBody)
+                .children(_MustangHub.definations.messageBoxBody)
                 .html(iframeHtml);
-        }
+        },
 
+        body: function (html) {
+
+            $(_MustangHub.definations.containerId)
+               .eq(eq)
+               .children(_MustangHub.definations.messageBoxBody)
+               .html(html);
+        }
     };
 };
 
 MustangModal.Close = function () {
 
-    messageBox.close();
+    _MustangHub.close();
 };
 
-var ajaxMethods = {
-
-    load: function (element, url, parameters, callback) {
-
-        $(element).load(url, parameters, callback);
-    },
-};
