@@ -371,7 +371,7 @@ var MustangModal = function () {
         $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.messageBoxBody).html(body);
     };
 
-    this.get = {
+    this.set = {
 
         load: function (eq, url, parameters, callback) {
 
