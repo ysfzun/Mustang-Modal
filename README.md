@@ -48,7 +48,7 @@ MustangModal.prop({
             }).open();
 ```
 
-### Animate
+### Animation & Duration
 
 ```javascript
 
