@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MustangModal MustangModal - Sample Page</title>
+
+    <link href="Styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="Styles/mustang-modal.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+    <script src="Scripts/mustang-modal.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var mustangModal = new MustangModal();
+
+            mustangModal.popup({
+                body: "İçerik",
+                escapeClose: true,
+                buttons: [
+                    {
+                        text: "test",
+                        callback: function () {
+
+                            mustangModal.close();
+                        }
+                    },
+                {
+                    text: 'Bir modal aç!',
+                    type: 'success',
+                    callback: function () {
+
+                        mustangModal.popup({
+
+                            title: "Yeni bir modal",
+                            body: "yeni bir modal içeriği oluşturuldu",
+                            width: 300,
+                            height: 150,
+                            animate: "opacity",
+
+                        })
+                            .openIframe("/page2.html")
+                            .open();
+                    }
+                }]
+            })
+                .load("/page.html")
+                .open();
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <h1> MustangModal Modal </h1>
+
+</body>
+</html>
