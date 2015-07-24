@@ -48,7 +48,7 @@ MustangModal.prop({
             }).open();
 ```
 
-### Animation & Duration
+### Animation & Speed
 
 ```javascript
 
@@ -57,7 +57,7 @@ MustangModal.prop({
                 body: "Hello world.",
                 title: "This is a title",
                 animate: "toggle",				//Optional field. There are 3 types of animation types. These, top, toggle and opacity. top is default type.
-                duration: 1000				    //Optional field. Default value 500. 
+                speed: 1000				    //Optional field. Default value 500. 
 
             }).open();
 
