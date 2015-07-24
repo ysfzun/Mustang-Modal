@@ -6,7 +6,7 @@
     _parameters = {},
     _callback = null,
     _animate = '',
-    _duration = 0,
+    _speed = 0,
     _escapeClose = false;
 
 
@@ -31,7 +31,7 @@ var _MustangHub = {
             height: 0,
             buttons: [],
             animate: 'top',
-            duration: 500,
+            speed: 500,
             escapeClose: false
 
         }, options);
@@ -43,7 +43,7 @@ var _MustangHub = {
         _height = options.height;
         _buttons = options.buttons;
         _animate = options.animate;
-        _duration = options.duration;
+        _speed = options.speed;
         _escapeClose = options.escapeClose;
     },
 
@@ -203,17 +203,17 @@ var _MustangHub = {
         switch (_animate) {
             case "top":
                 $(_MustangHub.definations.activeModal)
-                .animate({ top: '0px' }, _duration);
+                .animate({ top: '0px' }, _speed);
                 break;
             case "toggle":
                 $(_MustangHub.definations.activeModal)
                .css({ top: "0", display: "none" })
-               .slideDown(_duration);
+               .slideDown(_speed);
                 break;
             case "opacity":
                 $(_MustangHub.definations.activeModal)
                 .css({ top: "0", display: "none" })
-                .fadeIn(_duration);
+                .fadeIn(_speed);
                 break;
             default:
         }
@@ -229,14 +229,14 @@ var _MustangHub = {
             switch (_animate) {
                 case "top":
                     $(_MustangHub.definations.activeModal)
-                     .animate({ top: "-" + activeModalHeight + "px" }, _duration, function () {
+                     .animate({ top: "-" + activeModalHeight + "px" }, _speed, function () {
                          $(activeModal).remove();
                          _MustangHub.resetActiveModal();
                      });
                     break;
                 case "toggle":
                     $(_MustangHub.definations.activeModal)
-                    .slideUp(_duration, function () {
+                    .slideUp(_speed, function () {
 
                         $(activeModal).remove();
                         _MustangHub.resetActiveModal();
@@ -244,7 +244,7 @@ var _MustangHub = {
                     break;
                 case "opacity":
                     $(_MustangHub.definations.activeModal)
-                    .fadeOut(_duration, function () {
+                    .fadeOut(_speed, function () {
 
                         $(activeModal).remove();
                         _MustangHub.resetActiveModal();
