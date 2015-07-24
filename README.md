@@ -71,7 +71,7 @@ MustangModal.prop({
                 body: "Hello world.",
                 title: "This is a title",
                 animate: "toggle",
-                duration: 1000,
+                speed: 1000,
                 escapeClose: true				//Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
 
             }).open();
