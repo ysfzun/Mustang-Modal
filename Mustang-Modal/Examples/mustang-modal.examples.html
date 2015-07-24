@@ -3,11 +3,11 @@
 <head>
     <title> Mustang-Modal Examples </title>
 
-    <link href="Styles/bootstrap.min.css" rel="stylesheet" />
-    <link href="Styles/mustang-modal.css" rel="stylesheet" />
+    <link href="/Styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Styles/mustang-modal.css" rel="stylesheet" />
 
-    <script src="Scripts/jquery-1.11.3.min.js"></script>
-    <script src="Scripts/mustang-modal.js"></script>
+    <script src="/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="/Scripts/mustang-modal.js"></script>
 
     <script type="text/javascript">
 
@@ -99,6 +99,17 @@
                 escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
 
             }).open();
+        }
+
+        function mustang_ajax_loading() {
+            MustangModal.prop({
+
+                title: "Ajax Loading",
+                animate: "toggle",
+                speed: 1000,
+                height: 250,
+                escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+            }).load("AjaxLoading.html").open();
         }
     </script>
 </head>
@@ -220,6 +231,33 @@
                 <button style="float: right;" class="btn" onclick="mustang_escape_close();">Open</button>
             </div>
         </div>
+
+        <div class="page-header">
+            <h1>Features</h1>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">Ajax Loading</div>
+            <div class="panel-body">
+                
+                load method takes 3 parameters. These url, parameters and callback. 
+
+                <p class="lead">
+                    <pre>
+                    <code>
+            MustangModal.prop({
+                title: "Ajax Loading",
+                animate: "toggle",
+                speed: 1000,
+                height: 250,
+                escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+            }).load("AjaxLoading.html").open();
+            </code>
+            </pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_ajax_loading();">Open</button>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
