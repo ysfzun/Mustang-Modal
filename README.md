@@ -78,4 +78,22 @@ MustangModal.prop({
 
 ```
 
+#Features
+
+### Ajax Loading
+
+load method takes 3 parameters. These url, parameters and callback. 
+
+```javascript
+    MustangModal.prop({
+                title: "Ajax Loading",
+                animate: "toggle",
+                speed: 1000,
+                height: 250,
+                escapeClose: true               
+            }).load("AjaxLoading.html").open();
+
+```
+
+
 will be update...
