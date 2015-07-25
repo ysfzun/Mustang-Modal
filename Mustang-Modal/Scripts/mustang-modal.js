@@ -1,23 +1,26 @@
-﻿var __isAsnyc = false, _title = ''; _body = '',
-    _buttons = '',
+﻿var __isAsnyc = false,
+    _title = '',
+    _body = '',
+    _buttons = [],
     _width = 0,
     _height = 0,
     _loadPath = '',
     _parameters = {},
     _callback = null,
-    _animate = '',
-    _speed = 0,
+    _animate = 'top',
+    _speed = 500,
     _escapeClose = false;
 
 
 var _MustangHub = {
 
     definations: {
-        containerId: ".mustang-modal",
         activeModal: ".active-modal",
-        mainMessageBox: ".mustang-modal",
-        messageBoxBackground: "#mustang-modal-bg",
-        messageBoxBody: ".mustang-modal-body",
+        mainMustangModal: ".mustang-modal",
+        mustangModalTitle: ".mustang-modal-title",
+        mustangModalBody: ".mustang-modal-body",
+        mustangModalFooter: ".mustang-modal-footer",
+        mustangModalBg: "#mustang-modal-bg",
     },
 
     loadMessageBox: function (options) {
@@ -67,21 +70,43 @@ var _MustangHub = {
 
     setWidth: function (width) {
 
+        if (width == 0 || width == undefined) {
+            width = $(_MustangHub.definations.activeModal).css("width");
+        }
+
         $(_MustangHub.definations.activeModal).css({
 
-            'width': width + 'px',
+            'width': width,
             'margin-left': -(Math.floor(width / 2)) + 'px'
-
         });
 
     },
 
     setHeight: function (height) {
 
-        $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.messageBoxBody).css({
+        var mustangModalBody = $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalBody),
+            paddingTop = mustangModalBody.css("padding-top").replace('px', ''),
+            paddingBottom = mustangModalBody.css("padding-top").replace('px', '');
 
-            'height': (height == 0 ? '110px' : height + 'px')
+        console.log("height : " + height);
+        console.log("mustangModalBodyHeight : " + mustangModalBody.height());
+        console.log("paddingTop : " + paddingTop);
+        console.log("paddingBottom : " + paddingBottom);
+        console.log("total : " + (Number(mustangModalBody.height()) + Number(paddingBottom) + Number(paddingTop)));
 
+        if (height == 0 || height == undefined) {
+
+            var bodyHeight = Number(mustangModalBody.height()) + Number(paddingBottom) + Number(paddingTop);
+            height = bodyHeight;
+
+        } else {
+
+            height = Number(height) + Number(paddingBottom) + Number(paddingTop);
+        }
+
+        $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalBody).css({
+
+            'height': (height)
         });
     },
 
@@ -121,7 +146,7 @@ var _MustangHub = {
 
     removeBackground: function () {
 
-        if ($(_MustangHub.definations.mainMessageBox).length == 0) {
+        if ($(_MustangHub.definations.mainMustangModal).length == 0) {
             $("#mustang-modal-bg").remove();
         }
     },
@@ -132,7 +157,7 @@ var _MustangHub = {
         if (_buttons.length == 0) {
 
             $("body")
-                .append('<div class="mustang-modal active-modal"> <div class="mustang-modal-close"><a href=# onclick="MustangModal.Close(); return false;">X</div>' + html + '</div>');
+                .append('<div class="mustang-modal active-modal"> <div class="mustang-modal-close"><a href=# onclick="MustangModal.Close(); return false;">X</div></a>' + html + '</div>');
         }
         else {
             $("body")
@@ -168,7 +193,7 @@ var _MustangHub = {
         }
 
         if (__isAsnyc) {
-            ajaxMethods.load(_MustangHub.definations.activeModal + " " + _MustangHub.definations.messageBoxBody, _loadPath, _parameters, _callback);
+            ajaxMethods.load(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalBody, _loadPath, _parameters, _callback);
         }
 
         if (_MustangHub.hasAnimate()) {
@@ -257,23 +282,26 @@ var _MustangHub = {
             $(activeModal).remove();
             _MustangHub.resetActiveModal();
         }
+
+        __isAsnyc = false;
+        _MustangHub.resetOptions();
     },
 
     resetActiveModal: function () {
 
-        $(_MustangHub.definations.mainMessageBox).removeClass("active-modal");
-        $(_MustangHub.definations.mainMessageBox).last().addClass("active-modal");
+        $(_MustangHub.definations.mainMustangModal).removeClass("active-modal");
+        $(_MustangHub.definations.mainMustangModal).last().addClass("active-modal");
 
-        $(_MustangHub.definations.mainMessageBox).css("z-index", 0);
+        $(_MustangHub.definations.mainMustangModal).css("z-index", 0);
         $(_MustangHub.definations.activeModal).css("z-index", 9999);
 
-        if ($(_MustangHub.definations.messageBoxBackground).length == 0) {
+        if ($(_MustangHub.definations.mustangModalBg).length == 0) {
             _MustangHub.addBackground();
         }
 
-        $(_MustangHub.definations.messageBoxBackground).css("z-index", 9990);
+        $(_MustangHub.definations.mustangModalBg).css("z-index", 9990);
 
-        if ($(_MustangHub.definations.mainMessageBox).length == 0) {
+        if ($(_MustangHub.definations.mainMustangModal).length == 0) {
             _MustangHub.removeBackground();
         }
     },
@@ -306,8 +334,28 @@ var _MustangHub = {
                 }
             });
         }
-    }
+    },
 
+    resize: function () {
+
+        _MustangHub.setWidth(_width);
+        _MustangHub.setHeight(_height);
+    },
+
+    resetOptions: function () {
+
+        _width = 0,
+        _height = 0,
+        _loadPath = '',
+        _parameters = {},
+        _callback = null,
+        _animate = 'top',
+        _speed = 500,
+        _escapeClose = false;
+        _title = "";
+        _body = "";
+        _buttons = [];
+    }
 };
 
 var ajaxMethods = {
@@ -351,7 +399,11 @@ var MustangModal = {
         return this;
     },
 
-    open: function () {
+    open: function (selector) {
+
+        if (selector != undefined) {
+            _body = selector.html();
+        }
 
         _MustangHub.open();
         return this;
@@ -365,17 +417,28 @@ var MustangModal = {
 
     changeBody: function (html) {
 
-        var body = _MustangHub.setBody(html);
-        $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.messageBoxBody).html(body);
+        $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalBody).remove();
+        _body = _MustangHub.setBody(html);
+
+        $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalTitle)
+            .after(_body);
+
+        _MustangHub.resize();
+    },
+
+    changeTitle: function (title) {
+
+        $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalTitle).text(title);
+        _body = _MustangHub.setTitle(html);
     },
 
     set: {
 
         load: function (eq, url, parameters, callback) {
 
-            var element = $(_MustangHub.definations.containerId)
+            var element = $(_MustangHub.definations.mainMustangModal)
            .eq(eq)
-           .children(_MustangHub.definations.messageBoxBody);
+           .children(_MustangHub.definations.mustangModalBody);
 
             ajaxMethods.load(element, url, parameters, callback);
         },
@@ -388,17 +451,17 @@ var MustangModal = {
             iframeHtml += '<iframe style="width:100%;height:100%;" src="' + url + ' ">';
             iframeHtml += '</iframe>';
 
-            $(_MustangHub.definations.containerId)
+            $(_MustangHub.definations.mainMustangModal)
                 .eq(eq)
-                .children(_MustangHub.definations.messageBoxBody)
+                .children(_MustangHub.definations.mustangModalBody)
                 .html(iframeHtml);
         },
 
-        body: function (html) {
+        body: function (eq, html) {
 
-            $(_MustangHub.definations.containerId)
+            $(_MustangHub.definations.mainMustangModal)
                .eq(eq)
-               .children(_MustangHub.definations.messageBoxBody)
+               .children(_MustangHub.definations.mustangModalBody)
                .html(html);
         }
     },

@@ -101,6 +101,11 @@
             }).open();
         }
 
+        function mustang_open() {
+
+            MustangModal.open($("#openTable"));
+        }
+
         function mustang_ajax_loading() {
             MustangModal.prop({
 
@@ -111,6 +116,40 @@
                 escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
             }).load("AjaxLoading.html").open();
         }
+
+        function mustang_open_iframe() {
+
+            MustangModal.prop({ title: "Open Iframe Example" }).openIframe("IframePage.html").open();
+        }
+
+        function mustang_change_body() {
+
+            MustangModal.prop({
+
+                title: "Change Body Example",
+                body: "If you want to change the body you can click 'Change The Body' button.",
+                buttons: [
+                {
+                    text: "Change The Body",
+                    type: "warning",
+                    callback: function () {
+
+                        MustangModal.changeBody($("#openTable").html());
+                    }
+                },
+                {
+                    text: "Close",
+                    type: "danger",
+                    callback: function () {
+
+                        MustangModal.close();
+                    }
+                }]
+
+            }).open();
+
+        }
+
     </script>
 </head>
 <body>
@@ -120,6 +159,7 @@
         </div>
     </div>
     <div class="container">
+
         <div class="page-header">
             <h1>Options</h1>
         </div>
@@ -128,20 +168,17 @@
             <div class="panel-heading">Body</div>
             <div class="panel-body">
                 <p class="lead">
-                    <pre>
-                    <code>MustangModal.prop({ body: "Hello world." }).open();</code></pre>
+                    <pre><code>MustangModal.prop({ body: "Hello world." }).open();</code></pre>
                 </p>
                 <button style="float: right;" class="btn" onclick="mustang_body();">Open</button>
             </div>
         </div>
 
-
         <div class="panel panel-success">
             <div class="panel-heading">Title</div>
             <div class="panel-body">
                 <p class="lead">
-                    <pre>
-                    <code>MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();</code></pre>
+                    <pre><code>MustangModal.prop({ body: "Hello world.", <strong>title: "This is a title"</strong> }).open();</code></pre>
                 </p>
                 <button style="float: right;" class="btn" onclick="mustang_title();">Open</button>
             </div>
@@ -151,63 +188,49 @@
             <div class="panel-heading">Width & Height</div>
             <div class="panel-body">
                 <p class="lead">
-                    <pre>
-                    <code>
-                MustangModal.prop({
-                body: "Hello world.",
-                title: "This is a title",
-                width: 250,
-                height: 100
-                }).open();
-                </code>
-                </pre>
+                    <pre><code>MustangModal.prop({
+    body: "Hello world.",
+    title: "This is a title",
+    <strong>width: 250</strong>,
+    <strong>height: 100</strong>
+    }).open();</code></pre>
                     <button style="float: right;" class="btn" onclick="mustang_width_height();">Open</button>
             </div>
         </div>
-
 
         <div class="panel panel-success">
             <div class="panel-heading">Buttons</div>
             <div class="panel-body">
                 <p class="lead">
-
-                    <pre>
-                    <code>
-                MustangModal.prop({
-                body: "Hello world.",
-                title: "This is a title",
-                buttons: [
-                {
-                    id: "btnClose",                 //Optional field. If id not set, will be added random button id as automatically.
-                    text: "Close",                  //Optional field. Default name is "Button Name".
-                    type: "primary",                //Optional field. This field uses bootstrapt button types. Default type is "default".
-                    callback: function() {
-                        alert("clicked the close button");
-                        MustangModal.close();
-                    }
-                }]
-                }).open();
-            </code></pre>
+                    <pre><code>MustangModal.prop({
+     body: "Hello world.",
+     title: "This is a title",
+     <strong>buttons: [
+     {
+         id: "btnClose",                 //Optional field. If id not set, will be added random button idasautomatically.
+         text: "Close",                  //Optional field. Default name is "Button Name".
+         type: "primary",                //Optional field. This field uses bootstrapt button types. Default typeis"default".
+         callback: function() {
+             alert("clicked the close button");
+             MustangModal.close();
+         }
+     }]</strong>
+     }).open();</code></pre>
                 </p>
                 <button style="float: right;" class="btn" onclick="mustang_buttons();">Open</button>
             </div>
         </div>
 
-
         <div class="panel panel-success">
             <div class="panel-heading">Animation & Speed</div>
             <div class="panel-body">
                 <p class="lead">
-                    <pre>
-                    <code>
-            MustangModal.prop({
-                body: "Hello world.",
-                title: "This is a title",
-                animate: "opacity",              
-                speed: 1000                  
-            }).open();
-            </code>
-            </pre>
+                    <pre><code>MustangModal.prop({
+      body: "Hello world.",
+      title: "This is a title",
+      <strong>animate: "opacity"</strong>,              
+      <strong>speed: 1000</strong>                  
+      }).open();</code></pre>
                     <button style="float: right;" class="btn" onclick="mustang_animation_duration();">Open</button>
             </div>
         </div>
@@ -216,17 +239,13 @@
             <div class="panel-heading">Escape Close</div>
             <div class="panel-body">
                 <p class="lead">
-                    <pre>
-                    <code>
-             MustangModal.prop({
-                body: "Hello world.",
-                title: "This is a title",
-                animate: "toggle",
-                speed: 1000,
-                escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
-            }).open();
-            </code>
-            </pre>
+                    <pre><code>MustangModal.prop({
+        body: "Hello world.",
+        title: "This is a title",
+        animate: "toggle",
+        speed: 1000,
+        <strong>escapeClose: true</strong>               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+        }).open();</code></pre>
                 </p>
                 <button style="float: right;" class="btn" onclick="mustang_escape_close();">Open</button>
             </div>
@@ -235,29 +254,109 @@
         <div class="page-header">
             <h1>Features</h1>
         </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Open</div>
+            <div class="panel-body">
+
+                <div id="openTable">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Yusuf</td>
+                                <td>UZUN</td>
+                                <td>Software Developer</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Feyyaz</td>
+                                <td>Acet</td>
+                                <td>Software Developer</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Serhat</td>
+                                <td>Erol</td>
+                                <td>Database Specialist</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="lead">
+                    <pre><code>MustangModal.open($("#openTable"));</code></pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_open();">Open</button>
+            </div>
+        </div>
+
         <div class="panel panel-success">
             <div class="panel-heading">Ajax Loading</div>
             <div class="panel-body">
-                
-                load method takes 3 parameters. These url, parameters and callback. 
+
+                load method takes 3 parameters. These url, parameters and callback.
 
                 <p class="lead">
-                    <pre>
-                    <code>
-            MustangModal.prop({
-                title: "Ajax Loading",
-                animate: "toggle",
-                speed: 1000,
-                height: 250,
-                escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
-            }).load("AjaxLoading.html").open();
-            </code>
-            </pre>
+                    <pre><code>MustangModal.prop({
+        title: "Ajax Loading",
+        animate: "toggle",
+        speed: 1000,
+        height: 250,
+        escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+        })<strong>.load("AjaxLoading.html").open();</strong></code></pre>
                 </p>
                 <button style="float: right;" class="btn" onclick="mustang_ajax_loading();">Open</button>
             </div>
         </div>
 
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Open Iframe</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre><code>MustangModal.prop({ title: "Open Iframe Example" }).openIframe("IframePage.html").open();</code></pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_open_iframe();">Open</button>
+            </div>
+        </div>
+
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Change Body</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre><code> MustangModal.prop({
+       title: "Change Body Example",
+       body: "If you want to change the body you can click 'Change The Body' button.",
+       buttons: [
+       {
+           text: "Change The Body",
+           type: "warning",
+           callback: function () {
+                    <strong>MustangModal.changeBody($("#openTable").html());</strong>
+           }
+       },
+       {
+           text: "Close",
+           type: "danger",
+           callback: function () {
+               MustangModal.close();
+           }
+       }]
+       }).open();</code></pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_change_body();">Open</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
