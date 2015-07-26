@@ -107,6 +107,7 @@
         }
 
         function mustang_ajax_loading() {
+
             MustangModal.prop({
 
                 title: "Ajax Loading",
@@ -119,7 +120,7 @@
 
         function mustang_open_iframe() {
 
-            MustangModal.prop({ title: "Open Iframe Example" }).openIframe("IframePage.html").open();
+            MustangModal.prop({ title: "Open Iframe Example" }).openIframe("https://aksesuarpaketi.com").open();
         }
 
         function mustang_change_body() {
@@ -148,6 +149,95 @@
 
             }).open();
 
+        }
+
+        function mustang_multi_modal() {
+
+            //Open new modal
+            MustangModal.prop({
+
+                title: "Multi Modal Example",
+                buttons: [
+                {
+                    text: "Open New Modal",
+                    type: "warning",
+                    callback: function () {
+
+                        MustangModal.prop({
+
+                            //Open new modal 1
+                            title: "New Modal 1",
+                            width: 400,
+                            height: 300,
+                            buttons: [
+                            {
+                                text: "Open New Modal",
+                                type: "success",
+                                callback: function () {
+
+                                    //Open new modal 2
+                                    MustangModal.prop({
+                                        title: "New Modal 2",
+                                        body: "",
+                                        width: 600,
+                                        height: 400,
+                                        buttons: [
+                                            {
+
+                                                text: "Open New Modal",
+                                                callback: function () {
+
+                                                    //Open new modal 3
+                                                    MustangModal.prop({
+                                                        title: "New Modal 3",
+                                                        body: "",
+                                                        width: 400,
+                                                        height: 250,
+                                                        buttons: [
+                                                            {
+                                                                text: "Close",
+                                                                type: "danger",
+                                                                callback: function () {
+
+                                                                    MustangModal.close();
+                                                                }
+                                                            }
+                                                        ]
+                                                    }).open();
+
+                                                }
+                                            },
+                                            {
+                                                text: "Close",
+                                                type: "danger",
+                                                callback: function () {
+
+                                                    MustangModal.close();
+                                                }
+                                            }
+                                        ]
+                                    }).open();
+
+                                }
+                            }, {
+                                text: "Close",
+                                callback: function () {
+
+                                    MustangModal.close();
+                                }
+                            }]
+                        }).open();
+                    }
+
+                }, {
+                    text: "Close",
+                    callback: function () {
+
+                        MustangModal.close();
+                    }
+                }]
+
+            }).open();
         }
 
     </script>
@@ -191,13 +281,12 @@
                     <pre><code>MustangModal.prop({
     body: "Hello world.",
     title: "This is a title",
-    <strong>width: 250</strong>,
-    <strong>height: 100</strong>
+                    <strong>width: 250</strong>,
+                    <strong>height: 100</strong>
     }).open();</code></pre>
                     <button style="float: right;" class="btn" onclick="mustang_width_height();">Open</button>
             </div>
         </div>
-
         <div class="panel panel-success">
             <div class="panel-heading">Buttons</div>
             <div class="panel-body">
@@ -205,7 +294,7 @@
                     <pre><code>MustangModal.prop({
      body: "Hello world.",
      title: "This is a title",
-     <strong>buttons: [
+                    <strong>buttons: [
      {
          id: "btnClose",                 //Optional field. If id not set, will be added random button idasautomatically.
          text: "Close",                  //Optional field. Default name is "Button Name".
@@ -228,8 +317,8 @@
                     <pre><code>MustangModal.prop({
       body: "Hello world.",
       title: "This is a title",
-      <strong>animate: "opacity"</strong>,              
-      <strong>speed: 1000</strong>                  
+                    <strong>animate: "opacity"</strong>,              
+                    <strong>speed: 1000</strong>                  
       }).open();</code></pre>
                     <button style="float: right;" class="btn" onclick="mustang_animation_duration();">Open</button>
             </div>
@@ -244,7 +333,7 @@
         title: "This is a title",
         animate: "toggle",
         speed: 1000,
-        <strong>escapeClose: true</strong>               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+                    <strong>escapeClose: true</strong>               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
         }).open();</code></pre>
                 </p>
                 <button style="float: right;" class="btn" onclick="mustang_escape_close();">Open</button>
@@ -328,8 +417,6 @@
                 <button style="float: right;" class="btn" onclick="mustang_open_iframe();">Open</button>
             </div>
         </div>
-
-
         <div class="panel panel-success">
             <div class="panel-heading">Change Body</div>
             <div class="panel-body">
@@ -357,6 +444,95 @@
                 <button style="float: right;" class="btn" onclick="mustang_change_body();">Open</button>
             </div>
         </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Multi Modal</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre><code><strong>//Open new modal</strong>
+   MustangModal.prop({
+   title: "Multi Modal Example",
+   buttons: [
+   {
+       text: "Open New Modal",
+       type: "warning",
+       callback: function () {
+                        
+           <strong>//Open new modal 1</strong>
+           MustangModal.prop({
+               title: "New Modal 1",
+               width: 400,
+               height: 300,
+               buttons: [
+               {
+                   text: "Open New Modal",
+                   type: "success",
+                   callback: function () {
+                       <strong>//Open new modal 2</strong>
+                       MustangModal.prop({
+                           title: "New Modal 2",
+                           body: "",
+                           width: 600,
+                           height: 400,
+                           buttons: [
+                               {
+                                   text: "Open New Modal 3",
+                                   type: "warning",
+                                   callback: function () {
+                                       <strong>//Open new modal 3</strong>
+                                       MustangModal.prop({
+                                           title: "New Modal 3",
+                                           body: "",
+                                           width: 400,
+                                           height: 250,
+                                           buttons: [
+                                               {
+                                                   text: "Open New Modal",
+                                                   type: "primary",
+                                                   callback: function () {
+                                                   }
+                                               },
+                                               {
+                                                   text: "Close",
+                                                   type: "danger",
+                                                   callback: function () {
+                                                       MustangModal.close();
+                                                   }
+                                               }
+                                           ]
+                                       }).open(); 
+                                   }
+                               },
+                               {
+                                   text: "Close",
+                                   type: "danger",
+                                   callback: function () {
+                                       MustangModal.close();
+                                   }
+                               }
+                           ]
+                       }).open();
+                   }
+               }, {
+                   text: "Close",
+                   callback: function () {
+                       MustangModal.close();
+                   }
+               }]
+           }).open();
+       }
+   }, {
+       text: "Close",
+       callback: function () {
+           MustangModal.close();
+       }
+   }]
+   }).open();</code></pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_multi_modal();">Open</button>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>

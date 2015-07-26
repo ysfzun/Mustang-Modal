@@ -9,8 +9,8 @@
     _callback = null,
     _animate = 'top',
     _speed = 500,
-    _escapeClose = false;
-
+    _escapeClose = false,
+    _eq = null;
 
 var _MustangHub = {
 
@@ -366,6 +366,50 @@ var ajaxMethods = {
     }
 };
 
+var MustangBackModalHub = function () {
+
+    this.load = function (url, parameters, callback) {
+
+        if (_eq != null) {
+
+            var element = $(_MustangHub.definations.mainMustangModal)
+           .eq(eq)
+           .children(_MustangHub.definations.mustangModalBody);
+
+            ajaxMethods.load(element, url, parameters, callback);
+        }
+    };
+
+    this.iframe = function () {
+
+        if (_eq != null) {
+
+            _MustangHub.setBody('');
+            var iframeHtml = '';
+
+            iframeHtml += '<iframe style="width:100%;height:100%;" src="' + url + ' ">';
+            iframeHtml += '</iframe>';
+
+            _body = iframeHtml;
+
+            $(_MustangHub.definations.mainMustangModal)
+                .eq(eq)
+                .children(_MustangHub.definations.mustangModalBody)
+                .html(iframeHtml);
+        }
+    };
+
+    this.changeBody = function () {
+
+        if (_eq != null) {
+            $(_MustangHub.definations.mainMustangModal)
+               .eq(eq)
+               .children(_MustangHub.definations.mustangModalBody)
+               .html(html);
+        }
+    };
+};
+
 var MustangModal = {
 
     prop: function (options) {
@@ -389,8 +433,8 @@ var MustangModal = {
     openIframe: function (url) {
 
         _MustangHub.setBody('');
-
         var iframeHtml = '';
+
         iframeHtml += '<iframe style="width:100%;height:100%;" src="' + url + ' ">';
         iframeHtml += '</iframe>';
 
@@ -406,13 +450,11 @@ var MustangModal = {
         }
 
         _MustangHub.open();
-        return this;
     },
 
     close: function () {
 
         _MustangHub.close();
-        return this;
     },
 
     changeBody: function (html) {
@@ -426,44 +468,10 @@ var MustangModal = {
         _MustangHub.resize();
     },
 
-    changeTitle: function (title) {
+    eq: function (eq) {
 
-        $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalTitle).text(title);
-        _body = _MustangHub.setTitle(html);
-    },
-
-    set: {
-
-        load: function (eq, url, parameters, callback) {
-
-            var element = $(_MustangHub.definations.mainMustangModal)
-           .eq(eq)
-           .children(_MustangHub.definations.mustangModalBody);
-
-            ajaxMethods.load(element, url, parameters, callback);
-        },
-
-        iframe: function (eq, url) {
-
-            _MustangHub.setBody('');
-            var iframeHtml = '';
-
-            iframeHtml += '<iframe style="width:100%;height:100%;" src="' + url + ' ">';
-            iframeHtml += '</iframe>';
-
-            $(_MustangHub.definations.mainMustangModal)
-                .eq(eq)
-                .children(_MustangHub.definations.mustangModalBody)
-                .html(iframeHtml);
-        },
-
-        body: function (eq, html) {
-
-            $(_MustangHub.definations.mainMustangModal)
-               .eq(eq)
-               .children(_MustangHub.definations.mustangModalBody)
-               .html(html);
-        }
+        _eq = eq;
+        return new MustangBackModalHub();
     },
 };
 
@@ -472,4 +480,5 @@ MustangModal.Close = function () {
     _MustangHub.close();
 
 };
+
 
