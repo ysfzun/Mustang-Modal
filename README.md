@@ -122,6 +122,88 @@ load method takes 3 parameters. These url, parameters and callback.
        }]
        }).open();
 ```
+### Multi Modal
+```javascript
+//Open new modal
+   MustangModal.prop({
+   title: "Multi Modal Example",
+   buttons: [
+   {
+       text: "Open New Modal",
+       type: "warning",
+       callback: function () {
+                        
+           //Open new modal 1
+           MustangModal.prop({
+               title: "New Modal 1",
+               width: 400,
+               height: 300,
+               buttons: [
+               {
+                   text: "Open New Modal",
+                   type: "success",
+                   callback: function () {
+                       //Open new modal 2
+                       MustangModal.prop({
+                           title: "New Modal 2",
+                           body: "",
+                           width: 600,
+                           height: 400,
+                           buttons: [
+                               {
+                                   text: "Open New Modal 3",
+                                   type: "warning",
+                                   callback: function () {
+                                       //Open new modal 3
+                                       MustangModal.prop({
+                                           title: "New Modal 3",
+                                           body: "",
+                                           width: 400,
+                                           height: 250,
+                                           buttons: [
+                                               {
+                                                   text: "Open New Modal",
+                                                   type: "primary",
+                                                   callback: function () {
+                                                   }
+                                               },
+                                               {
+                                                   text: "Close",
+                                                   type: "danger",
+                                                   callback: function () {
+                                                       MustangModal.close();
+                                                   }
+                                               }
+                                           ]
+                                       }).open(); 
+                                   }
+                               },
+                               {
+                                   text: "Close",
+                                   type: "danger",
+                                   callback: function () {
+                                       MustangModal.close();
+                                   }
+                               }
+                           ]
+                       }).open();
+                   }
+               }, {
+                   text: "Close",
+                   callback: function () {
+                       MustangModal.close();
+                   }
+               }]
+           }).open();
+       }
+   }, {
+       text: "Close",
+       callback: function () {
+           MustangModal.close();
+       }
+   }]
+   }).open();
 
+```
 
 will be updated...
