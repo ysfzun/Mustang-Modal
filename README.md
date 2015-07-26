@@ -94,6 +94,34 @@ load method takes 3 parameters. These url, parameters and callback.
             }).load("AjaxLoading.html").open();
 
 ```
+### Open Iframe
+
+```javascript
+	MustangModal.prop({ title: "Open Iframe Example" }).openIframe("IframePage.html").open();
+```
+
+### Change Body
+```javascript
+	MustangModal.prop({
+       title: "Change Body Example",
+       body: "If you want to change the body you can click 'Change The Body' button.",
+       buttons: [
+       {
+           text: "Change The Body",
+           type: "warning",
+           callback: function () {
+                    MustangModal.changeBody($("#openTable").html());
+           }
+       },
+       {
+           text: "Close",
+           type: "danger",
+           callback: function () {
+               MustangModal.close();
+           }
+       }]
+       }).open();
+```
 
 
 will be updated...
