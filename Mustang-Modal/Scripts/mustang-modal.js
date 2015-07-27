@@ -7,7 +7,7 @@
     _loadPath = '',
     _parameters = {},
     _callback = null,
-    _animate = 'top',
+    _animate = 'slideDown',
     _speed = 500,
     _escapeClose = false,
     _eq = null;
@@ -33,7 +33,7 @@ var _MustangHub = {
             width: 700,
             height: 0,
             buttons: [],
-            animate: 'top',
+            animate: 'slideDown',
             speed: 500,
             escapeClose: false
 
@@ -220,7 +220,7 @@ var _MustangHub = {
         _MustangHub.appendModal(title + body + buttons);
 
         switch (_animate) {
-            case "top":
+            case "slideDown":
                 $(_MustangHub.definations.activeModal)
                 .animate({ top: '0px' }, _speed);
                 break;
@@ -229,7 +229,7 @@ var _MustangHub = {
                .css({ top: "0", display: "none" })
                .slideDown(_speed);
                 break;
-            case "opacity":
+            case "fading":
                 $(_MustangHub.definations.activeModal)
                 .css({ top: "0", display: "none" })
                 .fadeIn(_speed);
@@ -246,7 +246,7 @@ var _MustangHub = {
         if (_MustangHub.hasAnimate()) {
 
             switch (_animate) {
-                case "top":
+                case "slideDown":
                     $(_MustangHub.definations.activeModal)
                      .animate({ top: "-" + activeModalHeight + "px" }, _speed, function () {
                          $(activeModal).remove();
@@ -261,7 +261,7 @@ var _MustangHub = {
                         _MustangHub.resetActiveModal();
                     });
                     break;
-                case "opacity":
+                case "fading":
                     $(_MustangHub.definations.activeModal)
                     .fadeOut(_speed, function () {
 
@@ -343,7 +343,7 @@ var _MustangHub = {
         _loadPath = '',
         _parameters = {},
         _callback = null,
-        _animate = 'top',
+        _animate = 'slideDown',
         _speed = 500,
         _escapeClose = false;
         _title = "";

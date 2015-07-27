@@ -3,11 +3,11 @@
 <head>
     <title> Mustang-Modal Examples </title>
 
-    <link href="/Styles/bootstrap.min.css" rel="stylesheet" />
-    <link href="/Styles/mustang-modal.css" rel="stylesheet" />
+    <link href="../Styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Styles/mustang-modal.css" rel="stylesheet" />
 
-    <script src="/Scripts/jquery-1.11.3.min.js"></script>
-    <script src="/Scripts/mustang-modal.js"></script>
+    <script src="../Scripts/jquery-1.11.3.min.js"></script>
+    <script src="../Scripts/mustang-modal.js"></script>
 
     <script type="text/javascript">
 
@@ -81,7 +81,7 @@
 
                 body: "Hello world.",
                 title: "This is a title",
-                animate: "opacity",   //top, toggle and opacity
+                animate: "fading",   //slideDown, toggle and fading
                 speed: 400
 
             }).open();
@@ -109,12 +109,10 @@
         function mustang_ajax_loading() {
 
             MustangModal.prop({
-
                 title: "Ajax Loading",
                 animate: "toggle",
-                speed: 1000,
-                height: 250,
-                escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+                speed: 400,
+                height: 150,
             }).load("/Examples/DummyData/_AjaxLoadingPartial.html").open();
         }
 
@@ -430,8 +428,8 @@
                     <pre><code>MustangModal.prop({
     body: "Hello world.",
     title: "This is a title",
-    <strong>width: 250</strong>,
-    <strong>height: 100</strong>
+                    <strong>width: 250</strong>,
+                    <strong>height: 100</strong>
     }).open();</code></pre>
                     <button style="float: right;" class="btn" onclick="mustang_width_height();">Open</button>
             </div>
@@ -443,7 +441,7 @@
                     <pre><code>MustangModal.prop({
      body: "Hello world.",
      title: "This is a title",
-     <strong>buttons: [
+                    <strong>buttons: [
      {
          id: "btnClose",                 //Optional field. If id not set, will be added random button idasautomatically.
          text: "Close",                  //Optional field. Default name is "Button Name".
@@ -462,12 +460,15 @@
         <div class="panel panel-success">
             <div class="panel-heading">Animation & Speed</div>
             <div class="panel-body">
+
+                There are three effect. These, slideDown, toggle and fading.
+
                 <p class="lead">
                     <pre><code>MustangModal.prop({
       body: "Hello world.",
       title: "This is a title",
-      <strong>animate: "opacity"</strong>,              
-      <strong>speed: 400</strong>                  
+                    <strong>animate: "fading"</strong>,              
+                    <strong>speed: 400</strong>                  
       }).open();</code></pre>
                     <button style="float: right;" class="btn" onclick="mustang_animation_duration();">Open</button>
             </div>
@@ -482,7 +483,7 @@
         title: "This is a title",
         animate: "toggle",
         speed: 400,
-        <strong>escapeClose: true</strong>               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+                    <strong>escapeClose: true</strong>               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
         }).open();</code></pre>
                 </p>
                 <button style="float: right;" class="btn" onclick="mustang_escape_close();">Open</button>
@@ -547,9 +548,8 @@
                     <pre><code>MustangModal.prop({
         title: "Ajax Loading",
         animate: "toggle",
-        speed: 1000,
-        height: 250,
-        escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+        speed: 400,
+        height: 150,   
         })<strong>.load("/Examples/DummyData/_AjaxLoadingPartial.html").open();</strong></code></pre>
                 </p>
                 <button style="float: right;" class="btn" onclick="mustang_ajax_loading();">Open</button>
@@ -595,9 +595,10 @@
 
         <div class="panel panel-success">
             <div class="panel-heading">Multi Modal</div>
-            <div class="panel-body">You can use the following code to open multiple modal.
+            <div class="panel-body">
+                You can use the following code to open multiple modal.
                 <p class="lead">
-                    
+
 
                     <pre><code><strong>//Open new modal</strong>
    MustangModal.prop({
@@ -608,7 +609,7 @@
        style: "warning",
        callback: function () {
                         
-           <strong>//Open new modal 1</strong>
+                    <strong>//Open new modal 1</strong>
            MustangModal.prop({
                title: "New Modal 1",
                width: 400,
@@ -618,7 +619,7 @@
                    text: "Open New Modal",
                    style: "success",
                    callback: function () {
-                       <strong>//Open new modal 2</strong>
+                    <strong>//Open new modal 2</strong>
                        MustangModal.prop({
                            title: "New Modal 2",
                            body: "",
@@ -629,7 +630,7 @@
                                    text: "Open New Modal 3",
                                    style: "warning",
                                    callback: function () {
-                                       <strong>//Open new modal 3</strong>
+                    <strong>//Open new modal 3</strong>
                                        MustangModal.prop({
                                            title: "New Modal 3",
                                            body: "",
@@ -688,10 +689,10 @@
             <div class="panel-body">
 
                 <p>
-                    There is three way for this interactions at the moment. These methods are <strong>load</strong>, <strong>iframe</strong> and <strong>changeBody</strong>.
+                    There are three way for this interactions at the moment. These methods are <strong>load</strong>, <strong>iframe</strong> and <strong>changeBody</strong>.
                 </p>
-                <p> Firstly you can use <strong>eq</strong> method. With this method you can select a modal. And then, you can continue to process.</p> 
-                
+                <p> Firstly you can use <strong>eq</strong> method. With this method you can select a modal. And then, you can continue to process.</p>
+
                 <!--Load Example-->
                 <p>
                     <strong>load</strong> : This method takes three parameters. These, url, parameters and callback.
@@ -719,7 +720,7 @@
                          style: "success",
                          callback: function () {
                              //will be loaded to zero modal
-                            <strong>MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
+                    <strong>MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
                                  MustangModal.close();
                              });</strong>
                          }
@@ -770,7 +771,7 @@
                           style: "success",
                           callback: function () {
                               //will be loaded to zero modal
-                                                                                                                                                                                            <strong>MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com");</strong>
+                    <strong>MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com");</strong>
                               MustangModal.close();
                           }
                       }, {
@@ -792,7 +793,7 @@
                 </p>
 
                 <button style="float: right;" class="btn btn-danger" onclick="mustang_cross_window_interactions_iframe();">Open</button>
-                
+
                 <!--Change Body Example-->
                 <p>
                     <strong>changeBody</strong> : This method takes html parameter.
@@ -821,7 +822,7 @@
                          callback: function () {
                              
                              //will be loaded to zero modal
-                                                                                                                                                              <strong>MustangModal.eq(0).changeBody($("#openTable").html());</strong>
+                    <strong>MustangModal.eq(0).changeBody($("#openTable").html());</strong>
                              MustangModal.close();
                          }
                      }, {
