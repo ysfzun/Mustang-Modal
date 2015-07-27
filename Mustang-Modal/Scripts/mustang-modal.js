@@ -88,12 +88,6 @@ var _MustangHub = {
             paddingTop = mustangModalBody.css("padding-top").replace('px', ''),
             paddingBottom = mustangModalBody.css("padding-top").replace('px', '');
 
-        console.log("height : " + height);
-        console.log("mustangModalBodyHeight : " + mustangModalBody.height());
-        console.log("paddingTop : " + paddingTop);
-        console.log("paddingBottom : " + paddingBottom);
-        console.log("total : " + (Number(mustangModalBody.height()) + Number(paddingBottom) + Number(paddingTop)));
-
         if (height == 0 || height == undefined) {
 
             var bodyHeight = Number(mustangModalBody.height()) + Number(paddingBottom) + Number(paddingTop);
