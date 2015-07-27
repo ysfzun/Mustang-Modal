@@ -206,4 +206,166 @@ load method takes 3 parameters. These url, parameters and callback.
 
 ```
 
-will be updated...
+### Cross Window Interactions
+
+There is three way for this interactions at the moment. These methods are **load**, **iframe** and **changeBody**.
+
+Firstly you can use **eq** method. With this method you can select a modal. And then, you can continue to process. :)
+
+**load** : This method takes three parameters. These, url, parameters and callback.
+
+ For example:
+
+```javascript
+ MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html");
+```
+
+```javascript
+MustangModal.prop({
+     title: "Cross Window Interactions Example",
+     body: "Click the red button to view load example.",
+     width: 700,
+     height: 50,
+     buttons: [
+     {
+         text: "Click Me!",
+         style: "danger",
+         callback: function () {
+             MustangModal.prop({
+                 title: "Question ?",
+                 body: "Are you sure ?",
+                 width: 300,
+                 height: 25,
+                 buttons: [
+                     {
+                         text: "Yes",
+                         style: "success",
+                         callback: function () {
+                             //will be loaded to zero modal
+                            MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
+                                 MustangModal.close();
+                             });
+                         }
+                     }, {
+                         text: "No",
+                         callback: function () {
+                             MustangModal.close();
+                         }
+                     }
+                 ]
+             }).open();
+         }
+     }, {
+         text: "Close",
+         callback: function () {
+             MustangModal.close();
+         }
+     }]
+     }).open();
+```
+
+**iframe** : This method takes only url.
+
+For example:
+
+```javascript
+MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com");
+```
+
+```javascript
+MustangModal.prop({
+      title: "Cross Window Interactions Example",
+      body: "Click the red button to view iframe example.",
+      width: 700,
+      height: 50,
+      buttons: [
+      {
+          text: "Click Me!",
+          style: "danger",
+          callback: function () {
+              MustangModal.prop({
+                  title: "Question ?",
+                  body: "Are you sure ?",
+                  width: 300,
+                  height: 25,
+                  buttons: [
+                      {
+                          text: "Yes",
+                          style: "success",
+                          callback: function () {
+
+                              //will be loaded to zero modal
+                              MustangModal.eq(0).iframe("your site url");
+                              MustangModal.close();
+                          }
+                      }, {
+                          text: "No",
+                          callback: function () {
+                              MustangModal.close();
+                          }
+                      }
+                  ]
+              }).open();
+          }
+      }, {
+          text: "Close",
+          callback: function () {
+              MustangModal.close();
+          }
+      }]
+     }).open();
+
+```
+
+**changeBody** : This method takes html parameter.
+
+For example:
+	
+```javascript
+MustangModal.eq(0).changeBody($("#openTable").html());
+```
+
+```javascript
+MustangModal.prop({
+     title: "Cross Window Interactions Example",
+     body: "Click the red button to view changeBody example.",
+     width: 700,
+     height: 25,
+     buttons: [
+     {
+         text: "Click Me!",
+         style: "danger",
+         callback: function () {
+             MustangModal.prop({
+                 title: "Question ?",
+                 body: "Are you sure ?",
+                 width: 300,
+                 height: 25,
+                 buttons: [
+                     {
+                         text: "Yes",
+                         style: "success",
+                         callback: function () {
+                             
+                             //will be loaded to zero modal
+							 MustangModal.eq(0).changeBody($("#openTable").html());
+                             MustangModal.close();
+                         }
+                     }, {
+                         text: "No",
+                         callback: function () {
+                             MustangModal.close();
+                         }
+                     }
+                 ]
+             }).open();
+         }
+     }, {
+         text: "Close",
+         callback: function () {
+             MustangModal.close();
+         }
+     }]
+     }).open();
+
+```
