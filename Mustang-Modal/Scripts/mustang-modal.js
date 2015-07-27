@@ -120,15 +120,15 @@ var _MustangHub = {
                 buttons[i] = button;
             }
 
-            if (button.type == undefined) {
-                button.type = "default";
+            if (button.style == undefined) {
+                button.style = "default";
             }
 
             if (button.text == undefined) {
                 button.text = "Button Name";
             }
 
-            buttonsHtml += '<input id="' + button.id + '" type="button" class="button btn btn-' + button.type + ' pbutton" value="' + button.text + '"/>';
+            buttonsHtml += '<input id="' + button.id + '" type="button" class="button btn btn-' + button.style + ' pbutton" value="' + button.text + '"/>';
         }
 
         return '<div class="mustang-modal-footer messageBoxButtons">' + buttonsHtml + '</div>';
@@ -360,21 +360,21 @@ var ajaxMethods = {
     }
 };
 
-var MustangBackModalHub = function () {
+var MustangCrossInteraction = function () {
 
     this.load = function (url, parameters, callback) {
 
         if (_eq != null) {
 
             var element = $(_MustangHub.definations.mainMustangModal)
-           .eq(eq)
+           .eq(_eq)
            .children(_MustangHub.definations.mustangModalBody);
 
             ajaxMethods.load(element, url, parameters, callback);
         }
     };
 
-    this.iframe = function () {
+    this.iframe = function (url) {
 
         if (_eq != null) {
 
@@ -387,19 +387,22 @@ var MustangBackModalHub = function () {
             _body = iframeHtml;
 
             $(_MustangHub.definations.mainMustangModal)
-                .eq(eq)
+                .eq(_eq)
                 .children(_MustangHub.definations.mustangModalBody)
                 .html(iframeHtml);
+            _MustangHub.resize();
         }
     };
 
-    this.changeBody = function () {
+    this.changeBody = function (html) {
 
         if (_eq != null) {
             $(_MustangHub.definations.mainMustangModal)
-               .eq(eq)
+               .eq(_eq)
                .children(_MustangHub.definations.mustangModalBody)
                .html(html);
+
+            _MustangHub.resize();
         }
     };
 };
@@ -465,7 +468,7 @@ var MustangModal = {
     eq: function (eq) {
 
         _eq = eq;
-        return new MustangBackModalHub();
+        return new MustangCrossInteraction();
     },
 };
 
