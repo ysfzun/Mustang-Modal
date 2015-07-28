@@ -369,3 +369,113 @@ MustangModal.prop({
      }).open();
 
 ```
+
+**width & height** : These methods take width and height values.
+
+For example:
+
+```javascript
+MustangModal.eq(0).width(400); 
+MustangModal.eq(0).height(200);
+```
+
+```javascript
+MustangModal.prop({
+     title: "Cross Window Interactions Example - Width & Height",
+     body: "Click the red button to view changeBody example.",
+     width: 700,
+     height: 25,
+     buttons: [
+     {
+         text: "Click Me!",
+         style: "danger",
+         callback: function () {
+             MustangModal.prop({
+                 title: "Question ?",
+                 body: "Are you sure ?",
+                 width: 300,
+                 height: 25,
+                 buttons: [
+                     {
+                         text: "Yes",
+                         style: "success",
+                         callback: function () {
+                             //will be loaded to zero modal
+                             MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html",functio(){
+                               
+                    MustangModal.eq(0).width(400); 
+                    MustangModal.eq(0).height(200); 
+                                
+                                 MustangModal.close();
+                             });
+                         }
+                     }, {
+                         text: "No",
+                         callback: function () {
+                             MustangModal.close();
+                         }
+                     }
+                 ]
+             }).open();
+         }
+     }, {
+         text: "Close",
+         callback: function () {
+             MustangModal.close();
+         }
+     }]
+     }).open();
+```
+
+**resetResize** : This method sets the height and width values as automatically.
+
+```javacsript
+MustangModal.eq(0).resetResize();
+```
+
+```javascript
+MustangModal.prop({
+     title: "Cross Window Interactions Example - Reset Resize",
+     body: "Click the red button to view changeBody example.",
+     width: 700,
+     height: 25,
+     buttons: [
+     {
+         text: "Click Me!",
+         style: "danger",
+         callback: function () {
+             MustangModal.prop({
+                 title: "Question ?",
+                 body: "Are you sure ?",
+                 width: 300,
+                 height: 25,
+                 buttons: [
+                     {
+                         text: "Yes",
+                         style: "success",
+                         callback: function () {
+                             //will be loaded to zero modal
+                             MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html",functio(){
+                               
+                    MustangModal.eq(0).resetResize(); 
+                                
+                                 MustangModal.close();
+                             });
+                         }
+                     }, {
+                         text: "No",
+                         callback: function () {
+                             MustangModal.close();
+                         }
+                     }
+                 ]
+             }).open();
+         }
+     }, {
+         text: "Close",
+         callback: function () {
+             MustangModal.close();
+         }
+     }]
+     }).open();
+```
