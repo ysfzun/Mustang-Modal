@@ -118,7 +118,7 @@
 
         function mustang_open_iframe() {
 
-            MustangModal.prop({ title: "Open Iframe Example" }).openIframe("https://aksesuarpaketi.com").open();
+            MustangModal.prop({ title: "Open Iframe Example" }).openIframe("https://aksesuarpaketi.com", "900px", "600px").open();
         }
 
         function mustang_change_body() {
@@ -314,7 +314,8 @@
                                     callback: function () {
 
                                         //will be loaded to zero modal
-                                        MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com");
+                                        MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com", "100%", "100%");
+                                        MustangModal.eq(0).height(450);
                                         MustangModal.close();
                                     }
                                 }, {
@@ -387,6 +388,116 @@
             }).open();
         }
 
+        function mustang_cross_window_interaction_width_height() {
+
+            MustangModal.prop({
+                title: "Cross Window Interactions Example - Width & Height",
+                body: "Click the red button to view changeBody example.",
+                width: 700,
+                height: 25,
+                buttons: [
+                {
+                    text: "Click Me!",
+                    style: "danger",
+                    callback: function () {
+
+                        MustangModal.prop({
+                            title: "Question ?",
+                            body: "Are you sure ?",
+                            width: 300,
+                            height: 25,
+                            buttons: [
+                                {
+                                    text: "Yes",
+                                    style: "success",
+                                    callback: function () {
+
+                                        //will be loaded to zero modal
+                                        MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
+
+                                            MustangModal.eq(0).width(400);
+                                            MustangModal.eq(0).height(200);
+
+                                            MustangModal.close();
+                                        });
+                                    }
+                                }, {
+                                    text: "No",
+                                    callback: function () {
+
+                                        MustangModal.close();
+                                    }
+                                }
+                            ]
+                        }).open();
+                    }
+                }, {
+
+                    text: "Close",
+                    callback: function () {
+
+                        MustangModal.close();
+                    }
+                }]
+            }).open();
+
+        }
+
+        function mustang_cross_window_interaction_resize() {
+
+            MustangModal.prop({
+                title: "Cross Window Interactions Example - Reset Resize",
+                body: "Click the red button to view changeBody example.",
+                width: 700,
+                height: 25,
+                buttons: [
+                {
+                    text: "Click Me!",
+                    style: "danger",
+                    callback: function () {
+
+                        MustangModal.prop({
+                            title: "Question ?",
+                            body: "Are you sure ?",
+                            width: 300,
+                            height: 25,
+                            buttons: [
+                                {
+                                    text: "Yes",
+                                    style: "success",
+                                    callback: function () {
+
+                                        //will be loaded to zero modal
+                                        MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
+
+                                            MustangModal.eq(0).resetResize();
+
+                                            MustangModal.close();
+                                        });
+                                    }
+                                }, {
+                                    text: "No",
+                                    callback: function () {
+
+                                        MustangModal.close();
+                                    }
+                                }
+                            ]
+                        }).open();
+                    }
+                }, {
+
+                    text: "Close",
+                    callback: function () {
+
+                        MustangModal.close();
+                    }
+                }]
+            }).open();
+
+
+
+        }
     </script>
 </head>
 <body>
@@ -558,7 +669,11 @@
 
         <div class="panel panel-success">
             <div class="panel-heading">Open Iframe</div>
+
+
             <div class="panel-body">
+
+                This method takes three parameters. These url, width and height.
                 <p class="lead">
                     <pre><code>MustangModal.prop({ title: "Open Iframe Example" })<strong>.openIframe("IframePage.html")</strong>.open();</code></pre>
                 </p>
@@ -693,6 +808,8 @@
                 </p>
                 <p> Firstly you can use <strong>eq</strong> method. With this method you can select a modal. And then, you can continue to process.</p>
 
+                <br />
+
                 <!--Load Example-->
                 <p>
                     <strong>load</strong> : This method takes three parameters. These, url, parameters and callback.
@@ -744,13 +861,19 @@
 
                 <button style="float: right;" class="btn btn-danger" onclick="mustang_cross_window_interactions_load();">Open</button>
 
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <!--Iframe Example-->
                 <p>
-                    <strong>iframe</strong> : This method takes only url.
+                    <strong>iframe</strong> : This method takes three parameters. These url, width and height.
                 </p>
                 For example:
                 <p class="lead">
-                    <pre><code>MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com");</code></pre>  <pre><code>MustangModal.prop({
+                    <pre><code>MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com","100%" ,"450px" );</code></pre>  <pre><code>MustangModal.prop({
       title: "Cross Window Interactions Example",
       body: "Click the red button to view iframe example.",
       width: 700,
@@ -771,7 +894,7 @@
                           style: "success",
                           callback: function () {
                               //will be loaded to zero modal
-                    <strong>MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com");</strong>
+                    <strong>MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com","100%" ,"450px");</strong>
                               MustangModal.close();
                           }
                       }, {
@@ -794,6 +917,12 @@
 
                 <button style="float: right;" class="btn btn-danger" onclick="mustang_cross_window_interactions_iframe();">Open</button>
 
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <!--Change Body Example-->
                 <p>
                     <strong>changeBody</strong> : This method takes html parameter.
@@ -843,6 +972,129 @@
      }).open();</code></pre>
                 </p>
                 <button style="float: right;" class="btn btn-danger" onclick="mustang_cross_window_interactions_change_body();">Open</button>
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <!--Width & Height Example-->
+                <p>
+                    <strong>Width & Height</strong> : These methods take width and height values.
+                </p>
+                For example:
+                <p class="lead">
+                    <pre><code>MustangModal.eq(0).width(400); 
+MustangModal.eq(0).height(200);</code></pre><pre><code>MustangModal.prop({
+     title: "Cross Window Interactions Example - Width & Height",
+     body: "Click the red button to view changeBody example.",
+     width: 700,
+     height: 25,
+     buttons: [
+     {
+         text: "Click Me!",
+         style: "danger",
+         callback: function () {
+             MustangModal.prop({
+                 title: "Question ?",
+                 body: "Are you sure ?",
+                 width: 300,
+                 height: 25,
+                 buttons: [
+                     {
+                         text: "Yes",
+                         style: "success",
+                         callback: function () {
+                             //will be loaded to zero modal
+                             MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html",functio(){
+                               
+                    <strong>MustangModal.eq(0).width(400);</strong> 
+                    <strong>MustangModal.eq(0).height(200);</strong> 
+                                
+                                 MustangModal.close();
+                             });
+                         }
+                     }, {
+                         text: "No",
+                         callback: function () {
+                             MustangModal.close();
+                         }
+                     }
+                 ]
+             }).open();
+         }
+     }, {
+         text: "Close",
+         callback: function () {
+             MustangModal.close();
+         }
+     }]
+     }).open();</code></pre>
+                </p>
+
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_cross_window_interaction_width_height();">Open</button>
+
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <!--Reset Resize Example-->
+                <p>
+                    <strong>Reset Resize</strong> : This method sets the height and width values as automatically.
+                </p>
+                For example:
+                <p class="lead">
+                    <pre><code>MustangModal.eq(0).resetResize();</code></pre><pre><code>MustangModal.prop({
+     title: "Cross Window Interactions Example - Reset Resize",
+     body: "Click the red button to view changeBody example.",
+     width: 700,
+     height: 25,
+     buttons: [
+     {
+         text: "Click Me!",
+         style: "danger",
+         callback: function () {
+             MustangModal.prop({
+                 title: "Question ?",
+                 body: "Are you sure ?",
+                 width: 300,
+                 height: 25,
+                 buttons: [
+                     {
+                         text: "Yes",
+                         style: "success",
+                         callback: function () {
+                             //will be loaded to zero modal
+                             MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html",functio(){
+                               
+                    <strong>MustangModal.eq(0).resetResize();</strong> 
+                                
+                                 MustangModal.close();
+                             });
+                         }
+                     }, {
+                         text: "No",
+                         callback: function () {
+                             MustangModal.close();
+                         }
+                     }
+                 ]
+             }).open();
+         }
+     }, {
+         text: "Close",
+         callback: function () {
+             MustangModal.close();
+         }
+     }]
+     }).open();</code></pre>
+                </p>
+
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_cross_window_interaction_resize();">Open</button>
             </div>
         </div>
     </div>

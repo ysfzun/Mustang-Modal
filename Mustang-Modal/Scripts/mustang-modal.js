@@ -71,7 +71,7 @@ var _MustangHub = {
     setWidth: function (width) {
 
         if (width == 0 || width == undefined) {
-            width = $(_MustangHub.definations.activeModal).css("width");
+            width = "auto";
         }
 
         $(_MustangHub.definations.activeModal).css({
@@ -79,7 +79,6 @@ var _MustangHub = {
             'width': width,
             'margin-left': -(Math.floor(width / 2)) + 'px'
         });
-
     },
 
     setHeight: function (height) {
@@ -90,9 +89,7 @@ var _MustangHub = {
 
         if (height == 0 || height == undefined) {
 
-            var bodyHeight = Number(mustangModalBody.height()) + Number(paddingBottom) + Number(paddingTop);
-            height = bodyHeight;
-
+            height = "auto";
         } else {
 
             height = Number(height) + Number(paddingBottom) + Number(paddingTop);
@@ -371,17 +368,26 @@ var MustangCrossInteraction = function () {
            .children(_MustangHub.definations.mustangModalBody);
 
             ajaxMethods.load(element, url, parameters, callback);
+
         }
     };
 
-    this.iframe = function (url) {
+    this.iframe = function (url, width, height) {
 
         if (_eq != null) {
+
+            if (height == 0 || height == undefined) {
+                height = "100%";
+            }
+
+            if (width == 0 || width == undefined) {
+                width = "100%";
+            }
 
             _MustangHub.setBody('');
             var iframeHtml = '';
 
-            iframeHtml += '<iframe style="width:100%;height:100%;" src="' + url + ' ">';
+            iframeHtml += '<iframe style="width:' + width + ';height:' + height + ';" src="' + url + ' ">';
             iframeHtml += '</iframe>';
 
             _body = iframeHtml;
@@ -397,13 +403,62 @@ var MustangCrossInteraction = function () {
     this.changeBody = function (html) {
 
         if (_eq != null) {
-            $(_MustangHub.definations.mainMustangModal)
-               .eq(_eq)
-               .children(_MustangHub.definations.mustangModalBody)
-               .html(html);
 
-            _MustangHub.resize();
+            $(_MustangHub.definations.mainMustangModal + " " + _MustangHub.definations.mustangModalBody)
+                .eq(_eq)
+                .remove();
+
+            _body = _MustangHub.setBody(html);
+
+            $(_MustangHub.definations.mainMustangModal + " " + _MustangHub.definations.mustangModalTitle)
+                .eq(_eq)
+                .after(_body);
         }
+    };
+
+    this.width = function (width) {
+
+        if (_eq != null) {
+            if (width == 0 || width == undefined) {
+                width = "auto";
+            }
+
+            $(_MustangHub.definations.mainMustangModal)
+                .eq(_eq)
+                .css({
+                    'width': width,
+                    'margin-left': -(Math.floor(width / 2)) + 'px'
+                });
+        }
+    };
+
+    this.height = function (height) {
+
+        if (_eq != null) {
+
+            var mustangModalBody = $(_MustangHub.definations.mainMustangModal)
+                .eq(_eq),
+            paddingTop = mustangModalBody.css("padding-top").replace('px', ''),
+            paddingBottom = mustangModalBody.css("padding-top").replace('px', '');
+
+            if (height == 0 || height == undefined) {
+                height = "auto";
+            } else {
+                height = Number(height) + Number(paddingBottom) + Number(paddingTop);
+            }
+
+            $(_MustangHub.definations.mainMustangModal + " " + _MustangHub.definations.mustangModalBody)
+                .eq(_eq)
+                .css({
+                    'height': height
+                });
+        }
+    };
+
+    this.resetResize = function () {
+
+        this.height();
+        this.width();
     };
 };
 
@@ -427,12 +482,20 @@ var MustangModal = {
         return this;
     },
 
-    openIframe: function (url) {
+    openIframe: function (url, width, height) {
+
+        if (height == 0 || height == undefined) {
+            height = "100%";
+        }
+
+        if (width == 0 || width == undefined) {
+            width = "100%";
+        }
 
         _MustangHub.setBody('');
         var iframeHtml = '';
 
-        iframeHtml += '<iframe style="width:100%;height:100%;" src="' + url + ' ">';
+        iframeHtml += '<iframe style="width:' + width + ';height:' + height + ';" src="' + url + ' ">';
         iframeHtml += '</iframe>';
 
         _body = iframeHtml;
