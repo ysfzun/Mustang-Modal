@@ -78,6 +78,24 @@ MustangModal.prop({
 
 ```
 
+
+### Click Close
+
+```javascript
+MustangModal.prop({
+
+                body: "Hello world.",
+                title: "This is a title",
+                animate: "toggle",
+                speed: 1000,
+                clickClose: true				//Optional field. Allows the user to close the modal by pressing "Mouse Right Click". Default value is false.
+
+            }).open();
+
+```
+
+
+
 #Features
 
 ### Ajax Loading
