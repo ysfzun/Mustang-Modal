@@ -13,7 +13,7 @@
 
         function mustang_body() {
 
-            MustangModal.prop({ body: "Hello world." }).open();
+            MustangModal.prop({ body: "Hello world."}).open();
         }
 
         function mustang_title() {
@@ -97,6 +97,19 @@
                 animate: "toggle",
                 speed: 400,
                 escapeClose: true               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+
+            }).open();
+        }
+
+        function mustang_click_close() {
+
+            MustangModal.prop({
+
+                body: "Hello world.",
+                title: "This is a title",
+                animate: "toggle",
+                speed: 400,
+                clickClose: true               //Optional field. Allows the user to close the modal by pressing "Mouse Right Click". Default value is false.
 
             }).open();
         }
@@ -498,9 +511,10 @@
 
 
         }
+
     </script>
 </head>
-<body>
+<body style="position: relative;">
     <div class="container">
         <div class="row">
             <h2>Mustang-Modal Exapmles</h2>
@@ -598,6 +612,23 @@
         }).open();</code></pre>
                 </p>
                 <button style="float: right;" class="btn" onclick="mustang_escape_close();">Open</button>
+            </div>
+        </div>
+        
+        
+        <div class="panel panel-success">
+            <div class="panel-heading">Click Close</div>
+            <div class="panel-body">
+                <p class="lead">
+         <pre><code>MustangModal.prop({
+     body: "Hello world.",
+     title: "This is a title",
+     animate: "toggle",
+     speed: 400,
+     clickClose: true               //Optional field. Allows the user to close the modal by pressing "Mouse Right Click".Defaultvaluisfalse.
+     }).open();</code></pre>
+                </p>
+                <button style="float: right;" class="btn" onclick="mustang_click_close();">Open</button>
             </div>
         </div>
 

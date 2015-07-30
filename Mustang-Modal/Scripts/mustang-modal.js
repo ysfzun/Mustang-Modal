@@ -10,7 +10,9 @@
     _animate = 'slideDown',
     _speed = 500,
     _escapeClose = false,
-    _eq = null;
+    _clickClose = false;
+_eq = null;
+
 
 var _MustangHub = {
 
@@ -21,6 +23,7 @@ var _MustangHub = {
         mustangModalBody: ".mustang-modal-body",
         mustangModalFooter: ".mustang-modal-footer",
         mustangModalBg: "#mustang-modal-bg",
+        mustangModalContainer: ".mustang-modal-container",
     },
 
     loadMessageBox: function (options) {
@@ -35,7 +38,8 @@ var _MustangHub = {
             buttons: [],
             animate: 'slideDown',
             speed: 500,
-            escapeClose: false
+            escapeClose: false,
+            clickClose: false,
 
         }, options);
 
@@ -48,6 +52,7 @@ var _MustangHub = {
         _animate = options.animate;
         _speed = options.speed;
         _escapeClose = options.escapeClose;
+        _clickClose = options.clickClose;
     },
 
     setTitle: function (title) {
@@ -132,14 +137,27 @@ var _MustangHub = {
     },
 
     addBackground: function () {
+
         $('body').append('<div id="mustang-modal-bg"></div>');
+        $('body').css('overflow', 'hidden');
     },
 
     removeBackground: function () {
 
         if ($(_MustangHub.definations.mainMustangModal).length == 0) {
             $("#mustang-modal-bg").remove();
+            $('body').css('overflow', 'auto');
         }
+    },
+
+    addModalContainer: function (modalHtml) {
+
+        return "<div class='mustang-modal-container'>" + modalHtml + "</div>";
+    },
+
+    removeModalContainer: function () {
+
+        $(_MustangHub.definations.activeModal).parent().remove();
     },
 
     appendModal: function (html) {
@@ -148,11 +166,11 @@ var _MustangHub = {
         if (_buttons.length == 0) {
 
             $("body")
-                .append('<div class="mustang-modal active-modal"> <div class="mustang-modal-close"><a href=# onclick="MustangModal.Close(); return false;">X</div></a>' + html + '</div>');
+                .append(_MustangHub.addModalContainer('<div class="mustang-modal active-modal"> <div class="mustang-modal-close"><a href=# onclick="MustangModal.Close(); return false;">X</div></a>' + html + '</div>'));
         }
         else {
             $("body")
-              .append('<div class="mustang-modal active-modal">' + html + '</div>');
+              .append(_MustangHub.addModalContainer('<div class="mustang-modal active-modal">' + html + '</div>'));
         }
 
         _MustangHub.resetActiveModal();
@@ -196,6 +214,12 @@ var _MustangHub = {
         }
 
         _MustangHub.escapeClose();
+
+        if (_clickClose == true) {
+
+
+            _MustangHub.clickClose();
+        }
     },
 
     open: function () {
@@ -215,6 +239,7 @@ var _MustangHub = {
         $(_MustangHub.definations.activeModal).fadeIn(300);
 
         _MustangHub.appendModal(title + body + buttons);
+
 
         switch (_animate) {
             case "slideDown":
@@ -246,24 +271,32 @@ var _MustangHub = {
                 case "slideDown":
                     $(_MustangHub.definations.activeModal)
                      .animate({ top: "-" + activeModalHeight + "px" }, _speed, function () {
+                         _MustangHub.removeModalContainer();
                          $(activeModal).remove();
                          _MustangHub.resetActiveModal();
+
                      });
                     break;
                 case "toggle":
                     $(_MustangHub.definations.activeModal)
                     .slideUp(_speed, function () {
 
+                        _MustangHub.removeModalContainer();
                         $(activeModal).remove();
                         _MustangHub.resetActiveModal();
+
+
                     });
                     break;
                 case "fading":
                     $(_MustangHub.definations.activeModal)
                     .fadeOut(_speed, function () {
 
+                        _MustangHub.removeModalContainer();
                         $(activeModal).remove();
                         _MustangHub.resetActiveModal();
+
+
                     });
                     break;
                 default:
@@ -276,6 +309,8 @@ var _MustangHub = {
 
         __isAsnyc = false;
         _MustangHub.resetOptions();
+
+
     },
 
     resetActiveModal: function () {
@@ -325,6 +360,14 @@ var _MustangHub = {
                 }
             });
         }
+    },
+
+    clickClose: function () {
+
+        $(_MustangHub.definations.mustangModalContainer).on("click", function () {
+
+            _MustangHub.close();
+        });
     },
 
     resize: function () {
