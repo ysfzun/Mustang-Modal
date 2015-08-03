@@ -3,6 +3,8 @@
 <head>
     <title> Mustang-Modal Examples </title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="../Styles/bootstrap.min.css" rel="stylesheet" />
     <link href="../Styles/mustang-modal.css" rel="stylesheet" />
 
@@ -13,7 +15,7 @@
 
         function mustang_body() {
 
-            MustangModal.prop({ body: "Hello world."}).open();
+            MustangModal.prop({ body: "Hello world.", }).open();
         }
 
         function mustang_title() {
@@ -70,7 +72,7 @@
                         alert("clicked the close button");
                         MustangModal.close();
                     }
-                }, ]
+                }]
             }).open();
         }
 
@@ -461,8 +463,6 @@
             MustangModal.prop({
                 title: "Cross Window Interactions Example - Reset Resize",
                 body: "Click the red button to view changeBody example.",
-                width: 700,
-                height: 25,
                 buttons: [
                 {
                     text: "Click Me!",
@@ -472,8 +472,6 @@
                         MustangModal.prop({
                             title: "Question ?",
                             body: "Are you sure ?",
-                            width: 300,
-                            height: 25,
                             buttons: [
                                 {
                                     text: "Yes",
@@ -507,9 +505,21 @@
                     }
                 }]
             }).open();
+        }
 
+        function mustang_on_open_and_on_close_events() {
 
+            MustangModal.prop({
 
+                body: "onOpen and onClose example",
+                onClose: function () {
+                    alert("modal is closed");
+                },
+                onOpen: function () {
+                    alert("modal is opened.");
+                }
+
+            }).open();
         }
 
     </script>
@@ -532,7 +542,7 @@
                 <p class="lead">
                     <pre><code>MustangModal.prop({ body: "Hello world." }).open();</code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_body();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_body();">Open</button>
             </div>
         </div>
 
@@ -542,7 +552,7 @@
                 <p class="lead">
                     <pre><code>MustangModal.prop({ body: "Hello world.", <strong>title: "This is a title"</strong> }).open();</code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_title();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_title();">Open</button>
             </div>
         </div>
 
@@ -556,7 +566,7 @@
                     <strong>width: 250</strong>,
                     <strong>height: 100</strong>
     }).open();</code></pre>
-                    <button style="float: right;" class="btn" onclick="mustang_width_height();">Open</button>
+                    <button style="float: right;" class="btn btn-danger" onclick="mustang_width_height();">Open</button>
             </div>
         </div>
         <div class="panel panel-success">
@@ -578,7 +588,7 @@
      }]</strong>
      }).open();</code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_buttons();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_buttons();">Open</button>
             </div>
         </div>
 
@@ -595,7 +605,7 @@
                     <strong>animate: "fading"</strong>,              
                     <strong>speed: 400</strong>                  
       }).open();</code></pre>
-                    <button style="float: right;" class="btn" onclick="mustang_animation_duration();">Open</button>
+                    <button style="float: right;" class="btn btn-danger" onclick="mustang_animation_duration();">Open</button>
             </div>
         </div>
 
@@ -611,16 +621,16 @@
                     <strong>escapeClose: true</strong>               //Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
         }).open();</code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_escape_close();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_escape_close();">Open</button>
             </div>
         </div>
-        
-        
+
+
         <div class="panel panel-success">
             <div class="panel-heading">Click Close</div>
             <div class="panel-body">
                 <p class="lead">
-         <pre><code>MustangModal.prop({
+                    <pre><code>MustangModal.prop({
      body: "Hello world.",
      title: "This is a title",
      animate: "toggle",
@@ -628,7 +638,7 @@
      clickClose: true               //Optional field. Allows the user to close the modal by pressing "Mouse Right Click".Defaultvaluisfalse.
      }).open();</code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_click_close();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_click_close();">Open</button>
             </div>
         </div>
 
@@ -676,7 +686,7 @@
                 <p class="lead">
                     <pre><code>MustangModal.open($("#openTable"));</code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_open();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_open();">Open</button>
             </div>
         </div>
 
@@ -694,7 +704,7 @@
         height: 150,   
         })<strong>.load("/Examples/DummyData/_AjaxLoadingPartial.html").open();</strong></code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_ajax_loading();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_ajax_loading();">Open</button>
             </div>
         </div>
 
@@ -708,7 +718,7 @@
                 <p class="lead">
                     <pre><code>MustangModal.prop({ title: "Open Iframe Example" })<strong>.openIframe("IframePage.html")</strong>.open();</code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_open_iframe();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_open_iframe();">Open</button>
             </div>
         </div>
         <div class="panel panel-success">
@@ -735,7 +745,7 @@
        }]
        }).open();</code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_change_body();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_change_body();">Open</button>
             </div>
         </div>
 
@@ -826,7 +836,7 @@
    }]
    }).open();</code></pre>
                 </p>
-                <button style="float: right;" class="btn" onclick="mustang_multi_modal();">Open</button>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_multi_modal();">Open</button>
             </div>
         </div>
 
@@ -1127,6 +1137,27 @@ MustangModal.eq(0).height(200);</code></pre><pre><code>MustangModal.prop({
 
                 <button style="float: right;" class="btn btn-danger" onclick="mustang_cross_window_interaction_resize();">Open</button>
             </div>
+            
+            
+            
+            <div class="panel panel-success">
+                <div class="panel-heading">On Open And On Close Events</div>
+                <div class="panel-body">
+                    <p class="lead">
+                        <pre><code> MustangModal.prop({
+     body: "onOpen and onClose example.",
+     onClose: function () {
+        <strong>alert("modal is closed");</strong>
+     },
+     onOpen: function () {
+        <strong>alert("modal is opened.");</strong>
+     }
+     }).open();;</code></pre>
+                    </p>
+                    <button style="float: right;" class="btn btn-danger" onclick="mustang_on_open_and_on_close_events();">Open</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

@@ -10,8 +10,10 @@
     _animate = 'slideDown',
     _speed = 500,
     _escapeClose = false,
-    _clickClose = false;
-_eq = null;
+    _clickClose = false,
+    _eq = null,
+    _onClose = function () { },
+    _onOpen = function () { };
 
 
 var _MustangHub = {
@@ -33,19 +35,20 @@ var _MustangHub = {
 
             title: '',
             body: '',
-            width: 700,
+            width: 0,
             height: 0,
             buttons: [],
             animate: 'slideDown',
             speed: 500,
             escapeClose: false,
             clickClose: false,
+            onClose: function () { },
+            onOpen: function () { }
 
         }, options);
 
         _title = options.title;
         _body = options.body;
-
         _width = options.width;
         _height = options.height;
         _buttons = options.buttons;
@@ -53,6 +56,8 @@ var _MustangHub = {
         _speed = options.speed;
         _escapeClose = options.escapeClose;
         _clickClose = options.clickClose;
+        _onClose = options.onClose;
+        _onOpen = options.onOpen;
     },
 
     setTitle: function (title) {
@@ -76,7 +81,7 @@ var _MustangHub = {
     setWidth: function (width) {
 
         if (width == 0 || width == undefined) {
-            width = "auto";
+            return;
         }
 
         $(_MustangHub.definations.activeModal).css({
@@ -88,14 +93,14 @@ var _MustangHub = {
 
     setHeight: function (height) {
 
-        var mustangModalBody = $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalBody),
-            paddingTop = mustangModalBody.css("padding-top").replace('px', ''),
-            paddingBottom = mustangModalBody.css("padding-top").replace('px', '');
-
         if (height == 0 || height == undefined) {
 
             height = "auto";
         } else {
+
+            var mustangModalBody = $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalBody),
+                paddingTop = mustangModalBody.css("padding-top").replace('px', ''),
+                paddingBottom = mustangModalBody.css("padding-top").replace('px', '');
 
             height = Number(height) + Number(paddingBottom) + Number(paddingTop);
         }
@@ -188,7 +193,8 @@ var _MustangHub = {
 
                 var parameterButtonId = $(this).attr('id');
                 if (parameterButtonId == 'undefined') {
-                    alert("You must fill the id field(s).");
+                    console.error("You must fill the id field(s).");
+                    return false;
                 }
 
                 for (var t = 0; t < buttons.length; t++) {
@@ -213,10 +219,12 @@ var _MustangHub = {
             activeModal.css({ top: '-' + activeModalHeight + 'px' });
         }
 
-        _MustangHub.escapeClose();
+        if (_escapeClose == true) {
+
+            _MustangHub.escapeClose();
+        }
 
         if (_clickClose == true) {
-
 
             _MustangHub.clickClose();
         }
@@ -244,17 +252,23 @@ var _MustangHub = {
         switch (_animate) {
             case "slideDown":
                 $(_MustangHub.definations.activeModal)
-                .animate({ top: '0px' }, _speed);
+                .animate({ top: '0px' }, _speed, function () {
+                    _MustangHub.onOpen();
+                });
                 break;
             case "toggle":
                 $(_MustangHub.definations.activeModal)
                .css({ top: "0", display: "none" })
-               .slideDown(_speed);
+               .slideDown(_speed, function () {
+                   _MustangHub.onOpen();
+               });
                 break;
             case "fading":
                 $(_MustangHub.definations.activeModal)
                 .css({ top: "0", display: "none" })
-                .fadeIn(_speed);
+                .fadeIn(_speed, function () {
+                    _MustangHub.onOpen();
+                });
                 break;
             default:
         }
@@ -273,30 +287,29 @@ var _MustangHub = {
                      .animate({ top: "-" + activeModalHeight + "px" }, _speed, function () {
                          _MustangHub.removeModalContainer();
                          $(activeModal).remove();
+                         _MustangHub.onClose();
                          _MustangHub.resetActiveModal();
-
+                         _MustangHub.resetOptions();
                      });
                     break;
                 case "toggle":
                     $(_MustangHub.definations.activeModal)
                     .slideUp(_speed, function () {
-
                         _MustangHub.removeModalContainer();
                         $(activeModal).remove();
+                        _MustangHub.onClose();
                         _MustangHub.resetActiveModal();
-
-
+                        _MustangHub.resetOptions();
                     });
                     break;
                 case "fading":
                     $(_MustangHub.definations.activeModal)
                     .fadeOut(_speed, function () {
-
                         _MustangHub.removeModalContainer();
                         $(activeModal).remove();
+                        _MustangHub.onClose();
                         _MustangHub.resetActiveModal();
-
-
+                        _MustangHub.resetOptions();
                     });
                     break;
                 default:
@@ -308,9 +321,6 @@ var _MustangHub = {
         }
 
         __isAsnyc = false;
-        _MustangHub.resetOptions();
-
-
     },
 
     resetActiveModal: function () {
@@ -350,16 +360,14 @@ var _MustangHub = {
 
     escapeClose: function () {
 
-        if (_escapeClose == true) {
 
-            $(window).on("keyup", function (e) {
+        $(window).on("keyup", function (e) {
 
-                if (e.keyCode == 27) {
+            if (e.keyCode == 27) {
 
-                    _MustangHub.close();
-                }
-            });
-        }
+                _MustangHub.close();
+            }
+        });
     },
 
     clickClose: function () {
@@ -368,6 +376,16 @@ var _MustangHub = {
 
             _MustangHub.close();
         });
+    },
+
+    onClose: function () {
+
+        $.call(this, _onClose);
+    },
+
+    onOpen: function () {
+
+        $.call(this, _onOpen);
     },
 
     resize: function () {
@@ -389,6 +407,10 @@ var _MustangHub = {
         _title = "";
         _body = "";
         _buttons = [];
+        _clickClose = false;
+        _onClose = function () { };
+        _onClose = function () { };
+        _eq = null;
     }
 };
 
@@ -463,7 +485,7 @@ var MustangCrossInteraction = function () {
 
         if (_eq != null) {
             if (width == 0 || width == undefined) {
-                width = "auto";
+                return false;
             }
 
             $(_MustangHub.definations.mainMustangModal)
@@ -479,14 +501,15 @@ var MustangCrossInteraction = function () {
 
         if (_eq != null) {
 
-            var mustangModalBody = $(_MustangHub.definations.mainMustangModal)
-                .eq(_eq),
-            paddingTop = mustangModalBody.css("padding-top").replace('px', ''),
-            paddingBottom = mustangModalBody.css("padding-top").replace('px', '');
-
             if (height == 0 || height == undefined) {
-                height = "auto";
+                return false;
             } else {
+
+                var mustangModalBody = $(_MustangHub.definations.mainMustangModal)
+                        .eq(_eq),
+                    paddingTop = mustangModalBody.css("padding-top").replace('px', ''),
+                    paddingBottom = mustangModalBody.css("padding-top").replace('px', '');
+
                 height = Number(height) + Number(paddingBottom) + Number(paddingTop);
             }
 
