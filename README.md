@@ -37,7 +37,7 @@ MustangModal.prop({
                 {
                     id: "btnClose",  				//Optional field. If id not set, will be added random button id as automatically.
                     text: "Close",				    //Optional field. Default name is "Button Name".
-                    type: "primary",				//Optional field. This field uses bootstrapt button types. Default type is "default". 
+                    style: "primary",				//Optional field. This field uses bootstrapt button types. Default type is "default". 
                     callback: function() {			
 
                         alert("clicked the close button");
@@ -126,14 +126,14 @@ load method takes 3 parameters. These url, parameters and callback.
        buttons: [
        {
            text: "Change The Body",
-           type: "warning",
+           style: "warning",
            callback: function () {
                     MustangModal.changeBody($("#openTable").html());
            }
        },
        {
            text: "Close",
-           type: "danger",
+           style: "danger",
            callback: function () {
                MustangModal.close();
            }
@@ -148,7 +148,7 @@ load method takes 3 parameters. These url, parameters and callback.
    buttons: [
    {
        text: "Open New Modal",
-       type: "warning",
+       style: "warning",
        callback: function () {
                         
            //Open new modal 1
@@ -159,7 +159,7 @@ load method takes 3 parameters. These url, parameters and callback.
                buttons: [
                {
                    text: "Open New Modal",
-                   type: "success",
+                   style: "success",
                    callback: function () {
                        //Open new modal 2
                        MustangModal.prop({
@@ -170,7 +170,7 @@ load method takes 3 parameters. These url, parameters and callback.
                            buttons: [
                                {
                                    text: "Open New Modal 3",
-                                   type: "warning",
+                                   style: "warning",
                                    callback: function () {
                                        //Open new modal 3
                                        MustangModal.prop({
@@ -181,13 +181,13 @@ load method takes 3 parameters. These url, parameters and callback.
                                            buttons: [
                                                {
                                                    text: "Open New Modal",
-                                                   type: "primary",
+                                                   style: "primary",
                                                    callback: function () {
                                                    }
                                                },
                                                {
                                                    text: "Close",
-                                                   type: "danger",
+                                                   style: "danger",
                                                    callback: function () {
                                                        MustangModal.close();
                                                    }
@@ -198,7 +198,7 @@ load method takes 3 parameters. These url, parameters and callback.
                                },
                                {
                                    text: "Close",
-                                   type: "danger",
+                                   style: "danger",
                                    callback: function () {
                                        MustangModal.close();
                                    }
