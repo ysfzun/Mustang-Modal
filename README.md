@@ -497,3 +497,17 @@ MustangModal.prop({
      }]
      }).open();
 ```
+
+### onOpen & onClose Events
+```javascript
+MustangModal.prop({
+     body: "onOpen and onClose example.",
+     onClose: function () {
+        alert("modal is closed");
+     },
+     onOpen: function () {
+        alert("modal is opened.");
+     }
+     }).open();
+```
+
