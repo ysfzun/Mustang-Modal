@@ -26,6 +26,7 @@ var _MustangHub = {
         mustangModalFooter: ".mustang-modal-footer",
         mustangModalBg: "#mustang-modal-bg",
         mustangModalContainer: ".mustang-modal-container",
+        defaultMaxWidth: 800
     },
 
     loadMessageBox: function (options) {
@@ -89,6 +90,13 @@ var _MustangHub = {
             'width': width,
             'margin-left': -(Math.floor(width / 2)) + 'px'
         });
+
+        if (width > _MustangHub.definations.defaultMaxWidth) {
+            $(_MustangHub.definations.activeModal).css({
+
+                'max-width': width,
+            });
+        }
     },
 
     setHeight: function (height) {
@@ -494,6 +502,15 @@ var MustangCrossInteraction = function () {
                     'width': width,
                     'margin-left': -(Math.floor(width / 2)) + 'px'
                 });
+
+
+            if (width > _MustangHub.definations.defaultMaxWidth) {
+                $(_MustangHub.definations.mainMustangModal)
+                    .eq(_eq)
+                    .css({
+                        'max-width': width,
+                    });
+            }
         }
     };
 
@@ -572,6 +589,7 @@ var MustangModal = {
     open: function (selector) {
 
         if (selector != undefined) {
+
             _body = selector.html();
         }
 
