@@ -499,6 +499,7 @@ MustangModal.prop({
 ```
 
 ### onOpen & onClose Events
+
 ```javascript
 MustangModal.prop({
      body: "onOpen and onClose example.",
@@ -511,3 +512,29 @@ MustangModal.prop({
      }).open();
 ```
 
+### Attaching To a And button Elements
+
+Firstly you can add m-modal to class attribute.
+
+**load:** If you set data-type as load will be ajax request.
+```html
+<button class="btn btn-danger m-modal" data-title="Sample Title" data-type="load" data-target="/Examples/DummyData/_AjaxLoadingPartial.html">
+                        Open Modal With Modal
+                        </button>
+```
+
+**iframe:** If you set data-type as load will be open url in iframe.
+```html
+ <button class="btn btn-danger m-modal"
+                            data-title="Sample Title" data-type="iframe"data-height="500" data-target="http://www.aksesuarpaketi.com">
+                        Open Modal With Iframe
+                    </button>
+```
+
+**iframe:** If you set data-type as html, the modal will be open html. 
+```html
+ <button class="btn btn-danger m-modal"
+                            data-title="Sample Title" data-type="html" data-target="#openTable">
+                        Open Modal With Html
+                    </button>
+```
