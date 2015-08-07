@@ -419,7 +419,8 @@ var _MustangHub = {
         _onClose = function () { };
         _onClose = function () { };
         _eq = null;
-    }
+    },
+
 };
 
 var ajaxMethods = {
@@ -624,5 +625,54 @@ MustangModal.Close = function () {
     _MustangHub.close();
 
 };
+
+
+//bind to modal for a and button elements
+$(document).ready(function () {
+
+    $("a.m-modal,button.m-modal").on("click", function () {
+
+        var $this = $(this),
+            title = $this.data("title"),
+            type = $this.data("type"),
+            target = $this.data("target"),
+            speed = $this.data("speed"),
+            animate = $this.data("animate"),
+            width = $this.data("width"),
+            height = $this.data("height"),
+            escapeClose = $this.data("escapeClose"),
+            clickClose = $this.data("clickClose");
+
+        var prop = MustangModal.prop({
+            title: title,
+            animate: animate,
+            speed: speed,
+            width: width,
+            height: height,
+            escapeClose: escapeClose,
+            clickClose: clickClose
+        });
+
+        switch (type) {
+            case "iframe":
+                prop.openIframe(target)
+                    .open();
+                break;
+            case "load":
+                prop.load(target)
+                    .open();
+                break;
+            case "html":
+                prop.open($(target));
+                break;
+            default:
+        }
+    });
+
+});
+
+
+
+
 
 

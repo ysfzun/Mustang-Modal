@@ -1137,9 +1137,9 @@ MustangModal.eq(0).height(200);</code></pre><pre><code>MustangModal.prop({
 
                 <button style="float: right;" class="btn btn-danger" onclick="mustang_cross_window_interaction_resize();">Open</button>
             </div>
-            
-            
-            
+
+
+
             <div class="panel panel-success">
                 <div class="panel-heading">On Open And On Close Events</div>
                 <div class="panel-body">
@@ -1147,10 +1147,10 @@ MustangModal.eq(0).height(200);</code></pre><pre><code>MustangModal.prop({
                         <pre><code> MustangModal.prop({
      body: "onOpen and onClose example.",
      onClose: function () {
-        <strong>alert("modal is closed");</strong>
+                        <strong>alert("modal is closed");</strong>
      },
      onOpen: function () {
-        <strong>alert("modal is opened.");</strong>
+                        <strong>alert("modal is opened.");</strong>
      }
      }).open();;</code></pre>
                     </p>
@@ -1158,6 +1158,47 @@ MustangModal.eq(0).height(200);</code></pre><pre><code>MustangModal.prop({
                 </div>
             </div>
 
+
+            <div class="panel panel-success">
+                <div class="panel-heading">Attaching to a and button Elements</div>
+                <div class="panel-body">
+                    <p class="lead">
+                        <pre>
+button class="btn btn-danger m-modal" data-title="Sample Title" data-type="load" data-target="/Examples/DummyData/_AjaxLoadingPartial.html">
+                        Open Modal With Modal
+                        button
+</pre>
+                    </p>
+
+                    <button class="btn btn-danger m-modal"
+                            data-title="Sample Title"
+                            data-animate="slideDown"
+                            data-speed="300"
+                            data-type="load"
+                            data-target="/Examples/DummyData/_AjaxLoadingPartial.html">
+                        Open Modal With Modal
+                    </button>
+
+                    <button class="btn btn-danger m-modal"
+                            data-title="Sample Title"
+                            data-animate="toggle"
+                            data-speed="300"
+                            data-type="iframe"
+                            data-height="500"
+                            data-target="http://www.aksesuarpaketi.com">
+                        Open Modal With Iframe
+                    </button>
+
+                    <button class="btn btn-danger m-modal"
+                            data-title="Sample Title"
+                            data-animate="toggle"
+                            data-speed="300"
+                            data-type="html"
+                            data-target="#openTable">
+                        Open Modal With Html
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
