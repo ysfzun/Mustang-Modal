@@ -15,7 +15,7 @@
 
         function mustang_body() {
 
-            MustangModal.prop({ body: "Hello world.", }).open();
+            MustangModal.prop({ body: "Hello world." }).open();
         }
 
         function mustang_title() {
@@ -45,7 +45,10 @@
                 {
                     text: "Save",
                     callback: function () {
+
                         alert("clicked the Save button");
+                        MustangModal.close();
+
                     }
                 },
                 {
@@ -53,6 +56,8 @@
                     style: "success",
                     callback: function () {
                         alert("clicked the Update button");
+                        MustangModal.close();
+
                     }
                 },
                 {
@@ -62,6 +67,19 @@
                     callback: function () {
 
                         alert("clicked the Remove button");
+                        MustangModal.close();
+
+                    }
+                },
+                {
+                    id: "btnRemove",
+                    text: "Info",
+                    style: "info",
+                    callback: function () {
+
+                        alert("clicked the Info button");
+                        MustangModal.close();
+
                     }
                 },
                 {
@@ -430,8 +448,8 @@
                                         //will be loaded to zero modal
                                         MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
 
-                                            MustangModal.eq(0).width(400);
-                                            MustangModal.eq(0).height(200);
+                                            MustangModal.eq(0).width(700);
+                                            MustangModal.eq(0).height(550);
 
                                             MustangModal.close();
                                         });
@@ -507,19 +525,9 @@
             }).open();
         }
 
-        function mustang_on_open_and_on_close_events() {
+        function mustang_allow_auto_hide() {
 
-            MustangModal.prop({
-
-                body: "onOpen and onClose example",
-                onClose: function () {
-                    alert("modal is closed");
-                },
-                onOpen: function () {
-                    alert("modal is opened.");
-                }
-
-            }).open();
+            MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();
         }
 
     </script>
@@ -662,22 +670,46 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <th scope="row">2</th>
+                                <td>Aykut</td>
+                                <td>Çalışkan</td>
+                                <td>Software Manager</td>
+                            </tr>
+                            <tr>
                                 <th scope="row">1</th>
                                 <td>Yusuf</td>
-                                <td>UZUN</td>
+                                <td>Uzun</td>
                                 <td>Software Developer</td>
                             </tr>
                             <tr>
-                                <th scope="row">2</th>
+                                <th scope="row">3</th>
                                 <td>Feyyaz</td>
                                 <td>Acet</td>
                                 <td>Software Developer</td>
                             </tr>
                             <tr>
-                                <th scope="row">3</th>
+                                <th scope="row">4</th>
                                 <td>Serhat</td>
                                 <td>Erol</td>
                                 <td>Database Specialist</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>Sarper Yasin</td>
+                                <td>Mutlubay</td>
+                                <td>Software Developer</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td>Levent</td>
+                                <td>Dönmez</td>
+                                <td>Progress Developer</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7</th>
+                                <td>Musa</td>
+                                <td>Alp</td>
+                                <td>Sales Manager</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1197,6 +1229,15 @@ button class="btn btn-danger m-modal" data-title="Sample Title" data-type="load"
                             data-target="#openTable">
                         Open Modal With Html
                     </button>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">Allow Auto Close</div>
+                <div class="panel-body">
+                    <p class="lead">
+                        <pre><code>MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();</code></pre>
+                    </p>
+                    <button style="float: right;" class="btn btn-danger" onclick="mustang_allow_auto_hide();">Open</button>
                 </div>
             </div>
         </div>

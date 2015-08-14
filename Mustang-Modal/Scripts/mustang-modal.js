@@ -13,7 +13,8 @@
     _clickClose = false,
     _eq = null,
     _onClose = function () { },
-    _onOpen = function () { };
+    _onOpen = function () { },
+    _allowAutoClose = 0;
 
 
 var _MustangHub = {
@@ -44,7 +45,8 @@ var _MustangHub = {
             escapeClose: false,
             clickClose: false,
             onClose: function () { },
-            onOpen: function () { }
+            onOpen: function () { },
+            allowAutoClose: 0
 
         }, options);
 
@@ -59,6 +61,7 @@ var _MustangHub = {
         _clickClose = options.clickClose;
         _onClose = options.onClose;
         _onOpen = options.onOpen;
+        _allowAutoClose = options.allowAutoClose;
     },
 
     setTitle: function (title) {
@@ -143,10 +146,10 @@ var _MustangHub = {
                 button.text = "Button Name";
             }
 
-            buttonsHtml += '<input id="' + button.id + '" type="button" class="button btn btn-' + button.style + ' pbutton" value="' + button.text + '"/>';
+            buttonsHtml += '<input id="' + button.id + '" type="button" class="button mustang-btn mustang-btn-' + button.style + ' pbutton" value="' + button.text + '"/>';
         }
 
-        return '<div class="mustang-modal-footer messageBoxButtons">' + buttonsHtml + '</div>';
+        return '<div class="mustang-modal-footer mustang-modal-buttons">' + buttonsHtml + '</div>';
     },
 
     addBackground: function () {
@@ -179,7 +182,7 @@ var _MustangHub = {
         if (_buttons.length == 0) {
 
             $("body")
-                .append(_MustangHub.addModalContainer('<div class="mustang-modal active-modal"> <div class="mustang-modal-close"><a href=# onclick="MustangModal.Close(); return false;">X</div></a>' + html + '</div>'));
+                .append(_MustangHub.addModalContainer('<div class="mustang-modal active-modal"><p class="mustang-modal-close" onclick="MustangModal.Close(); return false;">x</p>' + html + '</div>'));
         }
         else {
             $("body")
@@ -256,12 +259,14 @@ var _MustangHub = {
 
         _MustangHub.appendModal(title + body + buttons);
 
-
         switch (_animate) {
             case "slideDown":
                 $(_MustangHub.definations.activeModal)
                 .animate({ top: '0px' }, _speed, function () {
                     _MustangHub.onOpen();
+                    if (_allowAutoClose > 0) {
+                        _MustangHub.autoClose(_allowAutoClose);
+                    }
                 });
                 break;
             case "toggle":
@@ -269,6 +274,9 @@ var _MustangHub = {
                .css({ top: "0", display: "none" })
                .slideDown(_speed, function () {
                    _MustangHub.onOpen();
+                   if (_allowAutoClose > 0) {
+                       _MustangHub.autoClose(_allowAutoClose);
+                   }
                });
                 break;
             case "fading":
@@ -276,6 +284,9 @@ var _MustangHub = {
                 .css({ top: "0", display: "none" })
                 .fadeIn(_speed, function () {
                     _MustangHub.onOpen();
+                    if (_allowAutoClose > 0) {
+                        _MustangHub.autoClose(_allowAutoClose);
+                    }
                 });
                 break;
             default:
@@ -417,10 +428,18 @@ var _MustangHub = {
         _buttons = [];
         _clickClose = false;
         _onClose = function () { };
-        _onClose = function () { };
+        _onOpen = function () { };
         _eq = null;
+        _allowAutoClose = 0;
     },
 
+    autoClose: function (second) {
+
+        setTimeout(function () {
+
+            MustangModal.close();
+        }, second);
+    }
 };
 
 var ajaxMethods = {
@@ -668,7 +687,6 @@ $(document).ready(function () {
             default:
         }
     });
-
 });
 
 
