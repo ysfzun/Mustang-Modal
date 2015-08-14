@@ -538,3 +538,8 @@ Firstly you can add m-modal to class attribute.
                         Open Modal With Html
                     </button>
 ```
+### allowAutoClose
+
+```javascript
+MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();
+```
