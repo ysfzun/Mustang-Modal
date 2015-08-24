@@ -228,7 +228,7 @@ load method takes 3 parameters. These url, parameters and callback.
 
 There are three way for this interactions at the moment. These methods are **load**, **iframe** and **changeBody**.
 
-Firstly you can use **eq** method. With this method you can select a modal. And then, you can continue to process. :)
+Firstly you must use **eq** method. With this method you can select a modal. And then, you can continue to process. :)
 
 **load** : This method takes three parameters. These, url, parameters and callback.
 
@@ -514,7 +514,7 @@ MustangModal.prop({
 
 ### Attaching To a And button Elements
 
-Firstly you can add m-modal to class attribute.
+Firstly you must add m-modal to class attribute.
 
 **load:** If you set data-type as load will be ajax request.
 ```html
