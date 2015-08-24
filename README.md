@@ -226,7 +226,7 @@ load method takes 3 parameters. These url, parameters and callback.
 
 ### Cross Window Interactions
 
-There is three way for this interactions at the moment. These methods are **load**, **iframe** and **changeBody**.
+There are three way for this interactions at the moment. These methods are **load**, **iframe** and **changeBody**.
 
 Firstly you can use **eq** method. With this method you can select a modal. And then, you can continue to process. :)
 
