@@ -7,8 +7,8 @@ You can install in nuget
 Use the scripts:
 
 ```html
-  <link href="/Styles/mustang-modal.css" rel="stylesheet" />
-  <script src="/Scripts/mustang-modal.js"></script>
+<link href="/Styles/mustang-modal.css" rel="stylesheet" />
+<script src="/Scripts/mustang-modal.js"></script>
 ```
 
 # Options
