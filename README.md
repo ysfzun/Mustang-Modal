@@ -551,7 +551,7 @@ Firstly you must add m-modal to class attribute.
                         Open Modal With Html
                     </button>
 ```
-### allowAutoClose
+### Allow Auto Close
 
 ```javascript
 MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();
