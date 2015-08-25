@@ -1,7 +1,8 @@
 # Installing
 
 You can install in nuget 
-Install-Package mustang-modal
+
+**Install-Package mustang-modal**
 
 Use the scripts:
 
