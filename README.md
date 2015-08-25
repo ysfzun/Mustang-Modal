@@ -1,3 +1,15 @@
+# Installing
+
+You can install in nuget 
+Install-Package mustang-modal
+
+Use the scripts:
+
+```html
+  <link href="/Styles/mustang-modal.css" rel="stylesheet" />
+  <script src="/Scripts/mustang-modal.js"></script>
+```
+
 # Options
 
 ### Body
