@@ -15,6 +15,7 @@ Use the scripts:
 
 ### Body
 
+The **body** property, creates the content of the mustang-modal. Takes the string value. 
 
 ```javascript
 MustangModal.prop({ body: "Hello world." }).open();
@@ -22,14 +23,18 @@ MustangModal.prop({ body: "Hello world." }).open();
 
 ### Title
 
+If you want to set title to Modal, for this you should use **title** property.
+
 ```javascript
 MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();
 ```
 
 ### Width & Height
 
+Sets the width and height values. If you don't set the width and height values, will be responsive design as automatically. Width and Height properties take int values right now.
+
 ```javascript
-  MustangModal.prop({
+MustangModal.prop({
 
                 body: "Hello world.",
                 title: "This is a title",
@@ -41,6 +46,15 @@ MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();
 
 ### Buttons
 
+In mustang-modal you can add many buttons and you can add event for this buttons. The **buttons** property an array. Each row in the array, id, text, style and callback properties. 
+
+These ; 
+
+**id**       : Optional field. If id not set, will be added random
+**text**     : Optional field. Default name is "Button Name".
+**style**    : Optional field. This property uses success, primary, info, danger and default.
+**callback** : Optional field. This property takes a function. If you click the button, will run this function.
+
 ```javascript
 MustangModal.prop({
 
@@ -48,9 +62,9 @@ MustangModal.prop({
                 title: "This is a title",
                 buttons: [
                 {
-                    id: "btnClose",  				//Optional field. If id not set, will be added random button id as automatically.
-                    text: "Close",				    //Optional field. Default name is "Button Name".
-                    style: "primary",				//Optional field. This field uses bootstrapt button types. Default type is "default". 
+                    id: "btnClose",  
+                    text: "Close",	   
+                    style: "primary",
                     callback: function() {			
 
                         alert("clicked the close button");
@@ -63,29 +77,33 @@ MustangModal.prop({
 
 ### Animation & Speed
 
+There are 3 types of animation types. These, slideDown, toggle and fading. slideDown is default type. If you want to adjust the speed of the animation you should use speed property. Default value is 500.
+
 ```javascript
 
- MustangModal.prop({
+MustangModal.prop({
 
-                body: "Hello world.",
-                title: "This is a title",
-                animate: "toggle",				//Optional field. There are 3 types of animation types. These, top, toggle and opacity. top is default type.
-                speed: 1000				    //Optional field. Default value 500. 
+            body: "Hello world.",
+            title: "Animation & Speed",
+            animate: "toggle",				
+            speed: 1000
 
-            }).open();
+        }).open();
 
 ```
 
 ### Escape Close
 
+When the ESC button is pressed mustang-modal closes. Default value is false.
+
 ```javascript
 MustangModal.prop({
 
-                body: "Hello world.",
-                title: "This is a title",
-                animate: "toggle",
-                speed: 1000,
-                escapeClose: true				//Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+           body: "Hello world.",
+           title: "Escape Close",
+           animate: "toggle",
+           speed: 1000,
+           escapeClose: true
 
             }).open();
 
@@ -93,6 +111,8 @@ MustangModal.prop({
 
 
 ### Click Close
+
+When the ESC button is pressed mustang-modal closes. Default value is false.
 
 ```javascript
 MustangModal.prop({
@@ -106,8 +126,6 @@ MustangModal.prop({
             }).open();
 
 ```
-
-
 
 #Features
 
