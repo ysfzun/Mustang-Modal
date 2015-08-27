@@ -112,8 +112,6 @@ MustangModal.prop({
 
 ### Click Close
 
-When the ESC button is pressed mustang-modal closes. Default value is false.
-
 ```javascript
 MustangModal.prop({
 
