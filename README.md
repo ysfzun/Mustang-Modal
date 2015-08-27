@@ -11,7 +11,7 @@ Use the scripts:
 <script src="/Scripts/mustang-modal.js"></script>
 ```
 
-# Options
+#Features
 
 ### Body
 
@@ -124,8 +124,6 @@ MustangModal.prop({
             }).open();
 
 ```
-
-#Features
 
 ### Ajax Loading
 
