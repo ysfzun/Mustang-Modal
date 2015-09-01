@@ -69,9 +69,13 @@ In mustang-modal you can add many buttons and you can add event for this buttons
 These ; 
 
 **id**       : Optional field. If id not set, will be added random
+
 **text**     : Optional field. Default name is "Button Name".
+
 **style**    : Optional field. This property uses success, primary, info, danger and default.
+
 **callback** : Optional field. This property takes a function. If you click the button, will run this function.
+
 
 ```javascript
 MustangModal.prop({
