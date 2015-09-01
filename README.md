@@ -6,7 +6,7 @@ simple, easy to use and it has many a lot of features. These are;
 
 * Multi modals,
 * Dynamics buttons,
-* Ajax loading,
+* Ajax,
 * Animations,
 * Automatically attaching to links on <a> (anchor) and <button>,
 * Cross window interactions,
