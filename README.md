@@ -173,6 +173,8 @@ Open the page in iframe. For this uses openIframe method. This method takes url 
 
 ### Change Body
 
+when modal is open you can change the body. For this you can use **changeBody** method.
+
 ```javascript
 	MustangModal.prop({
        title: "Change Body Example",
