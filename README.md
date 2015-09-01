@@ -197,6 +197,9 @@ when modal is open you can change the body. For this you can use **changeBody** 
        }).open();
 ```
 ### Multi Modal
+
+You can open as many modals as you want.
+
 ```javascript
 //Open new modal
    MustangModal.prop({
