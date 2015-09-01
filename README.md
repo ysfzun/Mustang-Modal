@@ -151,7 +151,7 @@ MustangModal.prop({
 
 ### Ajax Loading
 
-load method takes 3 parameters. These are url, parameters and callback. 
+Load method takes 3 parameters. These are url, parameters and callback. 
 
 ```javascript
     MustangModal.prop({
@@ -165,11 +165,14 @@ load method takes 3 parameters. These are url, parameters and callback.
 ```
 ### Open Iframe
 
+Open the page in iframe. For this uses openIframe method. This method takes url parameter.
+
 ```javascript
 	MustangModal.prop({ title: "Open Iframe Example" }).openIframe("IframePage.html").open();
 ```
 
 ### Change Body
+
 ```javascript
 	MustangModal.prop({
        title: "Change Body Example",
