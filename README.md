@@ -8,7 +8,7 @@ simple, easy to use and it has many a lot of features. These are;
 * Dynamics buttons,
 * Ajax,
 * Animations,
-* Automatically attaching to links on <a> (anchor) and <button>,
+* Automatically attaching to links are on "a" (anchor) and "button" elements,
 * Cross window interactions,
 * Opening the iframe page,
 * HTML data display,
