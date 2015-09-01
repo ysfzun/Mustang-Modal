@@ -1,10 +1,28 @@
+# Why Mustang Modal ?
+
+Many currently used modals use html codes prepared actually for the web page. Mustang-modal, 
+allows you to create new modals interacted with javascript codes without the need of any html. It is 
+simple, easy to use and it has many a lot of features. These are;
+
+* Multi modals,
+* Dynamics buttons,
+* Ajax loading,
+* Animations,
+* Automatically attaching to links on <a> (anchor) and <button>,
+* Cross window interactions,
+* Opening the iframe page,
+* HTML data display,
+* Changing the dynamic content of the modal,
+* Escape and click close,
+* OnOpen ve OnClose events,
+* Width and height settings,
+* Responsive design.
+
 # Installing
 
-You can install in nuget 
+You can install with nuget **Install-Package mustang-modal**
 
-**Install-Package mustang-modal**
-
-Use the scripts:
+including the scripts & styles
 
 ```html
 <link href="/Styles/mustang-modal.css" rel="stylesheet" />
