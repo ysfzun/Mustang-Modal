@@ -49,7 +49,7 @@ MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();
 
 ### Width & Height
 
-Sets the width and height values. If you don't set the width and height values, will be responsive design as automatically. Width and Height properties take int values right now.
+If you don't set the width and height values, will be responsive design as automatically. Width and Height properties take int values right now.
 
 ```javascript
 MustangModal.prop({
@@ -133,6 +133,8 @@ MustangModal.prop({
 
 
 ### Click Close
+ 
+ Optional field. Allows the user to close the modal by pressing "Mouse Left Click". Default value is false.
 
 ```javascript
 MustangModal.prop({
@@ -141,7 +143,7 @@ MustangModal.prop({
                 title: "This is a title",
                 animate: "toggle",
                 speed: 1000,
-                clickClose: true				//Optional field. Allows the user to close the modal by pressing "Mouse Right Click". Default value is false.
+                clickClose: true			
 
             }).open();
 
