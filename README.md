@@ -134,7 +134,7 @@ MustangModal.prop({
 
 ### Click Close
  
- Optional field. Allows the user to close the modal by pressing "Mouse Left Click". Default value is false.
+Allows the user to close the modal by pressing "Mouse Left Click". Default value is false.
 
 ```javascript
 MustangModal.prop({
@@ -173,7 +173,7 @@ Open the page in iframe. For this uses openIframe method. This method takes url 
 
 ### Change Body
 
-when modal is open you can change the body. For this you can use **changeBody** method.
+When modal is open you can change the body. For this you can use **changeBody** method.
 
 ```javascript
 	MustangModal.prop({
@@ -286,8 +286,7 @@ You can open as many modals as you want.
 ### Cross Window Interactions
 
 There are three way for this interactions at the moment. These methods are **load**, **iframe** and **changeBody**.
-
-Firstly you must use **eq** method. With this method you can select a modal. And then, you can continue to process. :)
+Firstly you must use **eq** method. With this method you can select a modal. And then, you can continue to process. :) 
 
 **load** : This method takes three parameters. These are url, parameters and callback.
 
@@ -559,6 +558,8 @@ MustangModal.prop({
 
 ### onOpen & onClose Events
 
+When modal is open , **onOpen** and **onClose** methods work 
+
 ```javascript
 MustangModal.prop({
      body: "onOpen and onClose example.",
@@ -598,6 +599,8 @@ Firstly you must add m-modal to class attribute.
                     </button>
 ```
 ### Allow Auto Close
+
+This method closes modal automatically. For this you can use **allowAutoClose** property.
 
 ```javascript
 MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();
