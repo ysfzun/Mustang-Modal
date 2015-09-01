@@ -14,6 +14,7 @@ simple, easy to use and it has many a lot of features. These are;
 * HTML data display,
 * Changing the dynamic content of the modal,
 * Escape and click close,
+* Allow auto close,
 * OnOpen ve OnClose events,
 * Width and height settings,
 * Responsive design.
