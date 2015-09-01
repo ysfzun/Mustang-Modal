@@ -20,7 +20,7 @@ simple, easy to use and it has many a lot of features. These are;
 
 # Installing
 
-You can install with nuget **Install-Package mustang-modal**
+You can install with nuget **Install-Package Mustang-Modal**
 
 Including the scripts & styles
 
