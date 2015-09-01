@@ -22,7 +22,7 @@ simple, easy to use and it has many a lot of features. These are;
 
 You can install with nuget **Install-Package mustang-modal**
 
-including the scripts & styles
+Including the scripts & styles
 
 ```html
 <link href="/Styles/mustang-modal.css" rel="stylesheet" />
