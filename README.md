@@ -66,7 +66,7 @@ MustangModal.prop({
 
 In mustang-modal you can add many buttons and you can add event for this buttons. The **buttons** property an array. Each row in the array, id, text, style and callback properties. 
 
-These ; 
+These are; 
 
 **id**       : Optional field. If id not set, will be added random
 
@@ -99,7 +99,7 @@ MustangModal.prop({
 
 ### Animation & Speed
 
-There are 3 types of animation types. These, slideDown, toggle and fading. slideDown is default type. If you want to adjust the speed of the animation you should use speed property. Default value is 500.
+There are 3 types of animation types. These are slideDown, toggle and fading. slideDown is default type. If you want to adjust the speed of the animation you should use speed property. Default value is 500.
 
 ```javascript
 
@@ -149,7 +149,7 @@ MustangModal.prop({
 
 ### Ajax Loading
 
-load method takes 3 parameters. These url, parameters and callback. 
+load method takes 3 parameters. These are url, parameters and callback. 
 
 ```javascript
     MustangModal.prop({
@@ -279,7 +279,7 @@ There are three way for this interactions at the moment. These methods are **loa
 
 Firstly you must use **eq** method. With this method you can select a modal. And then, you can continue to process. :)
 
-**load** : This method takes three parameters. These, url, parameters and callback.
+**load** : This method takes three parameters. These are url, parameters and callback.
 
  For example:
 
