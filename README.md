@@ -4,11 +4,11 @@ Many currently used modals use html codes prepared actually for the web page. Mu
 allows you to create new modals interacted with javascript codes without the need of any html. It is 
 simple, easy to use and it has many a lot of features. These are;
 
-* Multi modals,
+* Automatically attaching to links are on "a" (anchor) and "button" elements,
 * Dynamics buttons,
+* Multi modals,
 * Ajax,
 * Animations,
-* Automatically attaching to links are on "a" (anchor) and "button" elements,
 * Cross window interactions,
 * Opening the iframe page,
 * HTML data display,
@@ -31,6 +31,51 @@ Including the scripts & styles
 ```
 
 #Features
+
+### Attaching to a and button elements
+
+Firstly you must add **m-modal** to class attribute.
+
+**load:** If you set data-type as load will be ajax request.
+```html
+<button class="btn btn-danger m-modal" data-title="Sample Title" data-type="load" data-target="/Examples/DummyData/_AjaxLoadingPartial.html">
+                        Open Modal With Modal
+                        </button>
+```
+
+**iframe:** If you set data-type as load will be open url in iframe.
+```html
+ <button class="btn btn-danger m-modal"
+                            data-title="Sample Title" data-type="iframe"data-height="500" data-target="http://www.aksesuarpaketi.com">
+                        Open Modal With Iframe
+                    </button>
+```
+
+**iframe:** If you set data-type as html, the modal will be open html. 
+```html
+ <button class="btn btn-danger m-modal"
+                            data-title="Sample Title" data-type="html" data-target="#openTable">
+                        Open Modal
+                    </button>
+```
+
+The following features you can use
+
+```html
+
+  data-title="Sample Title"
+  data-type="html"
+  data-target="#openTable"
+  data-animate="toggle"
+  data-speed="300"
+  data-width="450"
+  data-height="500"
+  data-escapeclose="true"
+  data-clickclose="true">
+                    
+```
+
+
 
 ### Body
 
@@ -284,6 +329,30 @@ You can open as many modals as you want.
 
 ```
 
+### onOpen & onClose Events
+
+When modal is open , **onOpen** and **onClose** methods work 
+
+```javascript
+MustangModal.prop({
+     body: "onOpen and onClose example.",
+     onClose: function () {
+        alert("modal is closed");
+     },
+     onOpen: function () {
+        alert("modal is opened.");
+     }
+     }).open();
+```
+
+### Allow Auto Close
+
+This method closes modal automatically. For this you can use **allowAutoClose** property.
+
+```javascript
+MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();
+```
+
 ### Cross Window Interactions
 
 There are three way for this interactions at the moment. These methods are **load**, **iframe** and **changeBody**.
@@ -424,8 +493,8 @@ MustangModal.prop({
                          style: "success",
                          callback: function () {
                              
-                             //will be loaded to zero modal
-							 MustangModal.eq(0).changeBody($("#openTable").html());
+                             //will load to zero modal
+		             MustangModal.eq(0).changeBody($("#openTable").html());
                              MustangModal.close();
                          }
                      }, {
@@ -555,54 +624,4 @@ MustangModal.prop({
          }
      }]
      }).open();
-```
-
-### onOpen & onClose Events
-
-When modal is open , **onOpen** and **onClose** methods work 
-
-```javascript
-MustangModal.prop({
-     body: "onOpen and onClose example.",
-     onClose: function () {
-        alert("modal is closed");
-     },
-     onOpen: function () {
-        alert("modal is opened.");
-     }
-     }).open();
-```
-
-### Attaching To a And button Elements
-
-Firstly you must add m-modal to class attribute.
-
-**load:** If you set data-type as load will be ajax request.
-```html
-<button class="btn btn-danger m-modal" data-title="Sample Title" data-type="load" data-target="/Examples/DummyData/_AjaxLoadingPartial.html">
-                        Open Modal With Modal
-                        </button>
-```
-
-**iframe:** If you set data-type as load will be open url in iframe.
-```html
- <button class="btn btn-danger m-modal"
-                            data-title="Sample Title" data-type="iframe"data-height="500" data-target="http://www.aksesuarpaketi.com">
-                        Open Modal With Iframe
-                    </button>
-```
-
-**iframe:** If you set data-type as html, the modal will be open html. 
-```html
- <button class="btn btn-danger m-modal"
-                            data-title="Sample Title" data-type="html" data-target="#openTable">
-                        Open Modal With Html
-                    </button>
-```
-### Allow Auto Close
-
-This method closes modal automatically. For this you can use **allowAutoClose** property.
-
-```javascript
-MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();
 ```
