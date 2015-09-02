@@ -1,7 +1,90 @@
-# Options
+# Why Mustang Modal ?
+
+Many currently used modals use html codes prepared actually for the web page. Mustang-modal, 
+allows you to create new modals interacted with javascript codes without the need of any html. It is 
+simple, easy to use and it has many a lot of features. These are;
+
+* Automatically attaching to links are on "a" (anchor) and "button" elements,
+* Dynamics buttons,
+* Multi modals,
+* Ajax,
+* Animations,
+* Cross window interactions,
+* Opening the iframe page,
+* HTML data display,
+* Changing the dynamic content of the modal,
+* Escape and click close,
+* Allow auto close,
+* OnOpen ve OnClose events,
+* Width and height settings,
+* Responsive design.
+
+# Installing
+
+You can install with nuget **Install-Package Mustang-Modal**
+
+Including the scripts & styles
+
+```html
+<link href="/Styles/mustang-modal.css" rel="stylesheet" />
+<script src="/Scripts/mustang-modal.js"></script>
+```
+
+#Features
+
+### Attaching to a and button elements
+
+Firstly you must add **m-modal** to class attribute.
+
+**load:** If you set data-type as load will be ajax request.
+```html
+<button class="btn btn-danger m-modal" data-title="Sample Title" data-type="load" data-target="/Examples/DummyData/_AjaxLoadingPartial.html">
+                        Open Modal With Modal
+                        </button>
+```
+
+**iframe:** If you set data-type as load will be open url in iframe.
+```html
+ <button class="btn btn-danger m-modal"
+                            data-title="Sample Title" data-type="iframe"data-height="500" data-target="http://www.aksesuarpaketi.com">
+                        Open Modal With Iframe
+                    </button>
+```
+
+**iframe:** If you set data-type as html, the modal will be open html. 
+```html
+ <button class="btn btn-danger m-modal"
+                            data-title="Sample Title" data-type="html" data-target="#openTable">
+                        Open Modal
+                    </button>
+```
+
+The following features you can use
+
+```html
+
+  data-title="Sample Title"
+  data-type="html"
+  data-target="#openTable"
+  data-animate="toggle"
+  data-speed="300"
+  data-width="450"
+  data-height="500"
+  data-escapeclose="true"
+  data-clickclose="true"
+                    
+```
+
+## Open
+The open methods take selector as optional. If you want you can give selector to open method.
+
+```javascript
+MustangModal.open($("#openTable"));
+```
 
 ### Body
 
+The **body** property, creates the content of the mustang-modal. Takes the string value. 
 
 ```javascript
 MustangModal.prop({ body: "Hello world." }).open();
@@ -9,14 +92,18 @@ MustangModal.prop({ body: "Hello world." }).open();
 
 ### Title
 
+If you want to set title to Modal, for this you should use **title** property.
+
 ```javascript
 MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();
 ```
 
 ### Width & Height
 
+If you don't set the width and height values, will be responsive design as automatically. Width and Height properties take int values right now.
+
 ```javascript
-  MustangModal.prop({
+MustangModal.prop({
 
                 body: "Hello world.",
                 title: "This is a title",
@@ -28,6 +115,19 @@ MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();
 
 ### Buttons
 
+In mustang-modal you can add many buttons and you can add event for this buttons. The **buttons** property an array. Each row in the array, id, text, style and callback properties. 
+
+These are; 
+
+**id**       : Optional field. If id not set, will be added random
+
+**text**     : Optional field. Default name is "Button Name".
+
+**style**    : Optional field. This property uses success, primary, info, danger and default.
+
+**callback** : Optional field. This property takes a function. If you click the button, will run this function.
+
+
 ```javascript
 MustangModal.prop({
 
@@ -35,9 +135,9 @@ MustangModal.prop({
                 title: "This is a title",
                 buttons: [
                 {
-                    id: "btnClose",  				//Optional field. If id not set, will be added random button id as automatically.
-                    text: "Close",				    //Optional field. Default name is "Button Name".
-                    style: "primary",				//Optional field. This field uses bootstrapt button types. Default type is "default". 
+                    id: "btnClose",  
+                    text: "Close",	   
+                    style: "primary",
                     callback: function() {			
 
                         alert("clicked the close button");
@@ -50,29 +150,33 @@ MustangModal.prop({
 
 ### Animation & Speed
 
+There are 3 types of animation types. These are slideDown, toggle and fading. slideDown is default type. If you want to adjust the speed of the animation you should use speed property. Default value is 500.
+
 ```javascript
 
- MustangModal.prop({
+MustangModal.prop({
 
-                body: "Hello world.",
-                title: "This is a title",
-                animate: "toggle",				//Optional field. There are 3 types of animation types. These, top, toggle and opacity. top is default type.
-                speed: 1000				    //Optional field. Default value 500. 
+            body: "Hello world.",
+            title: "Animation & Speed",
+            animate: "toggle",				
+            speed: 1000
 
-            }).open();
+        }).open();
 
 ```
 
 ### Escape Close
 
+When the ESC button is pressed mustang-modal closes. Default value is false.
+
 ```javascript
 MustangModal.prop({
 
-                body: "Hello world.",
-                title: "This is a title",
-                animate: "toggle",
-                speed: 1000,
-                escapeClose: true				//Optional field. Allows the user to close the modal by pressing "ESC". Default value is false.
+           body: "Hello world.",
+           title: "Escape Close",
+           animate: "toggle",
+           speed: 1000,
+           escapeClose: true
 
             }).open();
 
@@ -80,6 +184,8 @@ MustangModal.prop({
 
 
 ### Click Close
+ 
+Allows the user to close the modal by pressing "Mouse Left Click". Default value is false.
 
 ```javascript
 MustangModal.prop({
@@ -88,19 +194,15 @@ MustangModal.prop({
                 title: "This is a title",
                 animate: "toggle",
                 speed: 1000,
-                clickClose: true				//Optional field. Allows the user to close the modal by pressing "Mouse Right Click". Default value is false.
+                clickClose: true			
 
             }).open();
 
 ```
 
-
-
-#Features
-
 ### Ajax Loading
 
-load method takes 3 parameters. These url, parameters and callback. 
+Load method takes 3 parameters. These are url, parameters and callback. 
 
 ```javascript
     MustangModal.prop({
@@ -114,11 +216,16 @@ load method takes 3 parameters. These url, parameters and callback.
 ```
 ### Open Iframe
 
+Open the page in iframe. For this uses openIframe method. This method takes url parameter.
+
 ```javascript
 	MustangModal.prop({ title: "Open Iframe Example" }).openIframe("IframePage.html").open();
 ```
 
 ### Change Body
+
+When modal is open you can change the body. For this you can use **changeBody** method.
+
 ```javascript
 	MustangModal.prop({
        title: "Change Body Example",
@@ -141,6 +248,9 @@ load method takes 3 parameters. These url, parameters and callback.
        }).open();
 ```
 ### Multi Modal
+
+You can open as many modals as you want.
+
 ```javascript
 //Open new modal
    MustangModal.prop({
@@ -224,13 +334,36 @@ load method takes 3 parameters. These url, parameters and callback.
 
 ```
 
+### onOpen & onClose Events
+
+When modal is open , **onOpen** and **onClose** methods work 
+
+```javascript
+MustangModal.prop({
+     body: "onOpen and onClose example.",
+     onClose: function () {
+        alert("modal is closed");
+     },
+     onOpen: function () {
+        alert("modal is opened.");
+     }
+     }).open();
+```
+
+### Allow Auto Close
+
+This method closes modal automatically. For this you can use **allowAutoClose** property.
+
+```javascript
+MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();
+```
+
 ### Cross Window Interactions
 
-There is three way for this interactions at the moment. These methods are **load**, **iframe** and **changeBody**.
+There are three way for this interactions at the moment. These methods are **load**, **iframe** and **changeBody**.
+Firstly you must use **eq** method. With this method you can select a modal. And then, you can continue to process. :) 
 
-Firstly you can use **eq** method. With this method you can select a modal. And then, you can continue to process. :)
-
-**load** : This method takes three parameters. These, url, parameters and callback.
+**load** : This method takes three parameters. These are url, parameters and callback.
 
  For example:
 
@@ -365,8 +498,8 @@ MustangModal.prop({
                          style: "success",
                          callback: function () {
                              
-                             //will be loaded to zero modal
-							 MustangModal.eq(0).changeBody($("#openTable").html());
+                             //will load to zero modal
+		             MustangModal.eq(0).changeBody($("#openTable").html());
                              MustangModal.close();
                          }
                      }, {
@@ -496,50 +629,4 @@ MustangModal.prop({
          }
      }]
      }).open();
-```
-
-### onOpen & onClose Events
-
-```javascript
-MustangModal.prop({
-     body: "onOpen and onClose example.",
-     onClose: function () {
-        alert("modal is closed");
-     },
-     onOpen: function () {
-        alert("modal is opened.");
-     }
-     }).open();
-```
-
-### Attaching To a And button Elements
-
-Firstly you can add m-modal to class attribute.
-
-**load:** If you set data-type as load will be ajax request.
-```html
-<button class="btn btn-danger m-modal" data-title="Sample Title" data-type="load" data-target="/Examples/DummyData/_AjaxLoadingPartial.html">
-                        Open Modal With Modal
-                        </button>
-```
-
-**iframe:** If you set data-type as load will be open url in iframe.
-```html
- <button class="btn btn-danger m-modal"
-                            data-title="Sample Title" data-type="iframe"data-height="500" data-target="http://www.aksesuarpaketi.com">
-                        Open Modal With Iframe
-                    </button>
-```
-
-**iframe:** If you set data-type as html, the modal will be open html. 
-```html
- <button class="btn btn-danger m-modal"
-                            data-title="Sample Title" data-type="html" data-target="#openTable">
-                        Open Modal With Html
-                    </button>
-```
-### allowAutoClose
-
-```javascript
-MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();
 ```
