@@ -75,7 +75,12 @@ The following features you can use
                     
 ```
 
+## Open
+The open methods take selector as optional. If you want you can give selector to open method.
 
+```javascript
+MustangModal.open($("#openTable"));
+```
 
 ### Body
 
