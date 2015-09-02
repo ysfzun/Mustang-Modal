@@ -71,7 +71,7 @@ The following features you can use
   data-width="450"
   data-height="500"
   data-escapeclose="true"
-  data-clickclose="true">
+  data-clickclose="true"
                     
 ```
 
