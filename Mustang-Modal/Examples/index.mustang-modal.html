@@ -9,7 +9,7 @@
     <link href="../Styles/mustang-modal.css" rel="stylesheet" />
 
     <script src="../Scripts/jquery-1.11.3.min.js"></script>
-    <script src="../Scripts/mustang-modal.js"></script>
+    <script src="../Scripts/mustang-modal.min.js"></script>
 
     <script type="text/javascript">
 
@@ -528,6 +528,18 @@
         function mustang_allow_auto_hide() {
 
             MustangModal.prop({ body: "Hello world.", allowAutoClose: 2000 }).open();
+        }
+
+        function mustang_on_open_and_on_close_events() {
+            MustangModal.prop({
+                body: "onOpen and onClose example.",
+                onClose: function () {
+                    alert("modal is closed");
+                },
+                onOpen: function () {
+                    alert("modal is opened.");
+                }
+            }).open();
         }
 
     </script>
@@ -1184,7 +1196,7 @@ MustangModal.eq(0).height(200);</code></pre><pre><code>MustangModal.prop({
      onOpen: function () {
                         <strong>alert("modal is opened.");</strong>
      }
-     }).open();;</code></pre>
+     }).open();</code></pre>
                     </p>
                     <button style="float: right;" class="btn btn-danger" onclick="mustang_on_open_and_on_close_events();">Open</button>
                 </div>

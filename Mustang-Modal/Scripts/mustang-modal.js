@@ -659,8 +659,8 @@ $(document).ready(function () {
             animate = $this.data("animate"),
             width = $this.data("width"),
             height = $this.data("height"),
-            escapeClose = $this.data("escapeClose"),
-            clickClose = $this.data("clickClose");
+            escapeClose = $this.data("escapeclose"),
+            clickClose = $this.data("clickclose");
 
         var prop = MustangModal.prop({
             title: title,
@@ -688,9 +688,3 @@ $(document).ready(function () {
         }
     });
 });
-
-
-
-
-
-
