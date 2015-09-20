@@ -634,5 +634,6 @@ MustangModal.prop({
 ```
 # Lisance
 
-Copyright © Yusuf UZUN
+Copyright © Yusuf UZUN 
+
 Mustang-Modal is distributed under the MIT License. 
