@@ -632,7 +632,7 @@ MustangModal.prop({
      }]
      }).open();
 ```
-# Lisance
+# License
 
 Copyright © Yusuf UZUN 
 
