@@ -632,3 +632,7 @@ MustangModal.prop({
      }]
      }).open();
 ```
+# Lisance
+
+Copyright © Yusuf UZUN
+Mustang-Modal is distributed under the MIT License. 
