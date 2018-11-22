@@ -42,55 +42,54 @@
                 body: "Hello world.",
                 title: "This is a title",
                 buttons: [
-                {
-                    text: "Save",
-                    callback: function () {
+                    {
+                        text: "Save",
+                        callback: function () {
 
-                        alert("clicked the Save button");
-                        MustangModal.close();
+                            alert("clicked the Save button");
+                            MustangModal.close();
 
-                    }
-                },
-                {
-                    text: "Update",
-                    style: "success",
-                    callback: function () {
-                        alert("clicked the Update button");
-                        MustangModal.close();
+                        }
+                    },
+                    {
+                        text: "Update",
+                        style: "success",
+                        callback: function () {
+                            alert("clicked the Update button");
+                            MustangModal.close();
 
-                    }
-                },
-                {
-                    id: "btnRemove",
-                    text: "Remove",
-                    style: "primary",
-                    callback: function () {
+                        }
+                    },
+                    {
+                        id: "btnRemove",
+                        text: "Remove",
+                        style: "primary",
+                        callback: function () {
 
-                        alert("clicked the Remove button");
-                        MustangModal.close();
+                            alert("clicked the Remove button");
+                            MustangModal.close();
+                        }
+                    },
+                    {
+                        id: "btnInfo",
+                        text: "Info",
+                        style: "info",
+                        callback: function () {
 
-                    }
-                },
-                {
-                    id: "btnRemove",
-                    text: "Info",
-                    style: "info",
-                    callback: function () {
+                            alert("clicked the Info button");
+                            MustangModal.close();
 
-                        alert("clicked the Info button");
-                        MustangModal.close();
-
-                    }
-                },
-                {
-                    id: "btnClose",
-                    text: "Close",
-                    style: "danger",
-                    callback: function () {
-                        alert("clicked the close button");
-                        MustangModal.close();
-                    }
-                }]
+                        }
+                    },
+                    {
+                        id: "btnClose",
+                        text: "Close",
+                        style: "danger",
+                        callback: function () {
+                            alert("clicked the close button");
+                            MustangModal.close();
+                        }
+                    }]
             }).open();
         }
 
@@ -161,22 +160,22 @@
                 title: "Change Body Example",
                 body: "If you want to change the body you can click 'Change The Body' button.",
                 buttons: [
-                {
-                    text: "Change The Body",
-                    style: "warning",
-                    callback: function () {
+                    {
+                        text: "Change The Body",
+                        style: "warning",
+                        callback: function () {
 
-                        MustangModal.changeBody($("#openTable").html());
-                    }
-                },
-                {
-                    text: "Close",
-                    style: "danger",
-                    callback: function () {
+                            MustangModal.changeBody($("#openTable").html());
+                        }
+                    },
+                    {
+                        text: "Close",
+                        style: "danger",
+                        callback: function () {
 
-                        MustangModal.close();
-                    }
-                }]
+                            MustangModal.close();
+                        }
+                    }]
 
             }).open();
 
@@ -189,84 +188,84 @@
 
                 title: "Multi Modal Example",
                 buttons: [
-                {
-                    text: "Open New Modal",
-                    style: "warning",
-                    callback: function () {
+                    {
+                        text: "Open New Modal",
+                        style: "warning",
+                        callback: function () {
 
-                        MustangModal.prop({
+                            MustangModal.prop({
 
-                            //Open new modal 1
-                            title: "New Modal 1",
-                            width: 400,
-                            height: 300,
-                            buttons: [
-                            {
-                                text: "Open New Modal",
-                                style: "success",
-                                callback: function () {
+                                //Open new modal 1
+                                title: "New Modal 1",
+                                width: 400,
+                                height: 300,
+                                buttons: [
+                                    {
+                                        text: "Open New Modal",
+                                        style: "success",
+                                        callback: function () {
 
-                                    //Open new modal 2
-                                    MustangModal.prop({
-                                        title: "New Modal 2",
-                                        body: "",
-                                        width: 600,
-                                        height: 400,
-                                        buttons: [
-                                            {
+                                            //Open new modal 2
+                                            MustangModal.prop({
+                                                title: "New Modal 2",
+                                                body: "",
+                                                width: 600,
+                                                height: 400,
+                                                buttons: [
+                                                    {
 
-                                                text: "Open New Modal",
-                                                callback: function () {
+                                                        text: "Open New Modal",
+                                                        callback: function () {
 
-                                                    //Open new modal 3
-                                                    MustangModal.prop({
-                                                        title: "New Modal 3",
-                                                        body: "",
-                                                        width: 400,
-                                                        height: 250,
-                                                        buttons: [
-                                                            {
-                                                                text: "Close",
-                                                                style: "danger",
-                                                                callback: function () {
+                                                            //Open new modal 3
+                                                            MustangModal.prop({
+                                                                title: "New Modal 3",
+                                                                body: "",
+                                                                width: 400,
+                                                                height: 250,
+                                                                buttons: [
+                                                                    {
+                                                                        text: "Close",
+                                                                        style: "danger",
+                                                                        callback: function () {
 
-                                                                    MustangModal.close();
-                                                                }
-                                                            }
-                                                        ]
-                                                    }).open();
+                                                                            MustangModal.close();
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }).open();
 
-                                                }
-                                            },
-                                            {
-                                                text: "Close",
-                                                style: "danger",
-                                                callback: function () {
+                                                        }
+                                                    },
+                                                    {
+                                                        text: "Close",
+                                                        style: "danger",
+                                                        callback: function () {
 
-                                                    MustangModal.close();
-                                                }
-                                            }
-                                        ]
-                                    }).open();
+                                                            MustangModal.close();
+                                                        }
+                                                    }
+                                                ]
+                                            }).open();
 
-                                }
-                            }, {
-                                text: "Close",
-                                callback: function () {
+                                        }
+                                    }, {
+                                        text: "Close",
+                                        callback: function () {
 
-                                    MustangModal.close();
-                                }
-                            }]
-                        }).open();
-                    }
+                                            MustangModal.close();
+                                        }
+                                    }]
+                            }).open();
+                        }
 
-                }, {
-                    text: "Close",
-                    callback: function () {
+                    }, {
+                        text: "Close",
+                        callback: function () {
 
-                        MustangModal.close();
-                    }
-                }]
+                            MustangModal.close();
+                        }
+                    }]
 
             }).open();
         }
@@ -279,46 +278,46 @@
                 width: 700,
                 height: 50,
                 buttons: [
-                {
-                    text: "Click Me!",
-                    style: "danger",
-                    callback: function () {
+                    {
+                        text: "Click Me!",
+                        style: "danger",
+                        callback: function () {
 
-                        MustangModal.prop({
-                            title: "Question ?",
-                            body: "Are you sure ?",
-                            width: 300,
-                            height: 25,
-                            buttons: [
-                                {
-                                    text: "Yes",
-                                    style: "success",
-                                    callback: function () {
+                            MustangModal.prop({
+                                title: "Question ?",
+                                body: "Are you sure ?",
+                                width: 300,
+                                height: 25,
+                                buttons: [
+                                    {
+                                        text: "Yes",
+                                        style: "success",
+                                        callback: function () {
 
-                                        //will be loaded to zero modal
-                                        MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
+                                            //will be loaded to zero modal
+                                            MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
+                                                MustangModal.close();
+                                            });
+                                        }
+                                    }, {
+                                        text: "No",
+                                        callback: function () {
+
                                             MustangModal.close();
-                                        });
+                                        }
                                     }
-                                }, {
-                                    text: "No",
-                                    callback: function () {
+                                ]
 
-                                        MustangModal.close();
-                                    }
-                                }
-                            ]
+                            }).open();
+                        }
+                    }, {
 
-                        }).open();
-                    }
-                }, {
+                        text: "Close",
+                        callback: function () {
 
-                    text: "Close",
-                    callback: function () {
-
-                        MustangModal.close();
-                    }
-                }]
+                            MustangModal.close();
+                        }
+                    }]
             }).open();
         }
 
@@ -330,45 +329,45 @@
                 width: 700,
                 height: 25,
                 buttons: [
-                {
-                    text: "Click Me!",
-                    style: "danger",
-                    callback: function () {
+                    {
+                        text: "Click Me!",
+                        style: "danger",
+                        callback: function () {
 
-                        MustangModal.prop({
-                            title: "Question ?",
-                            body: "Are you sure ?",
-                            width: 300,
-                            height: 25,
-                            buttons: [
-                                {
-                                    text: "Yes",
-                                    style: "success",
-                                    callback: function () {
+                            MustangModal.prop({
+                                title: "Question ?",
+                                body: "Are you sure ?",
+                                width: 300,
+                                height: 25,
+                                buttons: [
+                                    {
+                                        text: "Yes",
+                                        style: "success",
+                                        callback: function () {
 
-                                        //will be loaded to zero modal
-                                        MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com", "100%", "100%");
-                                        MustangModal.eq(0).height(450);
-                                        MustangModal.close();
+                                            //will be loaded to zero modal
+                                            MustangModal.eq(0).iframe("http://www.aksesuarpaketi.com", "100%", "100%");
+                                            MustangModal.eq(0).height(450);
+                                            MustangModal.close();
+                                        }
+                                    }, {
+                                        text: "No",
+                                        callback: function () {
+
+                                            MustangModal.close();
+                                        }
                                     }
-                                }, {
-                                    text: "No",
-                                    callback: function () {
+                                ]
+                            }).open();
+                        }
+                    }, {
 
-                                        MustangModal.close();
-                                    }
-                                }
-                            ]
-                        }).open();
-                    }
-                }, {
+                        text: "Close",
+                        callback: function () {
 
-                    text: "Close",
-                    callback: function () {
-
-                        MustangModal.close();
-                    }
-                }]
+                            MustangModal.close();
+                        }
+                    }]
             }).open();
         }
 
@@ -380,44 +379,44 @@
                 width: 700,
                 height: 25,
                 buttons: [
-                {
-                    text: "Click Me!",
-                    style: "danger",
-                    callback: function () {
+                    {
+                        text: "Click Me!",
+                        style: "danger",
+                        callback: function () {
 
-                        MustangModal.prop({
-                            title: "Question ?",
-                            body: "Are you sure ?",
-                            width: 300,
-                            height: 25,
-                            buttons: [
-                                {
-                                    text: "Yes",
-                                    style: "success",
-                                    callback: function () {
+                            MustangModal.prop({
+                                title: "Question ?",
+                                body: "Are you sure ?",
+                                width: 300,
+                                height: 25,
+                                buttons: [
+                                    {
+                                        text: "Yes",
+                                        style: "success",
+                                        callback: function () {
 
-                                        //will be loaded to zero modal
-                                        MustangModal.eq(0).changeBody($("#openTable").html());
-                                        MustangModal.close();
+                                            //will be loaded to zero modal
+                                            MustangModal.eq(0).changeBody($("#openTable").html());
+                                            MustangModal.close();
+                                        }
+                                    }, {
+                                        text: "No",
+                                        callback: function () {
+
+                                            MustangModal.close();
+                                        }
                                     }
-                                }, {
-                                    text: "No",
-                                    callback: function () {
+                                ]
+                            }).open();
+                        }
+                    }, {
 
-                                        MustangModal.close();
-                                    }
-                                }
-                            ]
-                        }).open();
-                    }
-                }, {
+                        text: "Close",
+                        callback: function () {
 
-                    text: "Close",
-                    callback: function () {
-
-                        MustangModal.close();
-                    }
-                }]
+                            MustangModal.close();
+                        }
+                    }]
             }).open();
         }
 
@@ -429,49 +428,49 @@
                 width: 700,
                 height: 25,
                 buttons: [
-                {
-                    text: "Click Me!",
-                    style: "danger",
-                    callback: function () {
+                    {
+                        text: "Click Me!",
+                        style: "danger",
+                        callback: function () {
 
-                        MustangModal.prop({
-                            title: "Question ?",
-                            body: "Are you sure ?",
-                            width: 300,
-                            height: 25,
-                            buttons: [
-                                {
-                                    text: "Yes",
-                                    style: "success",
-                                    callback: function () {
+                            MustangModal.prop({
+                                title: "Question ?",
+                                body: "Are you sure ?",
+                                width: 300,
+                                height: 25,
+                                buttons: [
+                                    {
+                                        text: "Yes",
+                                        style: "success",
+                                        callback: function () {
 
-                                        //will be loaded to zero modal
-                                        MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
+                                            //will be loaded to zero modal
+                                            MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
 
-                                            MustangModal.eq(0).width(700);
-                                            MustangModal.eq(0).height(550);
+                                                MustangModal.eq(0).width(700);
+                                                MustangModal.eq(0).height(550);
+
+                                                MustangModal.close();
+                                            });
+                                        }
+                                    }, {
+                                        text: "No",
+                                        callback: function () {
 
                                             MustangModal.close();
-                                        });
+                                        }
                                     }
-                                }, {
-                                    text: "No",
-                                    callback: function () {
+                                ]
+                            }).open();
+                        }
+                    }, {
 
-                                        MustangModal.close();
-                                    }
-                                }
-                            ]
-                        }).open();
-                    }
-                }, {
+                        text: "Close",
+                        callback: function () {
 
-                    text: "Close",
-                    callback: function () {
-
-                        MustangModal.close();
-                    }
-                }]
+                            MustangModal.close();
+                        }
+                    }]
             }).open();
 
         }
@@ -482,46 +481,46 @@
                 title: "Cross Window Interactions Example - Reset Resize",
                 body: "Click the red button to view changeBody example.",
                 buttons: [
-                {
-                    text: "Click Me!",
-                    style: "danger",
-                    callback: function () {
+                    {
+                        text: "Click Me!",
+                        style: "danger",
+                        callback: function () {
 
-                        MustangModal.prop({
-                            title: "Question ?",
-                            body: "Are you sure ?",
-                            buttons: [
-                                {
-                                    text: "Yes",
-                                    style: "success",
-                                    callback: function () {
+                            MustangModal.prop({
+                                title: "Question ?",
+                                body: "Are you sure ?",
+                                buttons: [
+                                    {
+                                        text: "Yes",
+                                        style: "success",
+                                        callback: function () {
 
-                                        //will be loaded to zero modal
-                                        MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
+                                            //will be loaded to zero modal
+                                            MustangModal.eq(0).load("/Examples/DummyData/_AjaxLoadingPartial.html", function () {
 
-                                            MustangModal.eq(0).resetResize();
+                                                MustangModal.eq(0).resetResize();
+
+                                                MustangModal.close();
+                                            });
+                                        }
+                                    }, {
+                                        text: "No",
+                                        callback: function () {
 
                                             MustangModal.close();
-                                        });
+                                        }
                                     }
-                                }, {
-                                    text: "No",
-                                    callback: function () {
+                                ]
+                            }).open();
+                        }
+                    }, {
 
-                                        MustangModal.close();
-                                    }
-                                }
-                            ]
-                        }).open();
-                    }
-                }, {
+                        text: "Close",
+                        callback: function () {
 
-                    text: "Close",
-                    callback: function () {
-
-                        MustangModal.close();
-                    }
-                }]
+                            MustangModal.close();
+                        }
+                    }]
             }).open();
         }
 
@@ -542,6 +541,64 @@
             }).open();
         }
 
+        function mustang_close() {
+            MustangModal.prop({
+                body: "Hello world.",
+                title: "This is a title",
+                buttons: [
+                    {
+                        text: "Close",
+                        callback: function () {
+
+                            alert("clicked the close button");
+                            MustangModal.close();
+                        }
+                    }]
+            }).open();
+        }
+
+        function mustang_all_close() {
+            MustangModal.prop({
+                body: "Hello world. 1",
+                title: "1. Modal",
+                buttons: [
+                    {
+                        text: "New Modal",
+                        callback: function() {
+
+                            MustangModal.prop({
+                                body: "Hello world. 2",
+                                title: "2. Modal",
+                                width: 250,
+                                buttons: [
+                                    {
+                                        text: "New Modal",
+                                        callback: function() {
+
+                                            MustangModal.prop({
+                                                body: "Hello world. 3",
+                                                title: "3. Modal",
+                                                width: 150,
+                                                buttons: [
+                                                    {
+                                                        text: "Close All Modals",
+                                                        callback: function() {
+
+                                                            MustangModal.allClose();
+                                                        }
+                                                    }
+                                                ]
+                                            }).open();
+                                        }
+                                    }
+                                ]
+                            }).open();
+
+                        }
+                    }
+                ]
+            }).open();
+        }
     </script>
 </head>
 <body style="position: relative;">
@@ -655,10 +712,78 @@
      title: "This is a title",
      animate: "toggle",
      speed: 400,
-     clickClose: true               //Optional field. Allows the user to close the modal by pressing "Mouse Right Click".Defaultvaluisfalse.
+     clickClose: true    //Optional field. Allows the user to close the modal by pressing "Mouse Right Click".Defaultvaluisfalse.
      }).open();</code></pre>
                 </p>
                 <button style="float: right;" class="btn btn-danger" onclick="mustang_click_close();">Open</button>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Close (Active Modal)</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre><code>
+    MustangModal.prop({
+         body: "Hello world.",
+         title: "This is a title",
+         buttons: [
+                 {
+                 text: "Close",
+                 callback: function () {
+
+                     alert("clicked the close button");
+                     MustangModal.close(); // you can use close method for close the active modal.
+                 }
+         }]
+    }).open();
+</code></pre>
+                </p>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_close();">Open</button>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Multi Close (All Modals)</div>
+            <div class="panel-body">
+                <p class="lead">
+                    <pre><code>
+         MustangModal.prop({
+         body: "Hello world. 1",
+         title: "1. Modal",
+              buttons: [
+              {
+              text: "New Modal",
+              callback: function() {
+
+                   MustangModal.prop({
+                   body: "Hello world. 2",
+                   title: "2. Modal",
+                        buttons: [
+                        {
+                        text: "New Modal",
+                        callback: function() {
+
+                             MustangModal.prop({
+                             body: "Hello world. 3",
+                             title: "3. Modal",
+                             buttons: [
+                                 {
+                                 text: "New Modal",
+                                 callback: function() {
+
+                                 alert("clicked the close button");
+                                 MustangModal.allClose();
+                                 }
+                             }]}).open();
+                        }}]
+                   }).open();
+
+              }}]
+         }).open();
+</code></pre>
+                </p>
+                <button style="float: right;" class="btn btn-danger" onclick="mustang_all_close();">Open</button>
             </div>
         </div>
 

@@ -14,7 +14,8 @@
     _eq = null,
     _onClose = function () { },
     _onOpen = function () { },
-    _allowAutoClose = 0;
+    _allowAutoClose = 0,
+    _modalCloseDetay = 200;
 
 
 var _MustangHub = {
@@ -160,7 +161,7 @@ var _MustangHub = {
 
     removeBackground: function () {
 
-        if ($(_MustangHub.definations.mainMustangModal).length == 0) {
+        if ($(_MustangHub.definations.mainMustangModal).length === 0) {
             $("#mustang-modal-bg").remove();
             $("body").css("overflow", "auto");
         }
@@ -186,7 +187,7 @@ var _MustangHub = {
         }
         else {
             $("body")
-              .append(_MustangHub.addModalContainer('<div class="mustang-modal active-modal">' + html + '</div>'));
+                .append(_MustangHub.addModalContainer('<div class="mustang-modal active-modal">' + html + '</div>'));
         }
 
         _MustangHub.resetActiveModal();
@@ -262,74 +263,74 @@ var _MustangHub = {
         switch (_animate) {
             case "slideDown":
                 $(_MustangHub.definations.activeModal)
-                .animate({ top: "0px" }, _speed, function () {
-                    _MustangHub.onOpen();
-                    if (_allowAutoClose > 0) {
-                        _MustangHub.autoClose(_allowAutoClose);
-                    }
-                });
+                    .animate({ top: "0px" }, _speed, function () {
+                        _MustangHub.onOpen();
+                        if (_allowAutoClose > 0) {
+                            _MustangHub.autoClose(_allowAutoClose);
+                        }
+                    });
                 break;
             case "toggle":
                 $(_MustangHub.definations.activeModal)
-               .css({ top: "0", display: "none" })
-               .slideDown(_speed, function () {
-                   _MustangHub.onOpen();
-                   if (_allowAutoClose > 0) {
-                       _MustangHub.autoClose(_allowAutoClose);
-                   }
-               });
+                    .css({ top: "0", display: "none" })
+                    .slideDown(_speed, function () {
+                        _MustangHub.onOpen();
+                        if (_allowAutoClose > 0) {
+                            _MustangHub.autoClose(_allowAutoClose);
+                        }
+                    });
                 break;
             case "fading":
                 $(_MustangHub.definations.activeModal)
-                .css({ top: "0", display: "none" })
-                .fadeIn(_speed, function () {
-                    _MustangHub.onOpen();
-                    if (_allowAutoClose > 0) {
-                        _MustangHub.autoClose(_allowAutoClose);
-                    }
-                });
+                    .css({ top: "0", display: "none" })
+                    .fadeIn(_speed, function () {
+                        _MustangHub.onOpen();
+                        if (_allowAutoClose > 0) {
+                            _MustangHub.autoClose(_allowAutoClose);
+                        }
+                    });
                 break;
             default:
         }
     },
 
-    close: function () {
+    close: function (modal) {
 
-        var activeModal = $(_MustangHub.definations.activeModal),
-            activeModalHeight = activeModal.height();
+        var activeModalHeight = $(modal).height();
 
         if (_MustangHub.hasAnimate()) {
 
             switch (_animate) {
                 case "slideDown":
-                    $(_MustangHub.definations.activeModal)
-                     .animate({ top: "-" + activeModalHeight + "px" }, _speed, function () {
-                         _MustangHub.removeModalContainer();
-                         $(activeModal).remove();
-                         _MustangHub.onClose();
-                         _MustangHub.resetActiveModal();
-                         _MustangHub.resetOptions();
-                     });
+                    $(modal)
+                        .animate({ top: "-" + activeModalHeight + "px" }, _speed, function () {
+
+                            _MustangHub.removeModalContainer();
+                            $(modal).remove();
+                            _MustangHub.onClose();
+                            _MustangHub.resetActiveModal();
+                            _MustangHub.resetOptions();
+                        });
                     break;
                 case "toggle":
-                    $(_MustangHub.definations.activeModal)
-                    .slideUp(_speed, function () {
-                        _MustangHub.removeModalContainer();
-                        $(activeModal).remove();
-                        _MustangHub.onClose();
-                        _MustangHub.resetActiveModal();
-                        _MustangHub.resetOptions();
-                    });
+                    $(modal)
+                        .slideUp(_speed, function () {
+                            _MustangHub.removeModalContainer();
+                            $(modal).remove();
+                            _MustangHub.onClose();
+                            _MustangHub.resetActiveModal();
+                            _MustangHub.resetOptions();
+                        });
                     break;
                 case "fading":
-                    $(_MustangHub.definations.activeModal)
-                    .fadeOut(_speed, function () {
-                        _MustangHub.removeModalContainer();
-                        $(activeModal).remove();
-                        _MustangHub.onClose();
-                        _MustangHub.resetActiveModal();
-                        _MustangHub.resetOptions();
-                    });
+                    $(modal)
+                        .fadeOut(_speed, function () {
+                            _MustangHub.removeModalContainer();
+                            $(modal).remove();
+                            _MustangHub.onClose();
+                            _MustangHub.resetActiveModal();
+                            _MustangHub.resetOptions();
+                        });
                     break;
                 default:
             }
@@ -377,14 +378,20 @@ var _MustangHub = {
         return _animate !== "" ? true : false;
     },
 
-    escapeClose: function () {
+    hasActiveModal: function () {
 
+        var hasActiveModal = $(_MustangHub.definations.activeModal).size();
+
+        return hasActiveModal > 0;
+    },
+
+    escapeClose: function () {
 
         $(window).on("keyup", function (e) {
 
             if (e.keyCode === 27) {
 
-                _MustangHub.close();
+                _MustangHub.close(_MustangHub.definations.activeModal);
             }
         });
     },
@@ -393,7 +400,7 @@ var _MustangHub = {
 
         $(_MustangHub.definations.mustangModalContainer).on("click", function () {
 
-            _MustangHub.close();
+            _MustangHub.close(_MustangHub.definations.activeModal);
         });
     },
 
@@ -415,13 +422,13 @@ var _MustangHub = {
 
     resetOptions: function () {
 
-        _width = 0,
-        _height = 0,
-        _loadPath = "",
-        _parameters = {},
-        _callback = null,
-        _animate = "slideDown",
-        _speed = 500,
+        _width = 0;
+        _height = 0;
+        _loadPath = "";
+        _parameters = {};
+        _callback = null;
+        _animate = "slideDown";
+        _speed = 500;
         _escapeClose = false;
         _title = "";
         _body = "";
@@ -431,13 +438,14 @@ var _MustangHub = {
         _onOpen = function () { };
         _eq = null;
         _allowAutoClose = 0;
+        _modalCloseDetay = 200;
     },
 
     autoClose: function (second) {
 
         setTimeout(function () {
 
-            MustangModal.close();
+            _MustangHub.close(_MustangHub.definations.activeModal);
         }, second);
     }
 };
@@ -457,8 +465,8 @@ var MustangCrossInteraction = function () {
         if (_eq != null) {
 
             var element = $(_MustangHub.definations.mainMustangModal)
-           .eq(_eq)
-           .children(_MustangHub.definations.mustangModalBody);
+                .eq(_eq)
+                .children(_MustangHub.definations.mustangModalBody);
 
             ajaxMethods.load(element, url, parameters, callback);
 
@@ -546,7 +554,7 @@ var MustangCrossInteraction = function () {
             } else {
 
                 var mustangModalBody = $(_MustangHub.definations.mainMustangModal)
-                        .eq(_eq),
+                    .eq(_eq),
                     paddingTop = mustangModalBody.css("padding-top").replace("px", ""),
                     paddingBottom = mustangModalBody.css("padding-top").replace("px", "");
 
@@ -623,7 +631,19 @@ var MustangModal = {
 
     close: function () {
 
-        _MustangHub.close();
+        _MustangHub.close(_MustangHub.definations.activeModal);
+    },
+
+    allClose: function () {
+        var intervalId = setInterval(function () {
+
+            if (_MustangHub.hasActiveModal()) {
+                _MustangHub.close(_MustangHub.definations.activeModal);
+            } else {
+                clearInterval(intervalId);
+            }
+
+        }, _modalCloseDetay);
     },
 
     changeBody: function (html) {
@@ -641,12 +661,7 @@ var MustangModal = {
 
         _eq = eq;
         return new MustangCrossInteraction();
-    },
-};
-
-MustangModal.Close = function () {
-
-    _MustangHub.close();
+    }
 };
 
 //bind to modal for a and button elements
