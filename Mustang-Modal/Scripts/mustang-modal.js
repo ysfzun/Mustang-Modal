@@ -1,13 +1,13 @@
 ﻿var __isAsnyc = false,
-    _title = '',
-    _body = '',
+    _title = "",
+    _body = "",
     _buttons = [],
     _width = 0,
     _height = 0,
-    _loadPath = '',
+    _loadPath = "",
     _parameters = {},
     _callback = null,
-    _animate = 'slideDown',
+    _animate = "slideDown",
     _speed = 500,
     _escapeClose = false,
     _clickClose = false,
@@ -35,12 +35,12 @@ var _MustangHub = {
         __isAsnyc = false;
         options = $.extend({
 
-            title: '',
-            body: '',
+            title: "",
+            body: "",
             width: 0,
             height: 0,
             buttons: [],
-            animate: 'slideDown',
+            animate: _animate,
             speed: 500,
             escapeClose: false,
             clickClose: false,
@@ -66,7 +66,7 @@ var _MustangHub = {
 
     setTitle: function (title) {
 
-        if (title == "") {
+        if (title === "") {
             return "";
         }
 
@@ -75,7 +75,7 @@ var _MustangHub = {
 
     setBody: function (body) {
 
-        if (body == undefined || body == "") {
+        if (body == undefined || body === "") {
             return '<div class="mustang-modal-body"></div>';
         }
 
@@ -84,50 +84,50 @@ var _MustangHub = {
 
     setWidth: function (width) {
 
-        if (width == 0 || width == undefined) {
+        if (width === 0 || width == undefined) {
             return;
         }
 
         $(_MustangHub.definations.activeModal).css({
 
-            'width': width,
-            'margin-left': -(Math.floor(width / 2)) + 'px'
+            "width": width,
+            "margin-left": -(Math.floor(width / 2)) + "px"
         });
 
         if (width > _MustangHub.definations.defaultMaxWidth) {
             $(_MustangHub.definations.activeModal).css({
 
-                'max-width': width,
+                "max-width": width
             });
         }
     },
 
     setHeight: function (height) {
 
-        if (height == 0 || height == undefined) {
+        if (height === 0 || height == undefined) {
 
             height = "auto";
         } else {
 
             var mustangModalBody = $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalBody),
-                paddingTop = mustangModalBody.css("padding-top").replace('px', ''),
-                paddingBottom = mustangModalBody.css("padding-top").replace('px', '');
+                paddingTop = mustangModalBody.css("padding-top").replace("px", ""),
+                paddingBottom = mustangModalBody.css("padding-top").replace("px", "");
 
             height = Number(height) + Number(paddingBottom) + Number(paddingTop);
         }
 
         $(_MustangHub.definations.activeModal + " " + _MustangHub.definations.mustangModalBody).css({
 
-            'height': (height)
+            "height": (height)
         });
     },
 
     setButtons: function (buttons) {
 
-        if (buttons == [] || buttons == "")
+        if (buttons === [] || buttons === "")
             return "";
 
-        var buttonsHtml = '';
+        var buttonsHtml = "";
 
         for (var i = 0; i < buttons.length; i++) {
 
@@ -154,15 +154,15 @@ var _MustangHub = {
 
     addBackground: function () {
 
-        $('body').append('<div id="mustang-modal-bg"></div>');
-        $('body').css('overflow', 'hidden');
+        $("body").append('<div id="mustang-modal-bg"></div>');
+        $("body").css("overflow", "hidden");
     },
 
     removeBackground: function () {
 
         if ($(_MustangHub.definations.mainMustangModal).length == 0) {
             $("#mustang-modal-bg").remove();
-            $('body').css('overflow', 'auto');
+            $("body").css("overflow", "auto");
         }
     },
 
@@ -179,7 +179,7 @@ var _MustangHub = {
     appendModal: function (html) {
 
         //adding new modal
-        if (_buttons.length == 0) {
+        if (_buttons.length === 0) {
 
             $("body")
                 .append(_MustangHub.addModalContainer('<div class="mustang-modal active-modal"><p class="mustang-modal-close" onclick="MustangModal.Close(); return false;">x</p>' + html + '</div>'));
@@ -198,18 +198,18 @@ var _MustangHub = {
         //loading buttons callbacks
         var buttons = _buttons;
 
-        if (_buttons != []) {
+        if (_buttons !== []) {
 
-            $(".pbutton").on('click', function () {
+            $(".pbutton").on("click", function () {
 
-                var parameterButtonId = $(this).attr('id');
-                if (parameterButtonId == 'undefined') {
+                var parameterButtonId = $(this).attr("id");
+                if (parameterButtonId === "undefined") {
                     console.error("You must fill the id field(s).");
                     return false;
                 }
 
                 for (var t = 0; t < buttons.length; t++) {
-                    if (buttons[t].id == parameterButtonId) {
+                    if (buttons[t].id === parameterButtonId) {
                         $.call(this, buttons[t].callback);
                     }
                 }
@@ -227,15 +227,15 @@ var _MustangHub = {
             var activeModal = $(_MustangHub.definations.activeModal),
                 activeModalHeight = $(_MustangHub.definations.activeModal).height();
 
-            activeModal.css({ top: '-' + activeModalHeight + 'px' });
+            activeModal.css({ top: "-" + activeModalHeight + "px" });
         }
 
-        if (_escapeClose == true) {
+        if (_escapeClose === true) {
 
             _MustangHub.escapeClose();
         }
 
-        if (_clickClose == true) {
+        if (_clickClose === true) {
 
             _MustangHub.clickClose();
         }
@@ -247,7 +247,7 @@ var _MustangHub = {
         var body = "";
 
         if (!__isAsnyc) {
-            _MustangHub.setBody('');
+            _MustangHub.setBody("");
             body = _MustangHub.setBody(_body);
         }
         else {
@@ -262,7 +262,7 @@ var _MustangHub = {
         switch (_animate) {
             case "slideDown":
                 $(_MustangHub.definations.activeModal)
-                .animate({ top: '0px' }, _speed, function () {
+                .animate({ top: "0px" }, _speed, function () {
                     _MustangHub.onOpen();
                     if (_allowAutoClose > 0) {
                         _MustangHub.autoClose(_allowAutoClose);
@@ -350,13 +350,13 @@ var _MustangHub = {
         $(_MustangHub.definations.mainMustangModal).css("z-index", 0);
         $(_MustangHub.definations.activeModal).css("z-index", 9999);
 
-        if ($(_MustangHub.definations.mustangModalBg).length == 0) {
+        if ($(_MustangHub.definations.mustangModalBg).length === 0) {
             _MustangHub.addBackground();
         }
 
         $(_MustangHub.definations.mustangModalBg).css("z-index", 9990);
 
-        if ($(_MustangHub.definations.mainMustangModal).length == 0) {
+        if ($(_MustangHub.definations.mainMustangModal).length === 0) {
             _MustangHub.removeBackground();
         }
     },
@@ -374,7 +374,7 @@ var _MustangHub = {
 
     hasAnimate: function () {
 
-        return _animate != "" ? true : false;
+        return _animate !== "" ? true : false;
     },
 
     escapeClose: function () {
@@ -382,7 +382,7 @@ var _MustangHub = {
 
         $(window).on("keyup", function (e) {
 
-            if (e.keyCode == 27) {
+            if (e.keyCode === 27) {
 
                 _MustangHub.close();
             }
@@ -417,10 +417,10 @@ var _MustangHub = {
 
         _width = 0,
         _height = 0,
-        _loadPath = '',
+        _loadPath = "",
         _parameters = {},
         _callback = null,
-        _animate = 'slideDown',
+        _animate = "slideDown",
         _speed = 500,
         _escapeClose = false;
         _title = "";
@@ -469,16 +469,16 @@ var MustangCrossInteraction = function () {
 
         if (_eq != null) {
 
-            if (height == 0 || height == undefined) {
+            if (height === 0 || height == undefined) {
                 height = "100%";
             }
 
-            if (width == 0 || width == undefined) {
+            if (width === 0 || width == undefined) {
                 width = "100%";
             }
 
-            _MustangHub.setBody('');
-            var iframeHtml = '';
+            _MustangHub.setBody("");
+            var iframeHtml = "";
 
             iframeHtml += '<iframe style="width:' + width + ';height:' + height + ';" src="' + url + ' ">';
             iframeHtml += '</iframe>';
@@ -512,15 +512,16 @@ var MustangCrossInteraction = function () {
     this.width = function (width) {
 
         if (_eq != null) {
-            if (width == 0 || width == undefined) {
+
+            if (width === 0 || width == undefined) {
                 return false;
             }
 
             $(_MustangHub.definations.mainMustangModal)
                 .eq(_eq)
                 .css({
-                    'width': width,
-                    'margin-left': -(Math.floor(width / 2)) + 'px'
+                    "width": width,
+                    "margin-left": -(Math.floor(width / 2)) + "px"
                 });
 
 
@@ -528,24 +529,26 @@ var MustangCrossInteraction = function () {
                 $(_MustangHub.definations.mainMustangModal)
                     .eq(_eq)
                     .css({
-                        'max-width': width,
+                        "max-width": width
                     });
             }
         }
+
+        return false;
     };
 
     this.height = function (height) {
 
         if (_eq != null) {
 
-            if (height == 0 || height == undefined) {
+            if (height === 0 || height == undefined) {
                 return false;
             } else {
 
                 var mustangModalBody = $(_MustangHub.definations.mainMustangModal)
                         .eq(_eq),
-                    paddingTop = mustangModalBody.css("padding-top").replace('px', ''),
-                    paddingBottom = mustangModalBody.css("padding-top").replace('px', '');
+                    paddingTop = mustangModalBody.css("padding-top").replace("px", ""),
+                    paddingBottom = mustangModalBody.css("padding-top").replace("px", "");
 
                 height = Number(height) + Number(paddingBottom) + Number(paddingTop);
             }
@@ -553,9 +556,11 @@ var MustangCrossInteraction = function () {
             $(_MustangHub.definations.mainMustangModal + " " + _MustangHub.definations.mustangModalBody)
                 .eq(_eq)
                 .css({
-                    'height': height
+                    "height": height
                 });
         }
+
+        return false;
     };
 
     this.resetResize = function () {
@@ -576,7 +581,7 @@ var MustangModal = {
     load: function (loadPath, parameters, callback) {
 
         __isAsnyc = true;
-        _MustangHub.setBody('');
+        _MustangHub.setBody("");
 
         _parameters = parameters;
         _loadPath = loadPath;
@@ -587,16 +592,16 @@ var MustangModal = {
 
     openIframe: function (url, width, height) {
 
-        if (height == 0 || height == undefined) {
+        if (height === 0 || height == undefined) {
             height = "100%";
         }
 
-        if (width == 0 || width == undefined) {
+        if (width === 0 || width == undefined) {
             width = "100%";
         }
 
-        _MustangHub.setBody('');
-        var iframeHtml = '';
+        _MustangHub.setBody("");
+        var iframeHtml = "";
 
         iframeHtml += '<iframe style="width:' + width + ';height:' + height + ';" src="' + url + ' ">';
         iframeHtml += '</iframe>';
@@ -642,14 +647,12 @@ var MustangModal = {
 MustangModal.Close = function () {
 
     _MustangHub.close();
-
 };
-
 
 //bind to modal for a and button elements
 $(document).ready(function () {
 
-    $("a.m-modal,button.m-modal").on("click", function () {
+    $("a.m-modal, button.m-modal").on("click", function () {
 
         var $this = $(this),
             title = $this.data("title"),
