@@ -38,6 +38,8 @@ Including the scripts & styles
 
 Firstly you must add **m-modal** to class attribute.
 
+For example:
+
 **load:** If you set data-type as load will be ajax request.
 ```html
 <button class="btn btn-danger m-modal" data-title="Sample Title" data-type="load" data-target="/Examples/DummyData/_AjaxLoadingPartial.html">
@@ -78,7 +80,10 @@ The following features you can use
 ```
 
 ## Open
+
 The open methods take selector as optional. If you want you can give selector to open method.
+
+For example:
 
 ```javascript
 MustangModal.open($("#openTable"));
@@ -88,6 +93,8 @@ MustangModal.open($("#openTable"));
 
 The **body** property, creates the content of the mustang-modal. Takes the string value. 
 
+For example:
+
 ```javascript
 MustangModal.prop({ body: "Hello world." }).open();
 ```
@@ -96,6 +103,8 @@ MustangModal.prop({ body: "Hello world." }).open();
 
 If you want to set title to Modal, for this you should use **title** property.
 
+For example:
+
 ```javascript
 MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();
 ```
@@ -103,6 +112,8 @@ MustangModal.prop({ body: "Hello world.", title: "This is a title" }).open();
 ### Width & Height
 
 If you don't set the width and height values, will be responsive design as automatically. Width and Height properties take int values right now.
+
+For example:
 
 ```javascript
 MustangModal.prop({
@@ -129,6 +140,7 @@ These are;
 
 **callback** : Optional field. This property takes a function. If you click the button, will run this function.
 
+For example:
 
 ```javascript
 MustangModal.prop({
@@ -156,6 +168,8 @@ There are 3 types of animation types. These are slideDown, toggle and fading. sl
 
 ```javascript
 
+For example:
+
 MustangModal.prop({
 
             body: "Hello world.",
@@ -170,6 +184,8 @@ MustangModal.prop({
 ### Escape Close
 
 When the ESC button is pressed mustang-modal closes. Default value is false.
+
+For example:
 
 ```javascript
 MustangModal.prop({
@@ -189,6 +205,8 @@ MustangModal.prop({
  
 Allows the user to close the modal by pressing "Mouse Left Click". Default value is false.
 
+For example:
+
 ```javascript
 MustangModal.prop({
 
@@ -206,6 +224,8 @@ MustangModal.prop({
 
 Load method takes 3 parameters. These are url, parameters and callback. 
 
+For example:
+
 ```javascript
     MustangModal.prop({
                 title: "Ajax Loading",
@@ -220,6 +240,8 @@ Load method takes 3 parameters. These are url, parameters and callback.
 
 Open the page in iframe. For this uses openIframe method. This method takes url parameter.
 
+For example:
+
 ```javascript
 	MustangModal.prop({ title: "Open Iframe Example" }).openIframe("IframePage.html").open();
 ```
@@ -227,6 +249,8 @@ Open the page in iframe. For this uses openIframe method. This method takes url 
 ### Change Body
 
 When modal is open you can change the body. For this you can use **changeBody** method.
+
+For example:
 
 ```javascript
 	MustangModal.prop({
@@ -252,6 +276,8 @@ When modal is open you can change the body. For this you can use **changeBody** 
 ### Multi Modal
 
 You can open as many modals as you want.
+
+For example:
 
 ```javascript
 //Open new modal
@@ -340,6 +366,8 @@ You can open as many modals as you want.
 
 When modal is open , **onOpen** and **onClose** methods work 
 
+For example:
+
 ```javascript
 MustangModal.prop({
      body: "onOpen and onClose example.",
@@ -350,6 +378,77 @@ MustangModal.prop({
         alert("modal is opened.");
      }
      }).open();
+```
+
+### Close
+
+This method closes the modal. For this you can use **MustangModal.close()** method.
+
+For example:
+
+```javascript
+  MustangModal.prop({
+                body: "Hello world.",
+                title: "This is a title",
+                buttons: [
+                    {
+                        text: "Close",
+                        callback: function () {
+
+                            alert("clicked the close button");
+                            MustangModal.close();
+                        }
+                    }]
+            }).open();
+```
+
+### Multi Modal Close (All Modals)
+
+This method closes to the all modals. For this you can use **MustangModal.allClose()** method.
+
+For example:
+ 
+```javascript
+   MustangModal.prop({
+                body: "Hello world. 1",
+                title: "1. Modal",
+                buttons: [
+                    {
+                        text: "New Modal",
+                        callback: function() {
+
+                            MustangModal.prop({
+                                body: "Hello world. 2",
+                                title: "2. Modal",
+                                width: 250,
+                                buttons: [
+                                    {
+                                        text: "New Modal",
+                                        callback: function() {
+
+                                            MustangModal.prop({
+                                                body: "Hello world. 3",
+                                                title: "3. Modal",
+                                                width: 150,
+                                                buttons: [
+                                                    {
+                                                        text: "Close All Modals",
+                                                        callback: function() {
+
+                                                            MustangModal.allClose();
+                                                        }
+                                                    }
+                                                ]
+                                            }).open();
+                                        }
+                                    }
+                                ]
+                            }).open();
+
+                        }
+                    }
+                ]
+            }).open();
 ```
 
 ### Allow Auto Close
